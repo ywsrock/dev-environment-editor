@@ -119,6 +119,7 @@ let g:lightline = {
   \ }
 let g:move_key_modifier = 'C'
 
+autocmd QuickFixCmdPost *grep* cwindow
 
 "全角表示
 let g:zenspace#default_mode = 'on'
