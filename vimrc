@@ -5,26 +5,26 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 
 
-"$B!'(BBundleInstall$B!*(B -$B$9$Y$F$N%W%i%0%$%s$r99?7(B
-"$B!'(BBundleSearch foo-foo$B%W%i%0%$%s$r8!:w(B
-"$B!'%P%s%I%k8!:w!*(B foo-foo$B%W%i%0%$%s$N%P%C%U%!$r99?7$9$k(B
-"$B!'(BBundleClean-$B%W%i%0%$%s$,(B.vimrc$B$GDj5A$5$l$F$$$J$$>l9g!"$9$Y$F$N%W%i%0%$%s$r%/%j!<%s%"%C%W$7$^$9(B
+"：BundleInstall！ -すべてのプラグインを更新
+"：BundleSearch foo-fooプラグインを検索
+"：バンドル検索！ foo-fooプラグインのバッファを更新する
+"：BundleClean-プラグインが.vimrcで定義されていない場合、すべてのプラグインをクリーンアップします
 call vundle#begin()
 
 "bookmark
 Plugin 'kshenoy/vim-signature'
 " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
-"$B%9%?!<%?%9%P!<I=<((B
+"スタータスバー表示
 Plugin 'itchyny/lightline.vim'
-"$B%(%/%9%W%m!<%i!<(B
+"エクスプローラー
 Plugin 'preservim/nerdtree'
 
 ":IndentGuidesEnable
 ":IndentGuidesDisable
 ":IndentGuidesToggle
 "let g:indent_guides_enable_on_vim_startup = 1
-"$B%$%s%G%s%H$r2D;k2=$9$k(B
+"インデントを可視化する
 Plugin 'nathanaelkane/vim-indent-guides'
 
 Plugin 'joshdick/onedark.vim'
@@ -42,11 +42,11 @@ Plugin 'arcticicestudio/nord-vim'
 "
 ":ZenSpaceUpdate					*:ZenSpaceUpdate*
 "	Manually updates the showing state.  You don't need this usually.
-"$BA43Q%9%Z!<%9I=<((B
+"全角スペース表示
 Plugin 'enbunsui/vim-zenspace'
-"$B9T0\F0(B
+"行移動
 Plugin 'ywsrock/vim-move'
-"Window $B%j%5%$%:(B
+"Window リサイズ
 Plugin 'simeji/winresizer'
 
 "Language Servers :LspInstallServer
@@ -83,9 +83,9 @@ if (has("termguicolors"))
 endif
 
 
-"$BH>3QJ8;z$N@_Dj(B
+"半角文字の設定
 set guifont=MS_Gothic:h9
-"$BA43QJ8;z$N@_Dj(B
+"全角文字の設定
 set guifontwide=MS_Gothic:h9
 set spell 
 set spelllang=en_us,cjk
@@ -108,11 +108,11 @@ set wildmode=list,full
 
 
 
-set tabstop=2          "$B%?%V$r2?J8;z$N6uGr$KJQ49$9$k$+(B
-set shiftwidth=2       "$B<+F0%$%s%G%s%H;~$KF~NO$9$k6uGr$N?t(B
-set expandtab          "$B%?%VF~NO$r6uGr$KJQ49(B
-set splitright         "$B2hLL$r=DJ,3d$9$k:]$K1&$K3+$/(B
-set clipboard=unnamed  "yank $B$7$?J8;zNs$r%/%j%C%W%\!<%I$K%3%T!<(B
+set tabstop=2          "タブを何文字の空白に変換するか
+set shiftwidth=2       "自動インデント時に入力する空白の数
+set expandtab          "タブ入力を空白に変換
+set splitright         "画面を縦分割する際に右に開く
+set clipboard=unnamed  "yank した文字列をクリップボードにコピー
 colorscheme onedark
 let g:lightline = {
   \ 'colorscheme': 'onedark',
@@ -120,9 +120,9 @@ let g:lightline = {
 let g:move_key_modifier = 'C'
 
 
-"$BA43QI=<((B
+"全角表示
 let g:zenspace#default_mode = 'on'
-"Indent$BM-8z(B
+"Indent有効
 "let g:indent_guides_auto_colors = 0
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
 "autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
