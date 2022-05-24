@@ -113,6 +113,12 @@ set shiftwidth=2       "自動インデント時に入力する空白の数
 set expandtab          "タブ入力を空白に変換
 set splitright         "画面を縦分割する際に右に開く
 set clipboard=unnamed  "yank した文字列をクリップボードにコピー
+set autochdir          "作業ディレクトリ自動変更
+
+set foldmethod=indent  "折りたたみ範囲の判断基準（デフォルト: manual）
+set foldlevel=2        "ファイルを開いたときにデフォルトで折りたたむレベル
+set foldcolumn=3       "左端に折りたたみ状態を表示する領域を追加する
+
 colorscheme onedark
 let g:lightline = {
   \ 'colorscheme': 'onedark',
