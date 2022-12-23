@@ -182,4 +182,10 @@ augroup lsp_install
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
   augroup END
 
+"Quickix Preview key map
+let g:quickr_preview_keymaps = 0
 
+nmap gs <plug>(quickr_preview)
+nmap gc <plug>(quickr_preview_qf_close)
+"above, below, left, or right
+let g:quickr_preview_position = 'right'
