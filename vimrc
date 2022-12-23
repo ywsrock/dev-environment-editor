@@ -19,6 +19,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 "エクスプローラー
 Plugin 'preservim/nerdtree'
+"quickfix preview
+Plugin 'ronakg/quickr-preview.vim'
 
 ":IndentGuidesEnable
 ":IndentGuidesDisable
