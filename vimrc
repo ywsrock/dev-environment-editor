@@ -11,6 +11,8 @@ set rtp+=~/.vim/bundle/Vundle.vim
 "：BundleClean-プラグインが.vimrcで定義されていない場合、すべてのプラグインをクリーンアップします
 call vundle#begin()
 
+"VIM-YAML-FOLDS
+Plugin 'pedrohdz/vim-yaml-folds'
 "bookmark
 Plugin 'kshenoy/vim-signature'
 " let Vundle manage Vundle, required
@@ -19,8 +21,6 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'itchyny/lightline.vim'
 "エクスプローラー
 Plugin 'preservim/nerdtree'
-"quickfix preview
-Plugin 'ronakg/quickr-preview.vim'
 
 ":IndentGuidesEnable
 ":IndentGuidesDisable
@@ -50,6 +50,8 @@ Plugin 'enbunsui/vim-zenspace'
 Plugin 'ywsrock/vim-move'
 "Window リサイズ
 Plugin 'simeji/winresizer'
+"quickfix preview
+Plugin 'ronakg/quickr-preview.vim'
 
 "Language Servers :LspInstallServer
 "default $HOME/.local/share/vim-lsp-settings/servers
@@ -98,8 +100,10 @@ set hlsearch
 set ignorecase
 set smartcase
 set cursorline
+set showcmd
 set showmode
 set autoindent
+set autochdir
 set showmatch
 set encoding=utf-8
 set incsearch
@@ -107,21 +111,16 @@ set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
 syntax on
 set wildmenu
 set wildmode=list,full
-
-
+set foldmethod=indent
+set backspace=2
 
 set tabstop=2          "タブを何文字の空白に変換するか
 set shiftwidth=2       "自動インデント時に入力する空白の数
 set expandtab          "タブ入力を空白に変換
 set splitright         "画面を縦分割する際に右に開く
 set clipboard=unnamed  "yank した文字列をクリップボードにコピー
-set autochdir          "作業ディレクトリ自動変更
-
-set foldmethod=indent  "折りたたみ範囲の判断基準（デフォルト: manual）
-set foldlevel=2        "ファイルを開いたときにデフォルトで折りたたむレベル
-set foldcolumn=3       "左端に折りたたみ状態を表示する領域を追加する
-
 colorscheme onedark
+
 let g:lightline = {
   \ 'colorscheme': 'onedark',
   \ }
@@ -166,6 +165,7 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> gi <plug>(lsp-implementation)
     nmap <buffer> gt <plug>(lsp-type-definition)
     nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> <leader>dia <plug>(lsp-document-diagnostics)
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
@@ -173,15 +173,18 @@ function! s:on_lsp_buffer_enabled() abort
     nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-    
+    autocmd! BufWritePre *.* call execute('LspDocumentFormatSync')
+    "Highlight references
+    let g:lsp_document_highlight_enabled = 1
+    highlight lspReference ctermfg=green guifg=grenn
+    "highlight lspReference ctermfg=white guifg=white ctermbg=green guibg=green
     " refer to doc to add more commands
 endfunction
 
 augroup lsp_install
-    au!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+  au!
+  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
   augroup END
 
 "Quickix Preview key map
