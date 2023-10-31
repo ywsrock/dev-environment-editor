@@ -63,10 +63,14 @@ Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 "Plug 'Shougo/ddc.vim'
 "Plug 'shun/ddc-vim-lsp'
+"markdown highlight
+Plugin 'godlygeek/tabular'
+Plugin 'preservim/vim-markdown'
+Plugin 'iamcco/markdown-preview.nvim'
 
 
-" All of your Plugins must be added before the following line
 call vundle#end()            " required
+" All of your Plugins must be added before the following line
 filetype plugin indent on    " required
 
 " To ignore plugin indent changes, instead use:
@@ -113,12 +117,13 @@ set wildmenu
 set wildmode=list,full
 set foldmethod=indent
 set backspace=2
+set belloff=all
 
 set tabstop=2          "タブを何文字の空白に変換するか
 set shiftwidth=2       "自動インデント時に入力する空白の数
 set expandtab          "タブ入力を空白に変換
 set splitright         "画面を縦分割する際に右に開く
-set clipboard=unnamed  "yank した文字列をクリップボードにコピー
+set clipboard=unnamedplus  "yank した文字列をクリップボードにコピー
 colorscheme onedark
 
 let g:lightline = {
@@ -140,8 +145,9 @@ let g:zenspace#default_mode = 'on'
 let g:indent_guides_enable_on_vim_startup = 1
 
 
-hi NonText    ctermbg=None ctermfg=59 guibg=NONE guifg=None
-hi SpecialKey ctermbg=None ctermfg=59 guibg=NONE guifg=None
+hi NonText    ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
+hi SpecialKey ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
+hi CursorLine gui=underLine cterm=underLine
 
 set guifont=Menlo\ Regular:h14
 set laststatus=2
@@ -194,3 +200,10 @@ nmap gs <plug>(quickr_preview)
 nmap gc <plug>(quickr_preview_qf_close)
 "above, below, left, or right
 let g:quickr_preview_position = 'right'
+
+
+
+"marddownPrew
+nmap <leader>r <Plug>MarkdownPreview
+nmap <leader>s <Plug>MarkdownPreviewStop
+nmap <leader>t <Plug>MarkdownPreviewToggle
