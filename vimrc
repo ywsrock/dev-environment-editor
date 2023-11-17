@@ -66,6 +66,8 @@ Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 "markdown highlight
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
+"
+"call mkdp#util#install()
 Plugin 'iamcco/markdown-preview.nvim'
 
 
@@ -204,6 +206,24 @@ let g:quickr_preview_position = 'right'
 
 
 "marddownPrew
+" set to 1, nvim will open the preview window after entering the Markdown buffer
+" default: 0
+let g:mkdp_auto_start = 0
+
+" set to 1, the nvim will auto close current preview window when changing
+" from Markdown buffer to another buffer
+" default: 1
+let g:mkdp_auto_close = 1
+" combine preview window
+" default: 0
+" if enable it will reuse previous opened preview window when you preview markdown file.
+" ensure to set let g:mkdp_auto_close = 0 if you have enable this option
+let g:mkdp_combine_preview = 0
+
+" auto refetch combine preview contents when change markdown buffer
+" only when g:mkdp_combine_preview is 1
+let g:mkdp_combine_preview_auto_refresh = 1
+
 nmap <leader>gs <Plug>MarkdownPreview
-nmap <leader>gc <Plug>MarkdownPreviewStop
+nmap <leader>gr <Plug>MarkdownPreviewStop
 nmap <leader>gt <Plug>MarkdownPreviewToggle
