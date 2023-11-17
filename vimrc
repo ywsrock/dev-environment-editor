@@ -204,6 +204,6 @@ let g:quickr_preview_position = 'right'
 
 
 "marddownPrew
-nmap <leader>r <Plug>MarkdownPreview
-nmap <leader>s <Plug>MarkdownPreviewStop
-nmap <leader>t <Plug>MarkdownPreviewToggle
+nmap <leader>gr <Plug>MarkdownPreview
+nmap <leader>gs <Plug>MarkdownPreviewStop
+nmap <leader>gt <Plug>MarkdownPreviewToggle
