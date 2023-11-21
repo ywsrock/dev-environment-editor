@@ -167,7 +167,8 @@ colorscheme tokyonight
 "colorscheme tokyonight-moon
 
 
-let g:lightline = {'colorscheme': 'nightfox' }
+"let g:lightline = {'colorscheme': 'nightfox' }
+let g:lightline = {'colorscheme': 'tokyonight' }
 "
 "let g:lightline = {'colorscheme': 'tokyonight'}
 let g:move_key_modifier = 'C'
