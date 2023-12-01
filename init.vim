@@ -140,7 +140,7 @@ set autochdir
 set showmatch
 set encoding=utf-8
 set incsearch
-set fileencodings=iso-2022-jp,ucs-bom,sjis,utf-8,euc-jp,cp932,default,latin1
+set fileencodings=sjis,utf-8,euc-jp,cp932,default,latin1,iso-2022-jp,ucs-bom
 syntax on
 set wildmenu
 set wildmode=list,full
@@ -153,6 +153,10 @@ set shiftwidth=2       "自動インデント時に入力する空白の数
 set expandtab          "タブ入力を空白に変換
 set splitright         "画面を縦分割する際に右に開く
 set clipboard=unnamedplus  "yank した文字列をクリップボードにコピー
+
+set binary
+set noeol
+
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
 "colorscheme Carbonfox
