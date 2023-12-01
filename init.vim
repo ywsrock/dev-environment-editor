@@ -141,6 +141,7 @@ set showmatch
 set encoding=utf-8
 set incsearch
 set fileencodings=sjis,utf-8,euc-jp,cp932,default,latin1,iso-2022-jp,ucs-bom
+set fileformats=unix,dos,mac
 syntax on
 set wildmenu
 set wildmode=list,full
@@ -154,8 +155,8 @@ set expandtab          "タブ入力を空白に変換
 set splitright         "画面を縦分割する際に右に開く
 set clipboard=unnamedplus  "yank した文字列をクリップボードにコピー
 
-set binary
-set noeol
+"set fixendofline
+set nofixendofline
 
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
