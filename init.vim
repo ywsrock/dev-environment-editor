@@ -64,6 +64,8 @@ Plugin 'mattn/vim-lsp-settings'
 "Auto-complete
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+Plugin 'prabirshrestha/asyncomplete-gocode.vim'
+Plugin 'high-moctane/asyncomplete-nextword.vim'
 "Plug 'Shougo/ddc.vim'
 "Plug 'shun/ddc-vim-lsp'
 "markdown highlight
@@ -76,7 +78,9 @@ Plugin 'voldikss/vim-floaterm'
 
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
-  filetype plugin indent on    " required
+filetype plugin indent on    " required
+
+
 
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
