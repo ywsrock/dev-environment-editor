@@ -267,3 +267,7 @@ if exists('g:vscode')
 
     xnoremap <silent> zV <Cmd>call VSCodeNotify('editor.foldAllExcept')<CR>
 endif
+
+let g:copilot_filetypes = {
+  \   '*': v:true,
+  \}
