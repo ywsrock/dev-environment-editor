@@ -158,6 +158,7 @@ set shiftwidth=2       "自動インデント時に入力する空白の数
 set expandtab          "タブ入力を空白に変換
 set splitright         "画面を縦分割する際に右に開く
 set clipboard=unnamedplus  "yank した文字列をクリップボードにコピー
+set ambiwidth=double
 
 "set fixendofline
 set nofixendofline
