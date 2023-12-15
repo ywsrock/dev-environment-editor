@@ -76,6 +76,9 @@ Plugin 'iamcco/markdown-preview.nvim'
 "float window
 Plugin 'voldikss/vim-floaterm'
 
+"fzf
+Plugin 'junegunn/fzf'
+
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " required
@@ -252,6 +255,9 @@ let g:quickr_preview_position = 'right'
 nmap <leader>gs <Plug>MarkdownPreview
 nmap <leader>gc <Plug>MarkdownPreviewStop
 nmap <leader>gt <Plug>MarkdownPreviewToggle
+
+"fzf
+nmap <leader>ff :FZF<CR>
 
 if exists('g:vscode')
     nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
