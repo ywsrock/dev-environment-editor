@@ -16,8 +16,11 @@ sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/get
 
 ### config .zshrc
 export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview;p:preview-tui'
-export NNN_OPENER=/usr/local/bin/nvim
-alias nnn="nnn -c"
+
+#export NNN_OPENER=/usr/local/bin/nvim
+
+alias nnn="nnn -e"
+
 
 ####
 https://github.com/jarun/nnn/wiki/Usage#configuration
