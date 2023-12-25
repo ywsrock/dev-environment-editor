@@ -81,7 +81,7 @@ add the following to the shell rc file:
 export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview;p:preview-tui'
 alias nnn="nnn -e"
 
-export NNN_MISC_QUITCD=~/.config/nnn/misc/quitcd
+export NNN_MISC_QUITCD="$HOME/.config/nnn/misc/quitcd"
 
 case "$SHELL" in
   */zsh)
