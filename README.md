@@ -99,4 +99,4 @@ esac
 
 
 #### config reference link
-https://github.com/jarun/nnn/wiki/Usage#configuration
+[reference](https://github.com/jarun/nnn/wiki/Usage#configuration)
