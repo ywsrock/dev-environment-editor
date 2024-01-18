@@ -282,3 +282,8 @@ endif
 let g:copilot_filetypes = {
   \   '*': v:true,
   \}
+
+nmap <leader>cp :Copilot panel<CR>
+imap <C-j> <Plug>(copilot-next)
+imap <C-k> <Plug>(copilot-previous)
+imap <C-l> <Plug>(copilot-accept-word)
