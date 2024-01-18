@@ -48,10 +48,11 @@ filetype plugin indent on    " required
 ***
 
 # zsh complement
+```shell
 autoload -Uz compinit
 compinit
 zstyle ':completion:*' menu true
-
+```
 
 # My terminal line file manager setup
 
