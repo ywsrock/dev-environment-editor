@@ -47,8 +47,13 @@ filetype plugin indent on    " required
 
 ***
 
-# My terminal line file manager setup
+# zsh complement
+autoload -Uz compinit
+compinit
+zstyle ':completion:*' menu true
 
+
+# My terminal line file manager setup
 
 ## terminal file mamager
 nnn (n³) is a full-featured terminal file manager. It's tiny, nearly 0-config and incredibly fast.
