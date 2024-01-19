@@ -1,7 +1,8 @@
-# myVimrc
+# MyVimrc back
 This is my vimrc/nvim config file backup
+---
 
-### config file path
+## config file path
 - vimrc path: ~/.vimrc
 - nvimrc path: ~/.config/nvim/init.vim
 
@@ -45,26 +46,29 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 ```
 
-***
+---
 
-# plugins
+# My terminal setup
+---
+
+## plugins
 1. [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
 2. [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 3. [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 4. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/tree/master)
 
-# fonts
+## fonts
 [nerd-fonts](https://github.com/ryanoasis/nerd-fonts/tree/master)
 
 
-# file manager setup
+## file manager setup
 
-## terminal file mamager
+### terminal file mamager
 nnn (n³) is a full-featured terminal file manager. It's tiny, nearly 0-config and incredibly fast.
 [nnn](https://github.com/jarun/nnn)
 
 
-## install nnn
+### install nnn
 
 [install](https://github.com/jarun/nnn/wiki/Usage#installation)
 
@@ -80,7 +84,7 @@ sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/get
 ```
 
 
-## quitcd setup
+### quitcd setup
 - copy the nnn/misc/quite folder to ~/.config/nnn/misc
 
 ## config .zshrc or .bashrc
