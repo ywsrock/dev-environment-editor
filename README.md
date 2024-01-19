@@ -110,6 +110,38 @@ esac
 ```
 
 
+### fzf setup
+```shell
+# fzf setting
+[ -f ‾/.fzf.zsh ] && source ‾/.fzf.zsh
+export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
+
+# CTRL-T - Paste the selected files and directories onto the command-lin
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --preview 'bat -n --color=always {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+
+# CTRL-R - Paste the selected command from history onto the command-line
+# CTRL-/ to toggle small preview window to see the full command
+# CTRL-Y to copy the command into clipboard using pbcopy
+export FZF_CTRL_R_OPTS="
+  --preview 'echo {}' --preview-window up:3:hidden:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header 'Press CTRL-Y to copy command into clipboard'"
+
+# ALT-C - cd into the selected directory
+# Alt-C not working on mac OSX, so use c instead (Option + c)
+# A: Go to Preferences->Profiles tab. Select your profile on the left, and then open the Keyboard tab.
+# At the bottom is a set of buttons that lets you select the behavior of the Option key. 
+# For most users, Esc+ will be the best choice.
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
+
+```
+
 
 #### config reference link
 [reference](https://github.com/jarun/nnn/wiki/Usage#configuration)
