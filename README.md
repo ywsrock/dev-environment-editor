@@ -47,14 +47,17 @@ filetype plugin indent on    " required
 
 ***
 
-# zsh complement
-```shell
-autoload -Uz compinit
-compinit
-zstyle ':completion:*' menu true
-```
+# plugins
+1. [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
+2. [powerlevel10k](https://github.com/romkatv/powerlevel10k)
+3. [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
+4. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/tree/master)
 
-# My terminal line file manager setup
+# fonts
+[nerd-fonts](https://github.com/ryanoasis/nerd-fonts/tree/master)
+
+
+# file manager setup
 
 ## terminal file mamager
 nnn (n³) is a full-featured terminal file manager. It's tiny, nearly 0-config and incredibly fast.
