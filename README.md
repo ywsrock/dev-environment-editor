@@ -56,6 +56,9 @@ filetype plugin indent on    " required
 2. [powerlevel10k](https://github.com/romkatv/powerlevel10k)
 3. [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
 4. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/tree/master)
+5. [colorls](https://github.com/athityakumar/colorls?tab=readme-ov-file#installation)
+6. [bat](https://github.com/sharkdp/bat/tree/master)
+7. [fzf](https://github.com/junegunn/fzf)
 
 ## fonts
 [nerd-fonts](https://github.com/ryanoasis/nerd-fonts/tree/master)
@@ -140,6 +143,16 @@ export FZF_CTRL_R_OPTS="
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 
+# apt を使用して bat をインストールした場合、実行可能ファイルの名前が bat ではなく batcat になること
+# があります(他のパッケージとの名前衝突のため)。bat -> batcat のシンボリックリンクまたはエイリアスを設定することで、
+# 実行可能ファイル名が異なることによる問題の発生を防ぎ、他のディストリビューションと一貫性を保てます。
+# mkdir -p ~/.local/bin
+# ln -s /usr/bin/batcat ~/.local/bin/bat
+export PATH="$HOME/.local/bin:$PATH"
+
+#color ls
+source $(dirname $(gem which colorls))/tab_complete.sh
+alias lc='colorls -lA --sd'
 ```
 
 
