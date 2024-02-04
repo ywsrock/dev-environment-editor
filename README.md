@@ -1,4 +1,4 @@
-# MyVimrc back
+# Dev Environment Editor
 This is my vimrc/nvim config file backup
 ---
 
