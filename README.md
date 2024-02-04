@@ -143,9 +143,9 @@ export FZF_CTRL_R_OPTS="
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 
-# apt を使用して bat をインストールした場合、実行可能ファイルの名前が bat ではなく batcat になること
-# があります(他のパッケージとの名前衝突のため)。bat -> batcat のシンボリックリンクまたはエイリアスを設定することで、
-# 実行可能ファイル名が異なることによる問題の発生を防ぎ、他のディストリビューションと一貫性を保てます。
+# If you install bat using apt, the name of the executable will be batcat instead of bat.
+# (due to name conflicts with other packages) by setting up a symbolic link or alias of bat -> batcat,
+# prevent problems caused by different executable names and be consistent with other distributions.
 # mkdir -p ~/.local/bin
 # ln -s /usr/bin/batcat ~/.local/bin/bat
 export PATH="$HOME/.local/bin:$PATH"
