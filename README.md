@@ -2,16 +2,16 @@
 This is my vimrc/nvim config file backup
 ---
 
-## config file path
+## Vim/Neovim Configuration
 - vimrc path: ~/.vimrc
 - nvimrc path: ~/.config/nvim/init.vim
 
 
-## Plugin manager tool install guide
+## Plugin Manager: Vundle
 https://github.com/VundleVim/Vundle.vim
 
 
-## confilg Plugin manager tool at vimrc
+## Confilg Plugin manager tool at vimrc
 ```shell
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -48,7 +48,7 @@ filetype plugin indent on    " required
 
 ---
 
-# My terminal setup
+# Terminal Setup
 ---
 
 ## plugins
@@ -60,11 +60,11 @@ filetype plugin indent on    " required
 6. [bat](https://github.com/sharkdp/bat/tree/master)
 7. [fzf](https://github.com/junegunn/fzf)
 
-## fonts
+## Fonts
 [nerd-fonts](https://github.com/ryanoasis/nerd-fonts/tree/master)
 
 
-## file manager setup
+## File Manager: nnn
 
 ### terminal file mamager
 nnn (n³) is a full-featured terminal file manager. It's tiny, nearly 0-config and incredibly fast.
