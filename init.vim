@@ -79,6 +79,11 @@ Plugin 'voldikss/vim-floaterm'
 "fzf
 Plugin 'junegunn/fzf'
 
+
+" translate
+Plugin 'voldikss/vim-translator'
+
+
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " required
@@ -103,6 +108,7 @@ if (has("termguicolors"))
 endif
 
 
+
 "半角文字の設定
 set guifont=MS_Gothic:h9
 "全角文字の設定
@@ -120,6 +126,10 @@ if !exists('g:vscode')
   let g:floaterm_keymap_show = '<Leader>fs'
   let g:floaterm_keymap_kill = '<Leader>fk'
   let g:floaterm_keymap_toggl= '<Leader>ft'
+
+
+
+
 
 "Indent有効
 "let g:indent_guides_auto_colors = 0
@@ -147,7 +157,7 @@ set autochdir
 set showmatch
 set encoding=utf-8
 set incsearch
-set fileencodings=sjis,utf-8,euc-jp,cp932,default,latin1,iso-2022-jp,ucs-bom
+set fileencodings=utf-8,sjis,euc-jp,cp932,default,latin1,iso-2022-jp,ucs-bom
 set fileformats=unix,dos,mac
 syntax on
 set wildmenu
@@ -162,6 +172,8 @@ set expandtab          "タブ入力を空白に変換
 set splitright         "画面を縦分割する際に右に開く
 set clipboard=unnamedplus  "yank した文字列をクリップボードにコピー
 set ambiwidth=double
+"Autoreload files when changed externally
+set autoread
 
 "set fixendofline
 set nofixendofline
@@ -255,6 +267,11 @@ let g:quickr_preview_position = 'right'
 nmap <leader>gs <Plug>MarkdownPreview
 nmap <leader>gc <Plug>MarkdownPreviewStop
 nmap <leader>gt <Plug>MarkdownPreviewToggle
+" set to 1, the MarkdownPreview command can be used for all files,
+" by default it can be use in Markdown files only
+" default: 0
+let g:mkdp_command_for_global = 1
+
 
 "fzf
 nmap <leader>ff :FZF<CR>
@@ -283,7 +300,31 @@ let g:copilot_filetypes = {
   \   '*': v:true,
   \}
 
+" Copilot key map
 nmap <leader>cp :Copilot panel<CR>
 imap <C-j> <Plug>(copilot-next)
 imap <C-k> <Plug>(copilot-previous)
 imap <C-l> <Plug>(copilot-accept-word)
+
+
+
+
+" translate config 
+"https://github.com/voldikss/vim-translator?tab=readme-ov-file#installation
+let g:translator_target_lang = 'ja'
+" Echo translation in the cmdline
+nmap <silent> <Leader>t <Plug>Translate
+vmap <silent> <Leader>t <Plug>TranslateV
+" Display translation in a window
+nmap <silent> <Leader>w <Plug>TranslateW
+vmap <silent> <Leader>w <Plug>TranslateWV
+" Replace the text with translation
+nmap <silent> <Leader>r <Plug>TranslateR
+vmap <silent> <Leader>r <Plug>TranslateRV
+" Translate the text in clipboard
+nmap <silent> <Leader>x <Plug>TranslateX
+
+nnoremap <silent><expr> <M-f> translator#window#float#has_scroll() ?
+                            \ translator#window#float#scroll(1) : "\<M-f>"
+nnoremap <silent><expr> <M-b> translator#window#float#has_scroll() ?
+                            \ translator#window#float#scroll(0) : "\<M-b>"
