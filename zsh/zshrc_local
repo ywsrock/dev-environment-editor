@@ -187,3 +187,4 @@ eval "$(gh completion -s zsh)"
 
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 alias lg='lazygit'
+alias ld='lazydocker'
