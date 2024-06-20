@@ -137,6 +137,9 @@ esac
 export GOPATH=$(go env GOPATH)
 export PATH=$PATH:$GOPATH/bin
 
+#rust path
+export PATH="$PATH:~/.cargo/bin"
+
 # fzf setting
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
@@ -165,3 +168,22 @@ export FZF_CTRL_R_OPTS="
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 
+export PATH=$HOME/.nodebrew/current/bin:$PATH
+
+# gh completion
+eval "$(gh completion -s zsh)"
+
+# kubectl completion
+# brew install bash-completion
+# echo "source <(kubectl completion zsh)" >> ~/.zshrc
+source <(kubectl completion zsh)
+
+# colorls
+source $(dirname $(gem which colorls))/tab_complete.sh
+alias lc='colorls -lA --sd'
+
+# gh completion
+eval "$(gh completion -s zsh)"
+
+export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
+alias lg='lazygit'
