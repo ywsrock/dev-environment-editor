@@ -245,6 +245,9 @@ function! s:on_lsp_buffer_enabled() abort
     highlight lspReference ctermfg=green guifg=grenn
     "highlight lspReference ctermfg=white guifg=white ctermbg=green guibg=green
     " refer to doc to add more commands
+    set foldmethod=expr
+      \ foldexpr=lsp#ui#vim#folding#foldexpr()
+      \ foldtext=lsp#ui#vim#folding#foldtext()
 endfunction
 
 augroup lsp_install
