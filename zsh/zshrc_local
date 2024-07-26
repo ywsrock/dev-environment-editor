@@ -186,5 +186,11 @@ alias lc='colorls -lA --sd'
 eval "$(gh completion -s zsh)"
 
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
-alias lg='lazygit'
-alias ld='lazydocker'
+alias lgt='lazygit'
+alias ldc='lazydocker'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+# default editor
+export EDITOR=nvim
+
