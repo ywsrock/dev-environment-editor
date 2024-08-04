@@ -194,3 +194,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 # default editor
 export EDITOR=nvim
 
+autoload -Uz compinit && compinit
+autoload -Uz bashcompinit && bashcompinit
+complete -C aws_completer aws
