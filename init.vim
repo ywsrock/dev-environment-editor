@@ -47,7 +47,9 @@ Plugin 'iamcco/markdown-preview.nvim'
 " フロートウィンドウ
 Plugin 'voldikss/vim-floaterm'
 " fzf
-Plugin 'junegunn/fzf'
+"Plugin 'junegunn/fzf'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'nvim-telescope/telescope.nvim'
 " 翻訳
 Plugin 'voldikss/vim-translator'
 " notice
@@ -210,7 +212,11 @@ nmap <leader>gt <Plug>MarkdownPreviewToggle
 let g:mkdp_command_for_global = 1
 
 " fzf キーマッピング
-nmap <leader>ff :FZF<CR>
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " VSCode用設定
 if exists('g:vscode')
@@ -314,9 +320,6 @@ nmap <leader>gs <Plug>MarkdownPreview
 nmap <leader>gc <Plug>MarkdownPreviewStop
 nmap <leader>gt <Plug>MarkdownPreviewToggle
 let g:mkdp_command_for_global = 1
-
-" fzf キーマッピング
-nmap <leader>ff :FZF<CR>
 
 " VSCode用設定
 if exists('g:vscode')
