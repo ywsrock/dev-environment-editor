@@ -62,6 +62,10 @@ filetype plugin indent on    " 必須
 " noice設定
 lua << EOF
 require("noice").setup({
+  messages = {
+    enabled = false,
+
+  },
   views = {
     cmdline_popup = {
       position = {
