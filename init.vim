@@ -161,9 +161,18 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 
 " カラースキーム
 colorscheme tokyonight
-
 " lightline設定
 let g:lightline = {'colorscheme': 'tokyonight'}
+
+" その他のハイライト設定
+hi NonText ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
+hi SpecialKey ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
+hi CursorLine gui=underline cterm=underline
+
+
+" フォント設定
+set guifont=Menlo\ Regular:h14
+set laststatus=2
 
 " キーマッピング
 nnoremap <leader>n :NERDTreeFocus<CR>
@@ -262,13 +271,4 @@ nnoremap <silent><expr> <M-f> translator#window#float#has_scroll() ?
                             \ translator#window#float#scroll(1) : "\<M-f>"
 nnoremap <silent><expr> <M-b> translator#window#float#has_scroll() ?
                             \ translator#window#float#scroll(0) : "\<M-b>"
-
-" その他のハイライト設定
-hi NonText ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
-hi SpecialKey ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
-hi CursorLine gui=underline cterm=underline
-
-" フォント設定
-set guifont=Menlo\ Regular:h14
-set laststatus=2
 
