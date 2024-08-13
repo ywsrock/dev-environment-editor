@@ -141,7 +141,10 @@ set fileformats=unix,dos,mac
 syntax on
 set wildmenu
 set wildmode=list,full
-"set foldmethod=indent
+set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 set backspace=2
 set belloff=all
 
@@ -192,9 +195,6 @@ function! s:on_lsp_buffer_enabled() abort
     autocmd! BufWritePre *.* call execute('LspDocumentFormatSync')
     let g:lsp_document_highlight_enabled = 1
     highlight lspReference ctermfg=green guifg=green
-    set foldmethod=expr
-      \ foldexpr=lsp#ui#vim#folding#foldexpr()
-      \ foldtext=lsp#ui#vim#folding#foldtext()
 endfunction
 
 augroup lsp_install
@@ -272,111 +272,3 @@ hi CursorLine gui=underline cterm=underline
 set guifont=Menlo\ Regular:h14
 set laststatus=2
 
-" NERDTreeキーマッピング
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
-
-let g:mapleader = ","
-
-" LSP キーマッピング
-function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> <leader>dia <plug>(lsp-document-diagnostics)
-    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.* call execute('LspDocumentFormatSync')
-    let g:lsp_document_highlight_enabled = 1
-    highlight lspReference ctermfg=green guifg=green
-    set foldmethod=expr
-      \ foldexpr=lsp#ui#vim#folding#foldexpr()
-      \ foldtext=lsp#ui#vim#folding#foldtext()
-endfunction
-
-augroup lsp_install
-  au!
-  autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
-
-" quickfixプレビュー キーマッピング
-let g:quickr_preview_keymaps = 0
-nmap gs <plug>(quickr_preview)
-nmap gc <plug>(quickr_preview_qf_close)
-let g:quickr_preview_position = 'right'
-
-" Markdownプレビュー キーマッピング
-nmap <leader>gs <Plug>MarkdownPreview
-nmap <leader>gc <Plug>MarkdownPreviewStop
-nmap <leader>gt <Plug>MarkdownPreviewToggle
-let g:mkdp_command_for_global = 1
-
-" VSCode用設定
-if exists('g:vscode')
-    nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
-    nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
-    nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
-    nnoremap <silent> zo <Cmd>call VSCodeNotify('editor.unfold')<CR>
-    nnoremap <silent> zO <Cmd>call VSCodeNotify('editor.unfoldRecursively')<CR>
-    nnoremap <silent> zc <Cmd>call VSCodeNotify('editor.fold')<CR>
-    nnoremap <silent> zC <Cmd>call VSCodeNotify('editor.foldRecursively')<CR>
-    nnoremap <silent> z1 <Cmd>call VSCodeNotify('editor.foldLevel1')<CR>
-    nnoremap <silent> z2 <Cmd>call VSCodeNotify('editor.foldLevel2')<CR>
-    nnoremap <silent> z3 <Cmd>call VSCodeNotify('editor.foldLevel3')<CR>
-    nnoremap <silent> z4 <Cmd>call VSCodeNotify('editor.foldLevel4')<CR>
-    nnoremap <silent> z5 <Cmd>call VSCodeNotify('editor.foldLevel5')<CR>
-    nnoremap <silent> z6 <Cmd>call VSCodeNotify('editor.foldLevel6')<CR>
-    nnoremap <silent> z7 <Cmd>call VSCodeNotify('editor.foldLevel7')<CR>
-    xnoremap <silent> zV <Cmd>call VSCodeNotify('editor.foldAllExcept')<CR>
-endif
-
-let g:copilot_filetypes = {
-  \   '*': v:true,
-  \}
-
-nmap <leader>cp :Copilot panel<CR>
-imap <C-j> <Plug>(copilot-next)
-imap <C-k> <Plug>(copilot-previous)
-imap <C-l> <Plug>(copilot-accept-word)
-
-" 翻訳設定
-let g:translator_target_lang = 'ja'
-nmap <silent> <Leader>t <Plug>Translate
-vmap <silent> <Leader>t <Plug>TranslateV
-nmap <silent> <Leader>w <Plug>TranslateW
-vmap <silent> <Leader>w <Plug>TranslateWV
-nmap <silent> <Leader>r <Plug>TranslateR
-vmap <silent> <Leader>r <Plug>TranslateRV
-nmap <silent> <Leader>x <Plug>TranslateX
-nnoremap <silent><expr> <M-f> translator#window#float#has_scroll() ?
-                            \ translator#window#float#scroll(1) : "\<M-f>"
-nnoremap <silent><expr> <M-b> translator#window#float#has_scroll() ?
-                            \ translator#window#float#scroll(0) : "\<M-b>"
-
-" その他のハイライト設定
-hi NonText ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
-hi SpecialKey ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
-hi CursorLine gui=underline cterm=underline
-
-" フォント設定
-set guifont=Menlo\ Regular:h14
-set laststatus=2
-
-" NERDTreeキーマッピング
-nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
-nnoremap <C-f> :NERDTreeFind<CR>
