@@ -52,20 +52,19 @@ Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
 " 翻訳
 Plugin 'voldikss/vim-translator'
+
 " notice
 Plugin 'folke/noice.nvim'
 Plugin 'MunifTanjim/nui.nvim'
+Plugin 'rcarriga/nvim-notify', 
 
-call vundle#end()            " 必須
-filetype plugin indent on    " 必須
+call vundle#end()            " required
+" All of your Plugins must be added before the following line
+  filetype plugin indent on    " required
 
 " noice設定
 lua << EOF
 require("noice").setup({
-  messages = {
-    enabled = false,
-
-  },
   views = {
     cmdline_popup = {
       position = {
@@ -142,7 +141,7 @@ set fileformats=unix,dos,mac
 syntax on
 set wildmenu
 set wildmode=list,full
-set foldmethod=indent
+"set foldmethod=indent
 set backspace=2
 set belloff=all
 
@@ -152,7 +151,7 @@ set shiftwidth=2
 set expandtab
 set splitright
 set clipboard=unnamedplus
-set ambiwidth=double
+"set ambiwidth=double
 
 " 行番号の表示と検索ハイライト解除
 nnoremap <ESC><ESC> :nohlsearch<CR>
