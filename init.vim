@@ -60,40 +60,46 @@ Plugin 'rcarriga/nvim-notify',
 
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
-  filetype plugin indent on    " required
+filetype plugin indent on    " required
 
 " noice設定
 lua << EOF
 require("noice").setup({
-  views = {
-    cmdline_popup = {
-      position = {
-        row = 5,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = "auto",
-      },
+routes = {
+  {
+      view = "notify",
+      filter = { event = "msg_showmode" },
+  },
+},  
+views = {
+  cmdline_popup = {
+    position = {
+      row = 5,
+      col = "50%",
     },
-    popupmenu = {
-      relative = "editor",
-      position = {
-        row = 8,
-        col = "50%",
-      },
-      size = {
-        width = 60,
-        height = 10,
-      },
-      border = {
-        style = "rounded",
-        padding = { 0, 1 },
-      },
-      win_options = {
-        winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-      },
+    size = {
+      width = 60,
+      height = "auto",
     },
+  },
+  popupmenu = {
+    relative = "editor",
+    position = {
+      row = 8,
+      col = "50%",
+    },
+    size = {
+      width = 60,
+      height = 10,
+    },
+    border = {
+      style = "rounded",
+      padding = { 0, 1 },
+    },
+    win_options = {
+      winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+    },
+  },
   },
 })
 EOF
@@ -174,6 +180,7 @@ hi CursorLine gui=underline cterm=underline
 set guifont=Menlo\ Regular:h14
 set laststatus=2
 
+
 " キーマッピング
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -184,26 +191,26 @@ let g:mapleader = ","
 
 " LSP キーマッピング
 function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> <leader>dia <plug>(lsp-document-diagnostics)
-    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.* call execute('LspDocumentFormatSync')
-    let g:lsp_document_highlight_enabled = 1
-    highlight lspReference ctermfg=green guifg=green
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gs <plug>(lsp-document-symbol-search)
+  nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+  nmap <buffer> gr <plug>(lsp-references)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> gt <plug>(lsp-type-definition)
+  nmap <buffer> <leader>rn <plug>(lsp-rename)
+  nmap <buffer> <leader>dia <plug>(lsp-document-diagnostics)
+  nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+  nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+  nmap <buffer> K <plug>(lsp-hover)
+  nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+  nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+  let g:lsp_format_sync_timeout = 1000
+  autocmd! BufWritePre *.* call execute('LspDocumentFormatSync')
+  let g:lsp_document_highlight_enabled = 1
+  highlight lspReference ctermfg=green guifg=green
 endfunction
 
 augroup lsp_install
@@ -232,26 +239,26 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " VSCode用設定
 if exists('g:vscode')
-    nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
-    nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
-    nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
-    nnoremap <silent> zo <Cmd>call VSCodeNotify('editor.unfold')<CR>
-    nnoremap <silent> zO <Cmd>call VSCodeNotify('editor.unfoldRecursively')<CR>
-    nnoremap <silent> zc <Cmd>call VSCodeNotify('editor.fold')<CR>
-    nnoremap <silent> zC <Cmd>call VSCodeNotify('editor.foldRecursively')<CR>
-    nnoremap <silent> z1 <Cmd>call VSCodeNotify('editor.foldLevel1')<CR>
-    nnoremap <silent> z2 <Cmd>call VSCodeNotify('editor.foldLevel2')<CR>
-    nnoremap <silent> z3 <Cmd>call VSCodeNotify('editor.foldLevel3')<CR>
-    nnoremap <silent> z4 <Cmd>call VSCodeNotify('editor.foldLevel4')<CR>
-    nnoremap <silent> z5 <Cmd>call VSCodeNotify('editor.foldLevel5')<CR>
-    nnoremap <silent> z6 <Cmd>call VSCodeNotify('editor.foldLevel6')<CR>
-    nnoremap <silent> z7 <Cmd>call VSCodeNotify('editor.foldLevel7')<CR>
-    xnoremap <silent> zV <Cmd>call VSCodeNotify('editor.foldAllExcept')<CR>
+  nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
+  nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
+  nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
+  nnoremap <silent> zo <Cmd>call VSCodeNotify('editor.unfold')<CR>
+  nnoremap <silent> zO <Cmd>call VSCodeNotify('editor.unfoldRecursively')<CR>
+  nnoremap <silent> zc <Cmd>call VSCodeNotify('editor.fold')<CR>
+  nnoremap <silent> zC <Cmd>call VSCodeNotify('editor.foldRecursively')<CR>
+  nnoremap <silent> z1 <Cmd>call VSCodeNotify('editor.foldLevel1')<CR>
+  nnoremap <silent> z2 <Cmd>call VSCodeNotify('editor.foldLevel2')<CR>
+  nnoremap <silent> z3 <Cmd>call VSCodeNotify('editor.foldLevel3')<CR>
+  nnoremap <silent> z4 <Cmd>call VSCodeNotify('editor.foldLevel4')<CR>
+  nnoremap <silent> z5 <Cmd>call VSCodeNotify('editor.foldLevel5')<CR>
+  nnoremap <silent> z6 <Cmd>call VSCodeNotify('editor.foldLevel6')<CR>
+  nnoremap <silent> z7 <Cmd>call VSCodeNotify('editor.foldLevel7')<CR>
+  xnoremap <silent> zV <Cmd>call VSCodeNotify('editor.foldAllExcept')<CR>
 endif
 
 let g:copilot_filetypes = {
-  \   '*': v:true,
-  \}
+      \   '*': v:true,
+      \}
 
 nmap <leader>cp :Copilot panel<CR>
 imap <C-j> <Plug>(copilot-next)
@@ -268,7 +275,6 @@ nmap <silent> <Leader>r <Plug>TranslateR
 vmap <silent> <Leader>r <Plug>TranslateRV
 nmap <silent> <Leader>x <Plug>TranslateX
 nnoremap <silent><expr> <M-f> translator#window#float#has_scroll() ?
-                            \ translator#window#float#scroll(1) : "\<M-f>"
+      \ translator#window#float#scroll(1) : "\<M-f>"
 nnoremap <silent><expr> <M-b> translator#window#float#has_scroll() ?
-                            \ translator#window#float#scroll(0) : "\<M-b>"
-
+      \ translator#window#float#scroll(0) : "\<M-b>"
