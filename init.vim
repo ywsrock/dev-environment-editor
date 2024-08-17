@@ -53,56 +53,56 @@ Plugin 'nvim-telescope/telescope.nvim'
 " 翻訳
 Plugin 'voldikss/vim-translator'
 
-" notice
-Plugin 'folke/noice.nvim'
-Plugin 'MunifTanjim/nui.nvim'
-Plugin 'rcarriga/nvim-notify', 
+" notice ambiwidth指定できないので、コメントアウト
+"Plugin 'folke/noice.nvim'
+"Plugin 'MunifTanjim/nui.nvim'
+"Plugin 'rcarriga/nvim-notify', 
 
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " required
 
-" noice設定
-lua << EOF
-require("noice").setup({
-routes = {
-  {
-      view = "notify",
-      filter = { event = "msg_showmode" },
-  },
-},  
-views = {
-  cmdline_popup = {
-    position = {
-      row = 5,
-      col = "50%",
-    },
-    size = {
-      width = 60,
-      height = "auto",
-    },
-  },
-  popupmenu = {
-    relative = "editor",
-    position = {
-      row = 8,
-      col = "50%",
-    },
-    size = {
-      width = 60,
-      height = 10,
-    },
-    border = {
-      style = "rounded",
-      padding = { 0, 1 },
-    },
-    win_options = {
-      winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
-    },
-  },
-  },
-})
-EOF
+"" noice設定
+"lua << EOF
+"require("noice").setup({
+"routes = {
+"  {
+"      view = "notify",
+"      filter = { event = "msg_showmode" },
+"  },
+"},  
+"views = {
+"  cmdline_popup = {
+"    position = {
+"      row = 5,
+"      col = "50%",
+"    },
+"    size = {
+"      width = 60,
+"      height = "auto",
+"    },
+"  },
+"  popupmenu = {
+"    relative = "editor",
+"    position = {
+"      row = 8,
+"      col = "50%",
+"    },
+"    size = {
+"      width = 60,
+"      height = 10,
+"    },
+"    border = {
+"      style = "rounded",
+"      padding = { 0, 1 },
+"    },
+"    win_options = {
+"      winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+"    },
+"  },
+"  },
+"})
+"EOF
 
 " カラースキーム設定
 if (has("termguicolors"))
@@ -160,7 +160,7 @@ set shiftwidth=2
 set expandtab
 set splitright
 set clipboard=unnamedplus
-"set ambiwidth=double
+set ambiwidth=double
 
 " 行番号の表示と検索ハイライト解除
 nnoremap <ESC><ESC> :nohlsearch<CR>
