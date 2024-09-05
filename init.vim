@@ -124,6 +124,8 @@ if !exists('g:vscode')
   let g:floaterm_keymap_show = '<Leader>fs'
   let g:floaterm_keymap_kill = '<Leader>fk'
   let g:floaterm_keymap_toggle= '<Leader>ft'
+  let g:floaterm_wintype = 'float'
+  let g:floaterm_position = 'bottomright'
   let g:indent_guides_enable_on_vim_startup = 1
 endif
 
