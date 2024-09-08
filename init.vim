@@ -58,6 +58,11 @@ Plugin 'voldikss/vim-translator'
 "Plugin 'MunifTanjim/nui.nvim'
 "Plugin 'rcarriga/nvim-notify', 
 
+" gitファイル差分表示
+Plugin 'sindrets/diffview.nvim'
+" ファイルアイコン表示
+Plugin 'nvim-tree/nvim-web-devicons'
+
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " required
@@ -280,3 +285,14 @@ nnoremap <silent><expr> <M-f> translator#window#float#has_scroll() ?
       \ translator#window#float#scroll(1) : "\<M-f>"
 nnoremap <silent><expr> <M-b> translator#window#float#has_scroll() ?
       \ translator#window#float#scroll(0) : "\<M-b>"
+
+
+" diffview設定
+":DiffviewClose: Close the current diffview. You can also use :tabclose.
+":DiffviewToggleFiles: Toggle the file panel.
+":DiffviewFocusFiles: Bring focus to the file panel.
+":DiffviewRefresh: Update stats and entries in the file list of the current Diffview.
+nnoremap <leader>gd :DiffviewOpen<CR>
+nnoremap <leader>gD :DiffviewClose<CR>
+nnoremap <leader>gh :DiffviewFileHistory<CR>
+nnoremap <leader>gH :DiffviewFileHistory %<CR>
