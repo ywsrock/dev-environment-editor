@@ -198,3 +198,8 @@ complete -C aws_completer aws
 
 alias mlt='multipass'
 eval "$(gh copilot alias -- zsh)"
+
+# Load wd function
+if [ -f "$HOME/.local/bin/wd.sh" ]; then
+    source "$HOME/.local/bin/wd.sh"
+fi
