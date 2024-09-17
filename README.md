@@ -3,7 +3,6 @@ This is my vimrc/nvim config file backup
 ---
 
 ## Vim/Neovim Configuration
-- vimrc path: ~/.vimrc
 - nvimrc path: ~/.config/nvim/init.vim
 
 
@@ -44,6 +43,14 @@ filetype plugin indent on    " required
 "
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
+```
+
+
+## use the sample config file
+```shell
+cd <local repo> -- where the config file is located
+cp -r .config.sample/nnn ~/.config/nnn
+cp -r .config.sample/nvim ~/.config/nvim
 ```
 
 ---
