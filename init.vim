@@ -296,3 +296,9 @@ nnoremap <leader>gd :DiffviewOpen<CR>
 nnoremap <leader>gD :DiffviewClose<CR>
 nnoremap <leader>gh :DiffviewFileHistory<CR>
 nnoremap <leader>gH :DiffviewFileHistory %<CR>
+
+" Go ファイルのフォーマット設定を有効にする
+augroup go_format
+  autocmd!
+  autocmd FileType go source ~/.config/nvim/plugins/go/format.vim
+augroup END
