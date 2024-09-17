@@ -1,118 +1,125 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
+" 基本設定
+set nocompatible              " 必須
+filetype off                  " 必須
 set rtp+=~/.vim/bundle/Vundle.vim
 
-
-"：BundleInstall！ -すべてのプラグインを更新
-"：BundleSearch foo-fooプラグインを検索
-"：バンドル検索！ foo-fooプラグインのバッファを更新する
-"：BundleClean-プラグインが.vimrcで定義されていない場合、すべてのプラグインをクリーンアップします
+" Vundle初期化
 call vundle#begin()
 
-"VIM-YAML-FOLDS
-Plugin 'pedrohdz/vim-yaml-folds'
-"bookmark
-Plugin 'kshenoy/vim-signature'
-" let Vundle manage Vundle, required
+" プラグイン管理
+" Vundle管理、必須
 Plugin 'VundleVim/Vundle.vim'
-"スタータスバー表示
+" YAML用フォールド
+Plugin 'pedrohdz/vim-yaml-folds'
+" ブックマーク
+Plugin 'kshenoy/vim-signature'
+" ステータスバー表示
 Plugin 'itchyny/lightline.vim'
-"エクスプローラー
+" ファイルエクスプローラー
 Plugin 'preservim/nerdtree'
-
-":IndentGuidesEnable
-":IndentGuidesDisable
-":IndentGuidesToggle
-"let g:indent_guides_enable_on_vim_startup = 1
-"インデントを可視化する
+" インデントガイド
 Plugin 'nathanaelkane/vim-indent-guides'
-
+" カラースキーム
 Plugin 'joshdick/onedark.vim'
-Plugin 'EdenEast/nightfox.nvim' " Vim-Plug
+Plugin 'EdenEast/nightfox.nvim'
 Plugin 'folke/tokyonight.nvim'
 Plugin 'arcticicestudio/nord-vim'
-"
-" COMMANDS					*zenspace-commands*
-
-":ZenSpaceOn					*:ZenSpaceOn*
-"	Show Ideographic Space in current window.
-"
-":ZenSpaceOff					*:ZenSpaceOff*
-"	Don't show Ideographic Space in current window.
-"
-":ZenSpaceList					*:ZenSpaceList*
-"	Respects 'list' option to show Ideographic Space.
-"
-":ZenSpaceUpdate					*:ZenSpaceUpdate*
-"	Manually updates the showing state.  You don't need this usually.
-"全角スペース表示
+" 全角スペース表示
 Plugin 'enbunsui/vim-zenspace'
-"行移動
+" 行移動
 Plugin 'ywsrock/vim-move'
-"Window リサイズ
+" ウィンドウリサイズ
 Plugin 'simeji/winresizer'
-"quickfix preview
+" quickfixプレビュー
 Plugin 'ronakg/quickr-preview.vim'
-
-"Language Servers :LspInstallServer
-"default $HOME/.local/share/vim-lsp-settings/servers
+" Language Servers
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'mattn/vim-lsp-settings'
-
-"Auto-complete
+" 自動補完
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 Plugin 'prabirshrestha/asyncomplete-gocode.vim'
 Plugin 'high-moctane/asyncomplete-nextword.vim'
-"Plug 'Shougo/ddc.vim'
-"Plug 'shun/ddc-vim-lsp'
-"markdown highlight
+" Markdownハイライト
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
 Plugin 'iamcco/markdown-preview.nvim'
-
-"float window
+" フロートウィンドウ
 Plugin 'voldikss/vim-floaterm'
-
-"fzf
-Plugin 'junegunn/fzf'
-" translate
+" fzf
+"Plugin 'junegunn/fzf'
+Plugin 'nvim-lua/plenary.nvim'
+Plugin 'nvim-telescope/telescope.nvim'
+" 翻訳
 Plugin 'voldikss/vim-translator'
+
+" notice ambiwidth指定できないので、コメントアウト
+"Plugin 'folke/noice.nvim'
+"Plugin 'MunifTanjim/nui.nvim'
+"Plugin 'rcarriga/nvim-notify', 
+
+" gitファイル差分表示
+Plugin 'sindrets/diffview.nvim'
+" ファイルアイコン表示
+Plugin 'nvim-tree/nvim-web-devicons'
 
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " required
 
+"" noice設定
+"lua << EOF
+"require("noice").setup({
+"routes = {
+"  {
+"      view = "notify",
+"      filter = { event = "msg_showmode" },
+"  },
+"},  
+"views = {
+"  cmdline_popup = {
+"    position = {
+"      row = 5,
+"      col = "50%",
+"    },
+"    size = {
+"      width = 60,
+"      height = "auto",
+"    },
+"  },
+"  popupmenu = {
+"    relative = "editor",
+"    position = {
+"      row = 8,
+"      col = "50%",
+"    },
+"    size = {
+"      width = 60,
+"      height = 10,
+"    },
+"    border = {
+"      style = "rounded",
+"      padding = { 0, 1 },
+"    },
+"    win_options = {
+"      winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
+"    },
+"  },
+"  },
+"})
+"EOF
 
-
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
-" If you have vim >=8.0 or Neovim >= 0.1.5
+" カラースキーム設定
 if (has("termguicolors"))
- set termguicolors
+  set termguicolors
 endif
 
-
-"半角文字の設定
+" フォント設定
 set guifont=MS_Gothic:h9
-"全角文字の設定
 set guifontwide=MS_Gothic:h9
-if !exists('g:vscode')
-  set spell 
 
-  "https://github.com/voldikss/vim-floaterm/blob/master/doc/floaterm.txt
+if !exists('g:vscode')
+  set spell
   let g:floaterm_keymap_new = '<Leader>fc'
   let g:floaterm_keymap_prev = '<Leader>fp'
   let g:floaterm_keymap_next = '<Leader>fn'
@@ -121,22 +128,15 @@ if !exists('g:vscode')
   let g:floaterm_keymap_hide = '<Leader>fh'
   let g:floaterm_keymap_show = '<Leader>fs'
   let g:floaterm_keymap_kill = '<Leader>fk'
-  let g:floaterm_keymap_toggl= '<Leader>ft'
-
-"Indent有効
-"let g:indent_guides_auto_colors = 0
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  guibg=red   ctermbg=3
-"autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
-"Alternatively you can add the following lines to your colorscheme file.
-"hi IndentGuidesOdd  guibg=red   ctermbg=3
-"hi IndentGuidesEven guibg=green ctermbg=4
+  let g:floaterm_keymap_toggle= '<Leader>ft'
+  let g:floaterm_wintype = 'float'
+  let g:floaterm_position = 'bottomright'
   let g:indent_guides_enable_on_vim_startup = 1
-
 endif
 
+" その他の設定
 set spelllang=en_us,cjk
 set complete+=kspell
-
 set nu
 set hlsearch
 set ignorecase
@@ -155,53 +155,40 @@ syntax on
 set wildmenu
 set wildmode=list,full
 set foldmethod=indent
+set foldnestmax=10
+set nofoldenable
+set foldlevel=2
 set backspace=2
 set belloff=all
 
-set tabstop=2          "タブを何文字の空白に変換するか
-set shiftwidth=2       "自動インデント時に入力する空白の数
-set expandtab          "タブ入力を空白に変換
-set splitright         "画面を縦分割する際に右に開く
-set clipboard=unnamedplus  "yank した文字列をクリップボードにコピー
+" タブとインデント設定
+set tabstop=2
+set shiftwidth=2
+set expandtab
+set splitright
+set clipboard=unnamedplus
 set ambiwidth=double
 
-"set fixendofline
-set nofixendofline
-
+" 行番号の表示と検索ハイライト解除
 nnoremap <ESC><ESC> :nohlsearch<CR>
 
-"colorscheme Carbonfox
-"colorscheme nightfox
-"colorscheme onedark
-"
+" カラースキーム
 colorscheme tokyonight
+" lightline設定
+let g:lightline = {'colorscheme': 'tokyonight'}
 
-" There are also colorschemes for the different styles.
-"colorscheme tokyonight-night
-"colorscheme tokyonight-storm
-"colorscheme tokyonight-day
-"colorscheme tokyonight-moon
-
-
-"let g:lightline = {'colorscheme': 'nightfox' }
-let g:lightline = {'colorscheme': 'tokyonight' }
-"
-"let g:lightline = {'colorscheme': 'tokyonight'}
-let g:move_key_modifier = 'C'
-
-autocmd QuickFixCmdPost *grep* cwindow
-
-"全角表示
-let g:zenspace#default_mode = 'on'
-
-
-hi NonText    ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
+" その他のハイライト設定
+hi NonText ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
 hi SpecialKey ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
-hi CursorLine gui=underLine cterm=underLine
+hi CursorLine gui=underline cterm=underline
 
+
+" フォント設定
 set guifont=Menlo\ Regular:h14
 set laststatus=2
 
+
+" キーマッピング
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
@@ -209,114 +196,109 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:mapleader = ","
 
-"LSP key map
+" LSP キーマッピング
 function! s:on_lsp_buffer_enabled() abort
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> <leader>dia <plug>(lsp-document-diagnostics)
-    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
-    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
-
-    let g:lsp_format_sync_timeout = 1000
-    autocmd! BufWritePre *.* call execute('LspDocumentFormatSync')
-    "Highlight references
-    let g:lsp_document_highlight_enabled = 1
-    highlight lspReference ctermfg=green guifg=grenn
-    "highlight lspReference ctermfg=white guifg=white ctermbg=green guibg=green
-    " refer to doc to add more commands
-    set foldmethod=expr
-      \ foldexpr=lsp#ui#vim#folding#foldexpr()
-      \ foldtext=lsp#ui#vim#folding#foldtext()
+  setlocal omnifunc=lsp#complete
+  setlocal signcolumn=yes
+  if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+  nmap <buffer> gd <plug>(lsp-definition)
+  nmap <buffer> gs <plug>(lsp-document-symbol-search)
+  nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+  nmap <buffer> gr <plug>(lsp-references)
+  nmap <buffer> gi <plug>(lsp-implementation)
+  nmap <buffer> gt <plug>(lsp-type-definition)
+  nmap <buffer> <leader>rn <plug>(lsp-rename)
+  nmap <buffer> <leader>dia <plug>(lsp-document-diagnostics)
+  nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+  nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+  nmap <buffer> K <plug>(lsp-hover)
+  nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+  nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+  let g:lsp_format_sync_timeout = 1000
+  autocmd! BufWritePre *.* call execute('LspDocumentFormatSync')
+  let g:lsp_document_highlight_enabled = 1
+  highlight lspReference ctermfg=green guifg=green
 endfunction
 
 augroup lsp_install
   au!
-  " call s:on_lsp_buffer_enabled only for languages that has the server registered.
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-  augroup END
+augroup END
 
-"Quickix Preview key map
+" quickfix プレビュー キーマッピング
 let g:quickr_preview_keymaps = 0
-
 nmap gs <plug>(quickr_preview)
 nmap gc <plug>(quickr_preview_qf_close)
-"above, below, left, or right
 let g:quickr_preview_position = 'right'
 
-
-
-"marddownPrew
+" Markdownプレビュー キーマッピング
 nmap <leader>gs <Plug>MarkdownPreview
 nmap <leader>gc <Plug>MarkdownPreviewStop
 nmap <leader>gt <Plug>MarkdownPreviewToggle
-
-" " set to 1, the preview server is available to others in your network.
-" By default, the server listens on localhost (127.0.0.1)
-" default: 0
-" set to 1, the MarkdownPreview command can be used for all files,
-" by default it can be use in Markdown files only
-" default: 0
 let g:mkdp_command_for_global = 1
 
+" fzf キーマッピング
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
-"fzf
-nmap <leader>ff :FZF<CR>
-
+" VSCode用設定
 if exists('g:vscode')
-    nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
-    nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
-    nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
-    nnoremap <silent> zo <Cmd>call VSCodeNotify('editor.unfold')<CR>
-    nnoremap <silent> zO <Cmd>call VSCodeNotify('editor.unfoldRecursively')<CR>
-    nnoremap <silent> zc <Cmd>call VSCodeNotify('editor.fold')<CR>
-    nnoremap <silent> zC <Cmd>call VSCodeNotify('editor.foldRecursively')<CR>
-
-    nnoremap <silent> z1 <Cmd>call VSCodeNotify('editor.foldLevel1')<CR>
-    nnoremap <silent> z2 <Cmd>call VSCodeNotify('editor.foldLevel2')<CR>
-    nnoremap <silent> z3 <Cmd>call VSCodeNotify('editor.foldLevel3')<CR>
-    nnoremap <silent> z4 <Cmd>call VSCodeNotify('editor.foldLevel4')<CR>
-    nnoremap <silent> z5 <Cmd>call VSCodeNotify('editor.foldLevel5')<CR>
-    nnoremap <silent> z6 <Cmd>call VSCodeNotify('editor.foldLevel6')<CR>
-    nnoremap <silent> z7 <Cmd>call VSCodeNotify('editor.foldLevel7')<CR>
-
-    xnoremap <silent> zV <Cmd>call VSCodeNotify('editor.foldAllExcept')<CR>
+  nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
+  nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
+  nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
+  nnoremap <silent> zo <Cmd>call VSCodeNotify('editor.unfold')<CR>
+  nnoremap <silent> zO <Cmd>call VSCodeNotify('editor.unfoldRecursively')<CR>
+  nnoremap <silent> zc <Cmd>call VSCodeNotify('editor.fold')<CR>
+  nnoremap <silent> zC <Cmd>call VSCodeNotify('editor.foldRecursively')<CR>
+  nnoremap <silent> z1 <Cmd>call VSCodeNotify('editor.foldLevel1')<CR>
+  nnoremap <silent> z2 <Cmd>call VSCodeNotify('editor.foldLevel2')<CR>
+  nnoremap <silent> z3 <Cmd>call VSCodeNotify('editor.foldLevel3')<CR>
+  nnoremap <silent> z4 <Cmd>call VSCodeNotify('editor.foldLevel4')<CR>
+  nnoremap <silent> z5 <Cmd>call VSCodeNotify('editor.foldLevel5')<CR>
+  nnoremap <silent> z6 <Cmd>call VSCodeNotify('editor.foldLevel6')<CR>
+  nnoremap <silent> z7 <Cmd>call VSCodeNotify('editor.foldLevel7')<CR>
+  xnoremap <silent> zV <Cmd>call VSCodeNotify('editor.foldAllExcept')<CR>
 endif
 
 let g:copilot_filetypes = {
-  \   '*': v:true,
-  \}
+      \   '*': v:true,
+      \}
 
 nmap <leader>cp :Copilot panel<CR>
 imap <C-j> <Plug>(copilot-next)
 imap <C-k> <Plug>(copilot-previous)
 imap <C-l> <Plug>(copilot-accept-word)
 
-" translate config 
-"https://github.com/voldikss/vim-translator?tab=readme-ov-file#installation
+" 翻訳設定
 let g:translator_target_lang = 'ja'
-" Echo translation in the cmdline
 nmap <silent> <Leader>t <Plug>Translate
 vmap <silent> <Leader>t <Plug>TranslateV
-" Display translation in a window
 nmap <silent> <Leader>w <Plug>TranslateW
 vmap <silent> <Leader>w <Plug>TranslateWV
-" Replace the text with translation
 nmap <silent> <Leader>r <Plug>TranslateR
 vmap <silent> <Leader>r <Plug>TranslateRV
-" Translate the text in clipboard
 nmap <silent> <Leader>x <Plug>TranslateX
 nnoremap <silent><expr> <M-f> translator#window#float#has_scroll() ?
-                            \ translator#window#float#scroll(1) : "\<M-f>"
+      \ translator#window#float#scroll(1) : "\<M-f>"
 nnoremap <silent><expr> <M-b> translator#window#float#has_scroll() ?
-                            \ translator#window#float#scroll(0) : "\<M-b>"
+      \ translator#window#float#scroll(0) : "\<M-b>"
+
+
+" diffview設定
+":DiffviewClose: Close the current diffview. You can also use :tabclose.
+":DiffviewToggleFiles: Toggle the file panel.
+":DiffviewFocusFiles: Bring focus to the file panel.
+":DiffviewRefresh: Update stats and entries in the file list of the current Diffview.
+nnoremap <leader>gd :DiffviewOpen<CR>
+nnoremap <leader>gD :DiffviewClose<CR>
+nnoremap <leader>gh :DiffviewFileHistory<CR>
+nnoremap <leader>gH :DiffviewFileHistory %<CR>
+
+" Go ファイルのフォーマット設定を有効にする
+augroup go_format
+  autocmd!
+  autocmd FileType go source ~/.config/nvim/plugins/go/format.vim
+augroup END
