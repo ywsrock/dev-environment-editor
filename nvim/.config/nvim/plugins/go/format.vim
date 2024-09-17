@@ -1,4 +1,4 @@
-" ファイル名: ~/.config/nvim/ftplugin/go/format.vim
+" ファイル名: ~/.config/nvim/plugins/go/format.vim
 
 " gofumpt コマンドが存在するか確認する関数
 function! s:check_gofumpt() abort
