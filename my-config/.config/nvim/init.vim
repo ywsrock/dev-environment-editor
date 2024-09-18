@@ -195,6 +195,10 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:mapleader = ","
+" diffの場合、LSP checkを無効にする
+if exists('$GIT_DIFFTOOL')
+  let g:lsp_diagnostics_enabled = 0         " disable diagnostics support
+endif
 
 " LSP キーマッピング
 function! s:on_lsp_buffer_enabled() abort
@@ -298,7 +302,9 @@ nnoremap <leader>gh :DiffviewFileHistory<CR>
 nnoremap <leader>gH :DiffviewFileHistory %<CR>
 
 " Go ファイルのフォーマット設定を有効にする
-augroup go_format
-  autocmd!
-  autocmd FileType go source ~/.config/nvim/plugins/go/format.vim
-augroup END
+if !exists('$GIT_DIFFTOOL')
+  augroup go_format
+    autocmd!
+    autocmd FileType go source ~/.config/nvim/plugins/go/format.vim
+  augroup END
+endif
