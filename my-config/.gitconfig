@@ -1,0 +1,33 @@
+[http]
+  version = HTTP/1.1
+[merge]
+  tool = diffview
+[mergetool]
+  prompt = false
+  keepBackup = false
+[mergetool "diffview"]
+  cmd = nvim -n -c "DiffviewOpen" "$MERGE"
+
+#[merge]
+#  tool = nvimdiff
+#[mergetool]
+#  prompt = false
+#  keepBackup = false
+#[mergetool "nvimdiff"]
+#  layout = "LOCAL,BASE,REMOTE / MERGED"
+
+[diff]
+  tool = nvimdiff
+[difftool]
+  prompt = false
+[difftool "nvimdiff"]
+    cmd = "GIT_DIFFTOOL=1 nvim -d \"$LOCAL\" \"$REMOTE\""
+#[diff]
+#        tool = difftastic
+#[difftool]
+#        prompt = false
+#[difftool "difftastic"]
+#        cmd = difft "$LOCAL" "$REMOTE" --display side-by-side
+#[pager]
+#        difftool = true
+
