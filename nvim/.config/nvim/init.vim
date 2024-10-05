@@ -35,6 +35,7 @@ Plugin 'ronakg/quickr-preview.vim'
 " Language Servers
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'mattn/vim-lsp-settings'
+
 " 自動補完
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
@@ -250,6 +251,12 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " VSCode用設定
 if exists('g:vscode')
+  let g:lsp_diagnostics_enabled = 0         " disable diagnostics support
+  let g:lsp_settings = {
+  \  'gopls': {
+  \    'disabled': 1,
+  \   }
+  \}
   nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
   nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
   nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
