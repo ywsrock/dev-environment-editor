@@ -35,7 +35,6 @@ Plugin 'ronakg/quickr-preview.vim'
 " Language Servers
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'mattn/vim-lsp-settings'
-
 " 自動補完
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
@@ -115,9 +114,12 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-" フォント設定
-set guifont=MS_Gothic:h9
-set guifontwide=MS_Gothic:h9
+if !exists("g:neovide")
+  " フォント設定
+ "set guifont=MS_Gothic:h9
+ set guifontwide=MS_Gothic:h9
+ set guifont=Menlo\ Regular:h14
+endif
 
 if !exists('g:vscode')
   set spell
@@ -185,8 +187,7 @@ hi CursorLine gui=underline cterm=underline
 
 
 " フォント設定
-set guifont=Menlo\ Regular:h14
-set laststatus=2
+ set laststatus=2
 
 
 " キーマッピング
@@ -196,10 +197,6 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 let g:mapleader = ","
-" diffの場合、LSP checkを無効にする
-if exists('$GIT_DIFFTOOL')
-  let g:lsp_diagnostics_enabled = 0         " disable diagnostics support
-endif
 
 " LSP キーマッピング
 function! s:on_lsp_buffer_enabled() abort
@@ -251,12 +248,6 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " VSCode用設定
 if exists('g:vscode')
-  let g:lsp_diagnostics_enabled = 0         " disable diagnostics support
-  let g:lsp_settings = {
-  \  'gopls': {
-  \    'disabled': 1,
-  \   }
-  \}
   nnoremap <silent> za <Cmd>call VSCodeNotify('editor.toggleFold')<CR>
   nnoremap <silent> zR <Cmd>call VSCodeNotify('editor.unfoldAll')<CR>
   nnoremap <silent> zM <Cmd>call VSCodeNotify('editor.foldAll')<CR>
@@ -309,10 +300,7 @@ nnoremap <leader>gh :DiffviewFileHistory<CR>
 nnoremap <leader>gH :DiffviewFileHistory %<CR>
 
 " Go ファイルのフォーマット設定を有効にする
-if !exists('$GIT_DIFFTOOL')
-  augroup go_format
-    autocmd!
-    autocmd FileType go source ~/.config/nvim/plugins/go/format.vim
-  augroup END
-endif
-
+augroup go_format
+  autocmd!
+  autocmd FileType go source ~/.config/nvim/plugins/go/format.vim
+augroup END
