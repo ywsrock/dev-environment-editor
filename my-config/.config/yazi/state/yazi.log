@@ -1,0 +1,419 @@
+  2024-11-05T15:21:04.472407Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T15:21:04.472469Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T15:21:04.472473Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T15:21:04.474204Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T15:21:04.474213Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T15:21:04.475083Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T15:21:04.491258Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:21:04.491468Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:24:21.421950Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T15:24:21.421988Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T15:24:21.421990Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T15:24:21.423998Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T15:24:21.424010Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T15:24:21.424508Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T15:24:21.439184Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:24:21.439458Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:24:55.241478Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:24:55.241773Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\Desktop\bigtreetc Dropbox.lnk
+C:\Users\WenshuaiYan\Desktop\Zoom Workplace.lnk
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:25:00.721567Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:25:00.721906Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\Desktop\memo\1.メモ.txt
+C:\Users\WenshuaiYan\Desktop\memo\セットアップ.txt
+C:\Users\WenshuaiYan\Desktop\memo\新規 Microsoft Excel ワークシート.xlsx
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:25:06.240258Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:25:06.240357Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\Desktop\memo\定例会\火曜日.md
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:30:19.369719Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:30:19.369880Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:30:22.032181Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:30:22.032418Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.config\y.cmd
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:32:34.727276Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T15:32:34.727311Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T15:32:34.727313Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T15:32:34.729072Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T15:32:34.729077Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T15:32:34.729615Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T15:32:34.744095Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:32:34.744212Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:36:52.741364Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T15:36:52.741383Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T15:36:52.741385Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T15:36:52.743553Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T15:36:52.743559Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T15:36:52.744206Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T15:36:52.759065Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:36:52.759223Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:43:43.126643Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:52:31.973308Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T15:52:31.973325Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T15:52:31.973326Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T15:52:31.975106Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T15:52:31.975111Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T15:52:31.975677Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T15:52:31.989809Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:52:31.990009Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:53:42.299252Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:55:57.966672Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:57:29.119470Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:57:33.609818Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T15:57:33.609838Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T15:57:33.609839Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T15:57:33.611832Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T15:57:33.611838Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T15:57:33.612421Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T15:57:49.930864Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T15:57:49.930881Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T15:57:49.930882Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T15:57:49.932731Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T15:57:49.932736Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T15:57:49.933302Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T15:57:49.946057Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:57:49.946321Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\pack
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:57:49.947499Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:57:49.947646Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\-a
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:57:49.951958Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:57:49.952108Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T15:58:58.118008Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T15:59:21.212102Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T15:59:21.212119Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T15:59:21.212120Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T15:59:21.213883Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T15:59:21.213888Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T15:59:21.214436Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T16:00:04.513835Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T16:08:04.494165Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T16:09:49.120548Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T16:09:49.120583Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T16:09:49.120586Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T16:09:49.122603Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T16:09:49.122609Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T16:09:49.123190Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T16:09:49.138171Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T16:09:49.138393Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T16:10:40.169816Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T16:10:40.169850Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T16:10:40.169853Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T16:10:40.171785Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T16:10:40.171791Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T16:10:40.172352Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T16:10:47.210282Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T16:10:47.210530Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\AppData\Roaming\yazi\theme.toml
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T16:11:27.736781Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T16:11:27.736821Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T16:11:27.736824Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T16:11:27.738790Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T16:11:27.738796Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T16:11:27.739369Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T16:11:27.754343Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T16:11:27.754488Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T16:11:46.706165Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T16:11:46.706199Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T16:11:46.706201Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T16:11:46.708551Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T16:11:46.708556Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T16:11:46.709132Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T16:11:46.725550Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T16:11:46.725677Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\.node_repl_history
+C:\Users\WenshuaiYan\.wslconfig
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T16:17:54.181791Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T16:17:54.181829Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T16:17:54.181832Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T16:17:54.183794Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T16:17:54.183800Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T16:17:54.184423Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T16:17:54.196373Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T16:17:54.196575Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\AppData\Roaming\yazi\theme.toml
+    at yazi-scheduler\src\prework\prework.rs:49
+
+  2024-11-05T16:18:22.145270Z  WARN yazi_adapter::emulator: [Adapter] No special environment variables detected
+    at yazi-adapter\src\emulator.rs:73
+
+  2024-11-05T16:18:22.145309Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM_PROGRAM: 
+    at yazi-adapter\src\emulator.rs:87
+
+  2024-11-05T16:18:22.145310Z  WARN yazi_adapter::emulator: [Adapter] Unknown TERM: 
+    at yazi-adapter\src\emulator.rs:95
+
+  2024-11-05T16:18:22.147391Z  WARN yazi_adapter::adapter: [Adapter] Could not identify XDG_SESSION_TYPE
+    at yazi-adapter\src\adapter.rs:108
+
+  2024-11-05T16:18:22.147397Z  WARN yazi_adapter::adapter: [Adapter] Falling back to chafa
+    at yazi-adapter\src\adapter.rs:120
+
+  2024-11-05T16:18:22.148052Z  WARN yazi_adapter::ueberzug: ueberzugpp spawning failed: program not found
+    at yazi-adapter\src\ueberzug.rs:96
+
+  2024-11-05T16:18:33.636603Z ERROR yazi_plugin::utils::log: "Spawn `file` command returns nil"
+    at yazi-plugin\src\utils\log.rs:20
+
+  2024-11-05T16:18:33.637069Z ERROR yazi_scheduler::prework::prework: Returned 0 when running fetcher `mime` with:
+C:\Users\WenshuaiYan\AppData\Roaming\sakura\sakura.ini
+    at yazi-scheduler\src\prework\prework.rs:49
+
