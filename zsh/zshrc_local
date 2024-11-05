@@ -168,7 +168,6 @@ export FZF_CTRL_R_OPTS="
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 
-export PATH=$HOME/.nodebrew/current/bin:$PATH
 
 # kubectl completion
 # brew install bash-completion
@@ -203,3 +202,7 @@ eval "$(gh copilot alias -- zsh)"
 if [ -f "$HOME/.local/bin/wd.sh" ]; then
     source "$HOME/.local/bin/wd.sh"
 fi
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
