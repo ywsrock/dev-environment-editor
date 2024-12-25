@@ -1,0 +1,43 @@
+{
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
+    },
+   "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"]
+    },
+    "cSpell.userWords": [
+      "Vundle"
+    ]
+  },
+  "terraform": {
+    "command": "terraform-lsp",
+    "filetypes": ["terraform"],
+    "initializationOptions": {}
+  },
+ "efm": {
+    "command": "efm-langserver",
+    "args": [],
+    "filetypes": ["vim", "eruby", "markdown"]
+  },
+  "rust": {
+    "command": "rust-analyzer",
+    "filetypes": ["rust"],
+    "rootPatterns": ["Cargo.toml"]
+  },
+"rubocop": {
+    "command": "rubocop",
+    "args": ["--lsp"],
+    "filetypes": ["ruby"]
+  },
+  "lua": {
+    "command": "lua-lsp",
+    "filetypes": ["lua"]
+  }
+}
+
