@@ -1,0 +1,7 @@
+CocInstall coc-yaml coc-json coc-css coc-cfn-lint 
+CocInstall coc-calc coc-docker coc-go coc-html 
+CocInstall coc-htmlhint coc-git coc-markdownlint 
+CocInstall coc-pyright coc-java coc-fzf-preview coc-sql 
+CocInstall coc-rust-analyzer coc-vimlsp coc-xml coc-vetur 
+CocInstall coc-sqlfluff coc-toml coc-spell-checker 
+CocInstall coc-powershell coc-prettier coc-golines coc-eslint coc-diagnostic coc-snippets
