@@ -38,6 +38,45 @@
   "lua": {
     "command": "lua-lsp",
     "filetypes": ["lua"]
+  },
+  "cSpell.userWords": [
+    "whta"
+  ],
+  "snippets.ultisnips.pythonPrompt": false,
+  "go.goplsOptions": {
+    "completeUnimported": true,
+    "analyses": {
+      "fillreturns": true,
+      "nonewvars": true,
+      "staticcheck": true,
+      "unusedparams": true,
+      "unusedwrite": true,
+      "unreachable": true,
+      "httpresponse": true,
+      "nilness": true,
+      "nilfunc": true,
+      "framepointer": true,
+      "loopclosure": true,
+      "waitgroup": true,
+      "unmarshal": true,
+      "timeformat": true,
+      "stringintconv": true,
+      "sortslice": true,
+      "simplifyslice": true,
+      "shadow": true,
+      "printf": true,
+      "noresultvalues": true,
+      "modernize": true,
+      "lostcancel": true,
+      "ifaceassert": true,
+      "errorsas": true,
+      "defers": true,
+      "copylocks": true,
+      "composites": true,
+      "atomicalign": true,
+      "bools": true,
+      "atomic": true,
+      "appends": true
+    }
   }
 }
-
