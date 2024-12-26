@@ -1,0 +1,32 @@
+{
+  "dependencies": {
+    "coc-yaml": ">=1.9.0",
+    "coc-json": ">=1.9.2",
+    "coc-css": ">=2.1.0",
+    "coc-cfn-lint": ">=0.1.2",
+    "coc-calc": ">=3.1.0",
+    "coc-docker": ">=1.0.2",
+    "coc-go": ">=1.3.35",
+    "coc-html": ">=1.8.0",
+    "coc-htmlhint": ">=0.6.1",
+    "coc-git": ">=2.7.0",
+    "coc-markdownlint": ">=1.36.0",
+    "coc-pyright": ">=1.1.390",
+    "coc-java": ">=1.15.2",
+    "coc-fzf-preview": ">=2.16.6",
+    "coc-sql": ">=0.12.0",
+    "coc-rust-analyzer": ">=0.79.2",
+    "coc-vimlsp": ">=0.13.1",
+    "coc-xml": ">=1.14.1",
+    "coc-vetur": ">=1.2.5",
+    "coc-sqlfluff": ">=0.11.4",
+    "coc-toml": ">=1.2.5",
+    "coc-spell-checker": ">=1.3.2",
+    "coc-powershell": ">=0.1.4",
+    "coc-prettier": ">=9.3.2",
+    "coc-golines": ">=0.0.1",
+    "coc-eslint": ">=1.7.0",
+    "coc-diagnostic": ">=0.24.1",
+    "coc-snippets": ">=3.1.10"
+  }
+}
