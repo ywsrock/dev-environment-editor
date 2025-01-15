@@ -77,7 +77,7 @@
       "bools": true,
       "atomic": true,
       "appends": true,
-      "gofumpt": true,
+      "gofumpt": true
     }
   }
 }
