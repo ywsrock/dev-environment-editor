@@ -76,7 +76,8 @@
       "atomicalign": true,
       "bools": true,
       "atomic": true,
-      "appends": true
+      "appends": true,
+      "gofumpt": true,
     }
   }
 }
