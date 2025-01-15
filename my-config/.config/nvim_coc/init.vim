@@ -291,6 +291,38 @@ set updatetime=300
 " diagnostics appear/become resolved
 set signcolumn=yes
 
+" coc will install the missing extensions after coc.nvim service started.
+let g:coc_global_extensions = [
+  \ 'coc-yaml',
+  \ 'coc-json',
+  \ 'coc-css',
+  \ 'coc-cfn-lint',
+  \ 'coc-calc',
+  \ 'coc-docker',
+  \ 'coc-go',
+  \ 'coc-html',
+  \ 'coc-htmlhint',
+  \ 'coc-git',
+  \ 'coc-markdownlint',
+  \ 'coc-pyright',
+  \ 'coc-java',
+  \ 'coc-fzf-preview',
+  \ 'coc-sql',
+  \ 'coc-rust-analyzer',
+  \ 'coc-vimlsp',
+  \ 'coc-xml',
+  \ 'coc-vetur',
+  \ 'coc-sqlfluff',
+  \ 'coc-toml',
+  \ 'coc-spell-checker',
+  \ 'coc-powershell',
+  \ 'coc-prettier',
+  \ 'coc-golines',
+  \ 'coc-eslint',
+  \ 'coc-diagnostic',
+  \ 'coc-snippets'
+  \ ]
+
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file
