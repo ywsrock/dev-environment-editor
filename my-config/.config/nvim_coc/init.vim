@@ -33,13 +33,6 @@ Plugin 'simeji/winresizer'
 " quickfixプレビュー
 Plugin 'ronakg/quickr-preview.vim'
 " Language Servers
-"Plugin 'prabirshrestha/vim-lsp'
-"Plugin 'mattn/vim-lsp-settings'
-" 自動補完
-"Plugin 'prabirshrestha/asyncomplete.vim'
-"Plugin 'prabirshrestha/asyncomplete-lsp.vim'
-"Plugin 'prabirshrestha/asyncomplete-gocode.vim'
-"Plugin 'high-moctane/asyncomplete-nextword.vim'
 Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 
 " Markdownハイライト
