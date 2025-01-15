@@ -293,34 +293,39 @@ set signcolumn=yes
 
 " coc will install the missing extensions after coc.nvim service started.
 let g:coc_global_extensions = [
-  \ 'coc-yaml',
-  \ 'coc-json',
-  \ 'coc-css',
-  \ 'coc-cfn-lint',
-  \ 'coc-calc',
-  \ 'coc-docker',
-  \ 'coc-go',
-  \ 'coc-html',
-  \ 'coc-htmlhint',
-  \ 'coc-git',
-  \ 'coc-markdownlint',
-  \ 'coc-pyright',
-  \ 'coc-java',
-  \ 'coc-fzf-preview',
-  \ 'coc-sql',
-  \ 'coc-rust-analyzer',
-  \ 'coc-vimlsp',
-  \ 'coc-xml',
-  \ 'coc-vetur',
-  \ 'coc-sqlfluff',
-  \ 'coc-toml',
-  \ 'coc-spell-checker',
-  \ 'coc-powershell',
-  \ 'coc-prettier',
-  \ 'coc-golines',
-  \ 'coc-eslint',
-  \ 'coc-diagnostic',
-  \ 'coc-snippets'
+  \ 'coc-calc',           " 計算機能 (v3.1.0)
+  \ 'coc-cfn-lint',       " CloudFormation Linter (v0.1.2)
+  \ 'coc-css',           " CSS言語サポート (v2.1.0)
+  \ 'coc-diagnostic',     " 診断機能 (v0.24.1)
+  \ 'coc-docker',        " Docker サポート (v1.0.2)
+  \ 'coc-eslint',        " ESLint 統合 (v1.7.0)
+  \ 'coc-fzf-preview',   " Fuzzy Finder プレビュー
+  \ 'coc-git',           " Git 統合 (v2.7.0)
+  \ 'coc-go',            " Go言語サポート (v1.3.35)
+  \ 'coc-golines',       " Go コードフォーマッター (v0.0.1)
+  \ 'coc-html',          " HTML サポート (v1.8.0)
+  \ 'coc-htmlhint',      " HTML Lint (v0.6.1)
+  \ 'coc-java',          " Java言語サポート (v1.15.2)
+  \ 'coc-jedi',          " Python Jedi 統合 (v0.36.1)
+  \ 'coc-json',          " JSON サポート (v1.9.2)
+  \ 'coc-markdownlint',  " Markdown Lint (v1.36.0)
+  \ 'coc-perl',          " Perl サポート (v2.2.2)
+  \ 'coc-powershell',    " PowerShell サポート (v0.1.4)
+  \ 'coc-prettier',      " コードフォーマッター (v9.3.2)
+  \ 'coc-pyright',       " Python 型チェック (v1.1.390)
+  \ 'coc-python',        " Python サポート (v1.2.13)
+  \ 'coc-rust-analyzer', " Rust サポート (v0.80.2)
+  \ 'coc-sh',            " Shell スクリプトサポート (v1.2.4)
+  \ 'coc-snippets',      " スニペット (v3.1.10)
+  \ 'coc-spell-checker', " スペルチェッカー (v1.3.2)
+  \ 'coc-sql',           " SQL サポート (v0.12.0)
+  \ 'coc-sqlfluff',      " SQL Lint (v0.11.4)
+  \ 'coc-toml',          " TOML サポート (v1.2.5)
+  \ 'coc-tsserver',      " TypeScript サポート (v2.2.0)
+  \ 'coc-vetur',         " Vue.js サポート (v1.2.5)
+  \ 'coc-vimlsp',        " Vim スクリプトサポート (v0.13.1)
+  \ 'coc-xml',           " XML サポート (v1.14.1)
+  \ 'coc-yaml'           " YAML サポート (v1.9.0)
   \ ]
 
 " Use tab for trigger completion with characters ahead and navigate
