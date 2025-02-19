@@ -186,13 +186,10 @@ export NVM_DIR="$HOME/.nvm"
 # echo "source <(kubectl completion zsh)" >> ~/.zshrc
 #source <(kubectl completion zsh)
 
-# colorls
-source $(dirname $(gem which colorls))/tab_complete.sh
-alias lc='colorls -lA --sd'
 
 # gh completion
 eval "$(gh completion -s zsh)"
-#eval "$(gh copilot alias -- zsh)"
+eval "$(gh copilot alias -- zsh)"
 
 export PATH="/usr/local/opt/openjdk@11/bin:$PATH"
 alias lgt='lazygit'
@@ -217,3 +214,7 @@ fi
 
 # Added by `rbenv init` on 2025年  2月 19日 水曜日 14:08:50 JST
 eval "$(rbenv init - --no-rehash zsh)"
+
+# colorls
+source $(dirname $(gem which colorls))/tab_complete.sh
+alias lc='colorls -lA --sd'
