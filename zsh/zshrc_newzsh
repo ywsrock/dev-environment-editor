@@ -119,6 +119,9 @@ export EDITOR=nvim
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+# export home bin
+export PATH="$HOME/.local/bin:$PATH"
+
 # setup nnn
 export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview;p:preview-tui'
 alias nnn="nnn -e"
