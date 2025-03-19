@@ -328,6 +328,11 @@ let g:coc_global_extensions = [
   \ 'coc-yaml'
   \ ]
 
+" vscode の場合、Cocを無効にする
+if has('vscode')
+  let g:coc_start_at_startup = 0
+endif
+
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
 " no select by `"suggest.noselect": true` in your configuration file
