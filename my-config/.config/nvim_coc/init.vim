@@ -272,6 +272,11 @@ augroup go_format
   autocmd FileType go source ~/.config/nvim/plugins/go/format.vim
 augroup END
 
+" Python ファイルのフォーマットを有効にする
+augroup python_format
+  autocmd!
+  autocmd FileType python source ~/.config/nvim/plugins/python/format.vim
+augroup END
 
 "---------
 " https://raw.githubusercontent.com/neoclide/coc.nvim/refs/heads/master/doc/coc-example-config.vim
