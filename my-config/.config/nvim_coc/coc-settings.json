@@ -2,14 +2,22 @@
   "languageserver": {
     "go": {
       "command": "gopls",
-      "rootPatterns": ["go.mod"],
+      "rootPatterns": [
+        "go.mod"
+      ],
       "trace.server": "verbose",
-      "filetypes": ["go"]
+      "filetypes": [
+        "go"
+      ]
     },
-   "bash": {
+    "bash": {
       "command": "bash-language-server",
-      "args": ["start"],
-      "filetypes": ["sh"]
+      "args": [
+        "start"
+      ],
+      "filetypes": [
+        "sh"
+      ]
     },
     "cSpell.userWords": [
       "Vundle"
@@ -17,32 +25,56 @@
   },
   "terraform": {
     "command": "terraform-lsp",
-    "filetypes": ["terraform"],
+    "filetypes": [
+      "terraform"
+    ],
     "initializationOptions": {}
   },
- "efm": {
+  "efm": {
     "command": "efm-langserver",
     "args": [],
-    "filetypes": ["vim", "eruby", "markdown"]
+    "filetypes": [
+      "vim",
+      "eruby",
+      "markdown"
+    ]
   },
   "rust": {
     "command": "rust-analyzer",
-    "filetypes": ["rust"],
-    "rootPatterns": ["Cargo.toml"]
+    "filetypes": [
+      "rust"
+    ],
+    "rootPatterns": [
+      "Cargo.toml"
+    ]
   },
-"rubocop": {
+  "rubocop": {
     "command": "rubocop",
-    "args": ["--lsp"],
-    "filetypes": ["ruby"]
+    "args": [
+      "--lsp"
+    ],
+    "filetypes": [
+      "ruby"
+    ]
   },
   "lua": {
     "command": "lua-lsp",
-    "filetypes": ["lua"]
+    "filetypes": [
+      "lua"
+    ]
   },
   "cSpell.userWords": [
     "whta"
   ],
   "snippets.ultisnips.pythonPrompt": false,
+  "pyright.enable": true,
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Args": [
+    "--max-line-length=120",
+    "--indent-size=2",
+    "--ignore=E402,E701,E221,E265"
+  ],
+  "python.linting.pylintEnabled": true,
   "go.goplsOptions": {
     "completeUnimported": true,
     "analyses": {
@@ -79,5 +111,7 @@
       "appends": true,
       "gofumpt": true
     }
-  }
+  },
+  "coc.preferences.formatOnSave": true,
+  "coc.preferences.formatOnType": true
 }
