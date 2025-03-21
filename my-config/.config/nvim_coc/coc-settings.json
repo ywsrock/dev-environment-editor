@@ -1,116 +1,148 @@
 {
-  "languageserver": {
-    "go": {
-      "command": "gopls",
-      "rootPatterns": [
-        "go.mod"
+    "languageserver":{
+      "go":{
+        "command":"gopls",
+        "rootPatterns":[
+          "go.mod"
       ],
-      "trace.server": "verbose",
-      "filetypes": [
-        "go"
+        "trace.server":"verbose",
+        "filetypes":[
+          "go"
       ]
     },
-    "bash": {
-      "command": "bash-language-server",
-      "args": [
-        "start"
+      "bash":{
+        "command":"bash-language-server",
+        "args":[
+          "start"
       ],
-      "filetypes": [
-        "sh"
+        "filetypes":[
+          "sh"
       ]
     },
-    "cSpell.userWords": [
-      "Vundle"
-    ]
-  },
-  "terraform": {
-    "command": "terraform-lsp",
-    "filetypes": [
-      "terraform"
-    ],
-    "initializationOptions": {}
-  },
-  "efm": {
-    "command": "efm-langserver",
-    "args": [],
-    "filetypes": [
-      "vim",
-      "eruby",
-      "markdown"
-    ]
-  },
-  "rust": {
-    "command": "rust-analyzer",
-    "filetypes": [
-      "rust"
-    ],
-    "rootPatterns": [
-      "Cargo.toml"
-    ]
-  },
-  "rubocop": {
-    "command": "rubocop",
-    "args": [
-      "--lsp"
-    ],
-    "filetypes": [
-      "ruby"
-    ]
-  },
-  "lua": {
-    "command": "lua-lsp",
-    "filetypes": [
-      "lua"
-    ]
-  },
-  "cSpell.userWords": [
-    "whta"
-  ],
-  "snippets.ultisnips.pythonPrompt": false,
-  "pyright.enable": true,
-  "inlayHint.enable": false,
-  "python.formatting.provider": "autopep8",
-  "python.formatting.autopep8Args": [
-    "--max-line-length=120",
-    "--indent-size=4",
-    "--ignore=E402,E701,E221,E265"
-  ],
-  "python.linting.pylintEnabled": true,
-  "go.goplsOptions": {
-    "completeUnimported": true,
-    "analyses": {
-      "fillreturns": true,
-      "nonewvars": true,
-      "staticcheck": true,
-      "unusedparams": true,
-      "unusedwrite": true,
-      "unreachable": true,
-      "httpresponse": true,
-      "nilness": true,
-      "nilfunc": true,
-      "framepointer": true,
-      "loopclosure": true,
-      "waitgroup": true,
-      "unmarshal": true,
-      "timeformat": true,
-      "stringintconv": true,
-      "sortslice": true,
-      "simplifyslice": true,
-      "shadow": true,
-      "printf": true,
-      "noresultvalues": true,
-      "modernize": true,
-      "lostcancel": true,
-      "ifaceassert": true,
-      "errorsas": true,
-      "defers": true,
-      "copylocks": true,
-      "composites": true,
-      "atomicalign": true,
-      "bools": true,
-      "atomic": true,
-      "appends": true,
-      "gofumpt": true
+      "terraform":{
+        "command":"terraform-lsp",
+        "filetypes":[
+          "terraform"
+      ],
+        "initializationOptions":{
+        
+      }
+    },
+      "efm":{
+        "command":"efm-langserver",
+        "args":[
+        
+      ],
+        "filetypes":[
+          "vim",
+          "eruby",
+          "markdown"
+      ]
+    },
+      "rust":{
+        "command":"rust-analyzer",
+        "filetypes":[
+          "rust"
+      ],
+        "rootPatterns":[
+          "Cargo.toml"
+      ]
+    },
+      "rubocop":{
+        "command":"rubocop",
+        "args":[
+          "--lsp"
+      ],
+        "filetypes":[
+          "ruby"
+      ]
+    },
+      "lua":{
+        "command":"lua-lsp",
+        "filetypes":[
+          "lua"
+      ]
     }
-  }
+  },
+    "pyright.enable":true,
+    "inlayHint.enable":false,
+    "python.formatting.provider":"autopep8",
+    "python.formatting.autopep8Args":[
+      "--max-line-length=120",
+      "--indent-size=4",
+      "--ignore=E402,E701,E221,E265"
+  ],
+    "python.linting.pylintEnabled":true,
+    "python.linting.enabled":true,
+    "python.linting.ruffEnabled":true,
+    "snippets.ultisnips.pythonPrompt":false,
+    "snippets.snipmate.enable":false,
+    "snippets.ultisnips.enable":false,
+    "suggest.acceptSuggestionOnCommitCharacter":true,
+    "suggest.defaultSortMethod":"none",
+    "suggest.detailField":"abbr",
+    "go.goplsOptions":{
+      "completeUnimported":true,
+      "experimentalPostfixCompletions":true,
+      "hints":{
+        "assignVariableTypes":true,
+        "compositeLiteralFields":true,
+        "compositeLiteralTypes":true,
+        "constantValues":true,
+        "functionTypeParameters":true,
+        "parameterNames":true,
+        "rangeVariableTypes":true
+    },
+      "semanticTokens":true,
+      "staticcheck":true,
+      "usePlaceholders":true,
+      "analyses":{
+        "fillreturns":true,
+        "nonewvars":true,
+        "staticcheck":true,
+        "unusedparams":true,
+        "unusedwrite":true,
+        "unreachable":true,
+        "httpresponse":true,
+        "nilness":true,
+        "nilfunc":true,
+        "framepointer":true,
+        "loopclosure":true,
+        "waitgroup":true,
+        "unmarshal":true,
+        "timeformat":true,
+        "stringintconv":true,
+        "sortslice":true,
+        "simplifyslice":true,
+        "shadow":true,
+        "printf":true,
+        "noresultvalues":true,
+        "modernize":true,
+        "lostcancel":true,
+        "ifaceassert":true,
+        "errorsas":true,
+        "defers":true,
+        "copylocks":true,
+        "composites":true,
+        "atomicalign":true,
+        "bools":true,
+        "atomic":true,
+        "appends":true,
+        "gofumpt":true
+    }
+  },
+    "tsserver.experimental.enableProjectDiagnostics":true,
+    "tsserver.implicitProjectConfig.checkJs":true,
+    "tsserver.useLocalTsdk":true,
+    "typescript.autoClosingTags":true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces":true,
+    "typescript.format.semicolons":"ignore",
+    "typescript.inlayHints.enumMemberValues.enabled":true,
+    "typescript.inlayHints.functionLikeReturnTypes.enabled":true,
+    //"typescript.inlayHints.parameterNames.enabled":"literals",
+    "typescript.inlayHints.parameterTypes.enabled":true,
+    "typescript.inlayHints.propertyDeclarationTypes.enabled":true,
+    "typescript.inlayHints.variableTypes.enabled":true,
+    "typescript.preferences.useAliasesForRenames":false,
+    "typescript.referencesCodeLens.showOnAllFunctions":true
 }
