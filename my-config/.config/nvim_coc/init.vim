@@ -318,7 +318,6 @@ let g:coc_global_extensions = [
   \ 'coc-powershell',
   \ 'coc-prettier',
   \ 'coc-pyright',
-  \ 'coc-python',
   \ 'coc-rust-analyzer',
   \ 'coc-sh',
   \ 'coc-snippets',
