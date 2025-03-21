@@ -311,7 +311,6 @@ let g:coc_global_extensions = [
   \ 'coc-html',
   \ 'coc-htmlhint',
   \ 'coc-java',
-  \ 'coc-jedi',
   \ 'coc-json',
   \ 'coc-markdownlint',
   \ 'coc-perl',
