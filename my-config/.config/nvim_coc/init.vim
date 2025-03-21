@@ -321,6 +321,7 @@ let g:coc_global_extensions = [
   \ 'coc-sh',
   \ 'coc-snippets',
   \ 'coc-spell-checker',
+  \ 'coc-ltex',
   \ 'coc-sql',
   \ 'coc-sqlfluff',
   \ 'coc-toml',
@@ -330,6 +331,9 @@ let g:coc_global_extensions = [
   \ 'coc-xml',
   \ 'coc-yaml'
   \ ]
+
+" check latex file type
+let g:coc_filetype_map = {'tex': 'latex'}
 
 " vscode の場合、Cocを無効にする
 if has('vscode')
