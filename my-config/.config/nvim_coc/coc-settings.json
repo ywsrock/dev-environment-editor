@@ -68,10 +68,11 @@
   ],
   "snippets.ultisnips.pythonPrompt": false,
   "pyright.enable": true,
+  "inlayHint.enable": false,
   "python.formatting.provider": "autopep8",
   "python.formatting.autopep8Args": [
     "--max-line-length=120",
-    "--indent-size=2",
+    "--indent-size=4",
     "--ignore=E402,E701,E221,E265"
   ],
   "python.linting.pylintEnabled": true,
