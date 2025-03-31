@@ -28,17 +28,6 @@
         
       }
     },
-      "efm":{
-        "command":"efm-langserver",
-        "args":[
-        
-      ],
-        "filetypes":[
-          "vim",
-          "eruby",
-          "markdown"
-      ]
-    },
       "rust":{
         "command":"rust-analyzer",
         "filetypes":[
@@ -72,9 +61,6 @@
       "--indent-size=4",
       "--ignore=E402,E701,E221,E265"
   ],
-    "python.linting.pylintEnabled":true,
-    "python.linting.enabled":true,
-    "python.linting.ruffEnabled":true,
     "snippets.ultisnips.pythonPrompt":false,
     "snippets.snipmate.enable":false,
     "snippets.ultisnips.enable":false,
@@ -139,10 +125,72 @@
     "typescript.format.semicolons":"ignore",
     "typescript.inlayHints.enumMemberValues.enabled":true,
     "typescript.inlayHints.functionLikeReturnTypes.enabled":true,
-    //"typescript.inlayHints.parameterNames.enabled":"literals",
     "typescript.inlayHints.parameterTypes.enabled":true,
     "typescript.inlayHints.propertyDeclarationTypes.enabled":true,
     "typescript.inlayHints.variableTypes.enabled":true,
     "typescript.preferences.useAliasesForRenames":false,
-    "typescript.referencesCodeLens.showOnAllFunctions":true
+    "typescript.referencesCodeLens.showOnAllFunctions":true,
+    "cSpell.userWords":[
+      "Vundle"
+  ],
+    "diagnostic.infoSign":"ღ",
+    "diagnostic.hintSign":"ஐ",
+    "diagnostic.warningSign":"»",
+    "diagnostic.errorSign":"×",
+    "diagnostic.enable":true,
+    "html.autoClosingTags":true,
+    "prettier.statusItemText":"🅿""git.showCommitInFloating":true,
+    "git.conflict.enabled":true,
+    "git.enableGutters":true,
+    "git.addGBlameToVirtualText":true,
+    "git.virtualTextPrefix":"     ",
+    "git.branchCharacter":"\uf418",
+    "git.addedSign.text":"▏",
+    "git.changedSign.text":"▏",
+    "git.removedSign.text":"▏",
+    "git.topRemovedSign.text":"‾",
+    "git.changeRemovedSign.text":"≃",
+    "git.addedSign.hlGroup":"GitAddHi",
+    "git.changedSign.hlGroup":"GitModifyHi",
+    "git.removedSign.hlGroup":"GitDeleteHi",
+    "git.topRemovedSign.hlGroup":"GitDeleteHi",
+    "git.changeRemovedSign.hlGroup":"GitDeleteHi",
+    "cSpell.status-bar-text":"🅲 🆂",
+    "cSpell.fixSpellingWithRenameProvider":true,
+    "cSpell.enabledLanguageIds":[
+      "asciidoc",
+      "c",
+      "cpp",
+      "csharp",
+      "css",
+      "git-commit",
+      "gitcommit",
+      "go",
+      "handlebars",
+      "haskell",
+      "html",
+      "jade",
+      "java",
+      "javascript",
+      "javascriptreact",
+      "json",
+      "jsonc",
+      "latex",
+      "less",
+      "markdown",
+      "php",
+      "plaintext",
+      "python",
+      "pug",
+      "restructuredtext",
+      "rust",
+      "scala",
+      "scss",
+      "text",
+      "typescript",
+      "typescriptreact",
+      "yaml",
+      "yml",
+      "vim"
+  ]
 }
