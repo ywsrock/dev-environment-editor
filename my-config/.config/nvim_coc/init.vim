@@ -232,14 +232,16 @@ if exists('g:vscode')
   xnoremap <silent> zV <Cmd>call VSCodeNotify('editor.foldAllExcept')<CR>
 endif
 
-let g:copilot_filetypes = {
-      \   '*': v:true,
-      \}
+if !exists('g:vscode')
+  let g:copilot_filetypes = {
+        \   '*': v:true,
+        \}
 
-nmap <leader>cp :Copilot panel<CR>
-imap <C-j> <Plug>(copilot-next)
-imap <C-k> <Plug>(copilot-previous)
-imap <C-l> <Plug>(copilot-accept-word)
+  nmap <leader>cp :Copilot panel<CR>
+  imap <C-j> <Plug>(copilot-next)
+  imap <C-k> <Plug>(copilot-previous)
+  imap <C-l> <Plug>(copilot-accept-word)
+endif
 
 " 翻訳設定
 let g:translator_target_lang = 'ja'
