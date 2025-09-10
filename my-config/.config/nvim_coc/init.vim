@@ -61,11 +61,16 @@ Plugin 'sindrets/diffview.nvim'
 Plugin 'nvim-tree/nvim-web-devicons'
 " animated cursor
 Plugin 'sphamba/smear-cursor.nvim'
+" Comment code
+Plugin 'numToStr/Comment.nvim'
 
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " required
+" animated cursor
 lua require('smear_cursor').enabled = true
+"Comment
+lua require('Comment').setup()
 
 "" noice設定-----
 "lua << EOF
