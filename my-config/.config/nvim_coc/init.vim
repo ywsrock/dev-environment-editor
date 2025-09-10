@@ -59,10 +59,13 @@ Plugin 'voldikss/vim-translator'
 Plugin 'sindrets/diffview.nvim'
 " ファイルアイコン表示
 Plugin 'nvim-tree/nvim-web-devicons'
+" animated cursor
+Plugin 'sphamba/smear-cursor.nvim'
 
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
 filetype plugin indent on    " required
+lua require('smear_cursor').enabled = true
 
 "" noice設定-----
 "lua << EOF
