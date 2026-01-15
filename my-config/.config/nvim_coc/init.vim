@@ -63,6 +63,8 @@ Plugin 'nvim-tree/nvim-web-devicons'
 Plugin 'sphamba/smear-cursor.nvim'
 " Comment code
 Plugin 'numToStr/Comment.nvim'
+" bookmarks
+Plugin 'MattesGroeger/vim-bookmarks'
 
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
@@ -113,6 +115,12 @@ lua require('Comment').setup()
 "  },
 "})
 "EOF
+
+" ブックマーク設定
+highlight BookmarkSign ctermbg=NONE ctermfg=160
+highlight BookmarkLine ctermbg=194 ctermfg=NONE
+let g:bookmark_sign = '♥'
+let g:bookmark_highlight_lines = 1
 
 
 " カラースキーム設定
