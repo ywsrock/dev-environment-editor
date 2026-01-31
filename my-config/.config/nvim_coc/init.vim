@@ -64,7 +64,7 @@ Plugin 'sphamba/smear-cursor.nvim'
 " Comment code
 Plugin 'numToStr/Comment.nvim'
 " bookmarks
-" Plugin 'MattesGroeger/vim-bookmarks'
+"Plugin 'MattesGroeger/vim-bookmarks'
 
 call vundle#end()            " required
 " All of your Plugins must be added before the following line
@@ -116,12 +116,11 @@ lua require('Comment').setup()
 "})
 "EOF
 
-"" ブックマーク設定
+" ブックマーク設定
 "highlight BookmarkSign ctermbg=NONE ctermfg=160
 "highlight BookmarkLine ctermbg=194 ctermfg=NONE
-"let g:bookmark_sign = '♥'
+"let g:bookmark_sign = '⚑'
 "let g:bookmark_highlight_lines = 1
-
 
 " カラースキーム設定
 if (has("termguicolors"))
@@ -328,6 +327,8 @@ let g:coc_global_extensions = [
   \ 'coc-fzf-preview',
   \ 'coc-git',
   \ 'coc-go',
+  \ 'coc-tsserver',
+  \ 'coc-eslint',
   \ 'coc-golines',
   \ 'coc-html',
   \ 'coc-htmlhint',
@@ -342,7 +343,6 @@ let g:coc_global_extensions = [
   \ 'coc-sh',
   \ 'coc-snippets',
   \ 'coc-spell-checker',
-  \ 'coc-ltex',
   \ 'coc-sql',
   \ 'coc-sqlfluff',
   \ 'coc-toml',
@@ -352,9 +352,6 @@ let g:coc_global_extensions = [
   \ 'coc-xml',
   \ 'coc-yaml'
   \ ]
-
-" check latex file type
-let g:coc_filetype_map = {'tex': 'latex'}
 
 " vscode の場合、Cocを無効にする
 if exists("g:vscode")
@@ -562,3 +559,6 @@ let g:fzf_colors =
 " - When set, CTRL-N and CTRL-P will be bound to 'next-history' and
 "   'previous-history' instead of 'down' and 'up'.
 let g:fzf_history_dir = '~/.local/share/fzf-history'
+
+" Prettier format command
+command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
