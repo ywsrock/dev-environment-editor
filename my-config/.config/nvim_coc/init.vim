@@ -1,4 +1,4 @@
-" 基本設定
+
 set nocompatible              " 必須
 filetype off                  " 必須
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -63,6 +63,9 @@ Plugin 'nvim-tree/nvim-web-devicons'
 Plugin 'sphamba/smear-cursor.nvim'
 " Comment code
 Plugin 'numToStr/Comment.nvim'
+
+" Session management
+Plugin 'mhinz/vim-startify'
 " bookmarks
 "Plugin 'MattesGroeger/vim-bookmarks'
 
@@ -357,6 +360,10 @@ let g:coc_global_extensions = [
 if exists("g:vscode")
   let g:coc_start_at_startup = 0
 endif
+
+
+" coc log level
+let g:coc_log_level = 'error'
 
 " Use tab for trigger completion with characters ahead and navigate
 " NOTE: There's always complete item selected by default, you may want to enable
