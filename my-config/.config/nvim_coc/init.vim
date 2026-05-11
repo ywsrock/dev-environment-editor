@@ -1,4 +1,4 @@
-
+" 基本設定
 set nocompatible              " 必須
 filetype off                  " 必須
 set rtp+=~/.vim/bundle/Vundle.vim
