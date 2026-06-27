@@ -51,9 +51,9 @@ Plugin 'nvim-telescope/telescope.nvim'
 Plugin 'voldikss/vim-translator'
 
 " notice ambiwidth指定できないので、コメントアウト
-"Plugin 'folke/noice.nvim'
-"Plugin 'MunifTanjim/nui.nvim'
-"Plugin 'rcarriga/nvim-notify', 
+Plugin 'folke/noice.nvim'
+Plugin 'MunifTanjim/nui.nvim'
+Plugin 'rcarriga/nvim-notify', 
 
 " gitファイル差分表示
 Plugin 'sindrets/diffview.nvim'
@@ -90,7 +90,7 @@ lua require('Comment').setup()
 "  cmdline_popup = {
 "    position = {
 "      row = 5,
-"      col = "50%",
+"      col = "80%",
 "    },
 "    size = {
 "      width = 60,
@@ -118,6 +118,71 @@ lua require('Comment').setup()
 "  },
 "})
 "EOF
+
+
+""https://github.com/folke/noice.nvim/wiki/Configuration-Recipes
+lua << EOF
+  require("noice").setup({
+    lsp = {
+    -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+    override = {
+      ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+      ["vim.lsp.util.stylize_markdown"] = true,
+      ["cmp.entry.get_documentation"] = true, -- requires hrsh7th/nvim-cmp
+      },
+    },
+    -- you can enable a preset for easier configuration
+    presets = {
+      bottom_search = false, -- use a classic bottom cmdline for search
+      command_palette = true, -- position the cmdline and popupmenu together
+      long_message_to_split = true, -- long messages will be sent to a split
+      inc_rename = false, -- enables an input dialog for inc-rename.nvim
+      lsp_doc_border = false, -- add a border to hover docs and signature help
+    },
+    cmdline = {
+      format = {
+        cmdline = { icon = ">" },
+        search_down = { icon = "🔍⌄" },
+        search_up = { icon = "🔍⌃" },
+        filter = { icon = "$" },
+        lua = { icon = "☾" },
+        help = { icon = "?" },
+      },
+    },
+    format = {
+      level = {
+        icons = {
+          error = "✖",
+          warn = "▼",
+          info = "●",
+        },
+      },
+    },
+    popupmenu = {
+      kind_icons = false,
+    },
+    inc_rename = {
+      cmdline = {
+        format = {
+          IncRename = { icon = "⟳" },
+        },
+      },
+    },
+    views = {
+      cmdline_popup = {
+        border = {
+          style = "none",
+          padding = { 2, 3 },
+        },
+        filter_options = {},
+        win_options = {
+          winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
+        },
+      },
+    },
+  })
+EOF
+
 
 " ブックマーク設定
 "highlight BookmarkSign ctermbg=NONE ctermfg=160
@@ -353,6 +418,7 @@ let g:coc_global_extensions = [
   \ 'coc-vetur',
   \ 'coc-vimlsp',
   \ 'coc-xml',
+  \ 'coc-rust-analyzer',
   \ 'coc-yaml'
   \ ]
 
@@ -570,6 +636,7 @@ let g:fzf_history_dir = '~/.local/share/fzf-history'
 " Prettier format command
 command! -nargs=0 Prettier :CocCommand prettier.forceFormatDocument
 
+
 " vim seesion-startify ( show git untracked )
 " returns all modified files of the current git repo
 " `2>/dev/null` makes the command fail quietly, so that when we are not
@@ -597,4 +664,3 @@ let g:startify_lists = [
 
 " Use NERDTree bookmarks
 let g:startify_bookmarks = systemlist("cut -sd' ' -f 2- ~/.NERDTreeBookmarks")
-
