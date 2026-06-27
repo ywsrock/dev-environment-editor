@@ -1,197 +1,177 @@
 {
-    "languageserver":{
-      "go":{
-        "command":"gopls",
-        "rootPatterns":[
-          "go.mod"
-      ],
-        "trace.server":"verbose",
-        "filetypes":[
-          "go"
-      ]
+  "languageserver": {
+    "go": {
+      "command": "gopls",
+      "rootPatterns": ["go.mod"],
+      "trace.server": "verbose",
+      "filetypes": ["go"]
     },
-      "bash":{
-        "command":"bash-language-server",
-        "args":[
-          "start"
-      ],
-        "filetypes":[
-          "sh"
-      ]
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"]
     },
-      "terraform":{
-        "command":"terraform-lsp",
-        "filetypes":[
-          "terraform"
-      ],
-        "initializationOptions":{
-        
-      }
+    "terraform": {
+      "command": "terraform-lsp",
+      "filetypes": ["terraform"],
+      "initializationOptions": {}
     },
-      "rust":{
-        "command":"rust-analyzer",
-        "filetypes":[
-          "rust"
-      ],
-        "rootPatterns":[
-          "Cargo.toml"
-      ]
+    "rubocop": {
+      "command": "rubocop",
+      "args": ["--lsp"],
+      "filetypes": ["ruby"]
     },
-      "rubocop":{
-        "command":"rubocop",
-        "args":[
-          "--lsp"
-      ],
-        "filetypes":[
-          "ruby"
-      ]
-    },
-      "lua":{
-        "command":"lua-lsp",
-        "filetypes":[
-          "lua"
-      ]
+    "lua": {
+      "command": "lua-lsp",
+      "filetypes": ["lua"]
     }
   },
-    "pyright.enable":true,
-    "inlayHint.enable":false,
-    "python.formatting.provider":"autopep8",
-    "python.formatting.autopep8Args":[
-      "--max-line-length=120",
-      "--indent-size=4",
-      "--ignore=E402,E701,E221,E265"
+  "pyright.enable": true,
+  "inlayHint.enable": false,
+  "python.formatting.provider": "autopep8",
+  "python.formatting.autopep8Args": [
+    "--max-line-length=120",
+    "--indent-size=4",
+    "--ignore=E402,E701,E221,E265"
   ],
-    "snippets.ultisnips.pythonPrompt":false,
-    "snippets.snipmate.enable":false,
-    "snippets.ultisnips.enable":false,
-    "suggest.acceptSuggestionOnCommitCharacter":true,
-    "suggest.defaultSortMethod":"none",
-    "suggest.detailField":"abbr",
-    "go.goplsOptions":{
-      "completeUnimported":true,
-      "experimentalPostfixCompletions":true,
-      "hints":{
-        "assignVariableTypes":true,
-        "compositeLiteralFields":true,
-        "compositeLiteralTypes":true,
-        "constantValues":true,
-        "functionTypeParameters":true,
-        "parameterNames":true,
-        "rangeVariableTypes":true
+  "snippets.ultisnips.pythonPrompt": false,
+  "snippets.snipmate.enable": false,
+  "snippets.ultisnips.enable": false,
+  "suggest.acceptSuggestionOnCommitCharacter": true,
+  "suggest.defaultSortMethod": "none",
+  "suggest.detailField": "abbr",
+  "go.goplsOptions": {
+    "completeUnimported": true,
+    "experimentalPostfixCompletions": true,
+    "hints": {
+      "assignVariableTypes": true,
+      "compositeLiteralFields": true,
+      "compositeLiteralTypes": true,
+      "constantValues": true,
+      "functionTypeParameters": true,
+      "parameterNames": true,
+      "rangeVariableTypes": true
     },
-      "semanticTokens":true,
-      "staticcheck":true,
-      "usePlaceholders":true,
-      "analyses":{
-        "fillreturns":true,
-        "nonewvars":true,
-        "staticcheck":true,
-        "unusedparams":true,
-        "unusedwrite":true,
-        "unreachable":true,
-        "httpresponse":true,
-        "nilness":true,
-        "nilfunc":true,
-        "framepointer":true,
-        "loopclosure":true,
-        "waitgroup":true,
-        "unmarshal":true,
-        "timeformat":true,
-        "stringintconv":true,
-        "sortslice":true,
-        "simplifyslice":true,
-        "shadow":true,
-        "printf":true,
-        "noresultvalues":true,
-        "modernize":true,
-        "lostcancel":true,
-        "ifaceassert":true,
-        "errorsas":true,
-        "defers":true,
-        "copylocks":true,
-        "composites":true,
-        "atomicalign":true,
-        "bools":true,
-        "atomic":true,
-        "appends":true,
-        "gofumpt":true
+    "semanticTokens": true,
+    "staticcheck": true,
+    "usePlaceholders": true,
+    "analyses": {
+      "fillreturns": true,
+      "nonewvars": true,
+      "staticcheck": true,
+      "unusedparams": true,
+      "unusedwrite": true,
+      "unreachable": true,
+      "httpresponse": true,
+      "nilness": true,
+      "nilfunc": true,
+      "framepointer": true,
+      "loopclosure": true,
+      "waitgroup": true,
+      "unmarshal": true,
+      "timeformat": true,
+      "stringintconv": true,
+      "sortslice": true,
+      "simplifyslice": true,
+      "shadow": true,
+      "printf": true,
+      "noresultvalues": true,
+      "modernize": true,
+      "lostcancel": true,
+      "ifaceassert": true,
+      "errorsas": true,
+      "defers": true,
+      "copylocks": true,
+      "composites": true,
+      "atomicalign": true,
+      "bools": true,
+      "atomic": true,
+      "appends": true,
+      "gofumpt": true
     }
   },
-    "tsserver.experimental.enableProjectDiagnostics":true,
-    "tsserver.implicitProjectConfig.checkJs":true,
-    "tsserver.useLocalTsdk":true,
-    "typescript.autoClosingTags":true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces":true,
-    "typescript.format.semicolons":"ignore",
-    "typescript.inlayHints.enumMemberValues.enabled":true,
-    "typescript.inlayHints.functionLikeReturnTypes.enabled":true,
-    "typescript.inlayHints.parameterTypes.enabled":true,
-    "typescript.inlayHints.propertyDeclarationTypes.enabled":true,
-    "typescript.inlayHints.variableTypes.enabled":true,
-    "typescript.preferences.useAliasesForRenames":false,
-    "typescript.referencesCodeLens.showOnAllFunctions":true,
-    "cSpell.userWords":[
-      "Vundle"
+  "tsserver.experimental.enableProjectDiagnostics": true,
+  "tsserver.implicitProjectConfig.checkJs": true,
+  "tsserver.useLocalTsdk": true,
+  "typescript.autoClosingTags": true,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.format.semicolons": "ignore",
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "typescript.preferences.useAliasesForRenames": false,
+  "typescript.referencesCodeLens.showOnAllFunctions": true,
+  "cSpell.userWords": ["Vundle"],
+  "diagnostic.infoSign": "ღ",
+  "diagnostic.hintSign": "ஐ",
+  "diagnostic.warningSign": "»",
+  "diagnostic.errorSign": "×",
+  "diagnostic.enable": true,
+  "html.autoClosingTags": true,
+  "prettier.statusItemText": "🅿",
+  "git.showCommitInFloating": true,
+  "git.conflict.enabled": true,
+  "git.enableGutters": true,
+  "git.addGBlameToVirtualText": true,
+  "git.virtualTextPrefix": "     ",
+  "git.branchCharacter": "\uf418",
+  "git.addedSign.text": "▏",
+  "git.changedSign.text": "▏",
+  "git.removedSign.text": "▏",
+  "git.topRemovedSign.text": "‾",
+  "git.changeRemovedSign.text": "≃",
+  "git.addedSign.hlGroup": "GitAddHi",
+  "git.changedSign.hlGroup": "GitModifyHi",
+  "git.removedSign.hlGroup": "GitDeleteHi",
+  "git.topRemovedSign.hlGroup": "GitDeleteHi",
+  "git.changeRemovedSign.hlGroup": "GitDeleteHi",
+  "cSpell.status-bar-text": "🅲 🆂",
+  "cSpell.fixSpellingWithRenameProvider": true,
+  "cSpell.enabledLanguageIds": [
+    "asciidoc",
+    "c",
+    "cpp",
+    "csharp",
+    "css",
+    "git-commit",
+    "gitcommit",
+    "go",
+    "handlebars",
+    "haskell",
+    "html",
+    "jade",
+    "java",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "jsonc",
+    "latex",
+    "less",
+    "markdown",
+    "php",
+    "plaintext",
+    "python",
+    "pug",
+    "restructuredtext",
+    "rust",
+    "scala",
+    "scss",
+    "text",
+    "typescript",
+    "typescriptreact",
+    "yaml",
+    "yml",
+    "vim"
   ],
-    "diagnostic.infoSign":"ღ",
-    "diagnostic.hintSign":"ஐ",
-    "diagnostic.warningSign":"»",
-    "diagnostic.errorSign":"×",
-    "diagnostic.enable":true,
-    "html.autoClosingTags":true,
-    "prettier.statusItemText":"🅿",
-    "git.showCommitInFloating":true,
-    "git.conflict.enabled":true,
-    "git.enableGutters":true,
-    "git.addGBlameToVirtualText":true,
-    "git.virtualTextPrefix":"     ",
-    "git.branchCharacter":"\uf418",
-    "git.addedSign.text":"▏",
-    "git.changedSign.text":"▏",
-    "git.removedSign.text":"▏",
-    "git.topRemovedSign.text":"‾",
-    "git.changeRemovedSign.text":"≃",
-    "git.addedSign.hlGroup":"GitAddHi",
-    "git.changedSign.hlGroup":"GitModifyHi",
-    "git.removedSign.hlGroup":"GitDeleteHi",
-    "git.topRemovedSign.hlGroup":"GitDeleteHi",
-    "git.changeRemovedSign.hlGroup":"GitDeleteHi",
-    "cSpell.status-bar-text":"🅲 🆂",
-    "cSpell.fixSpellingWithRenameProvider":true,
-    "cSpell.enabledLanguageIds":[
-      "asciidoc",
-      "c",
-      "cpp",
-      "csharp",
-      "css",
-      "git-commit",
-      "gitcommit",
-      "go",
-      "handlebars",
-      "haskell",
-      "html",
-      "jade",
-      "java",
-      "javascript",
-      "javascriptreact",
-      "json",
-      "jsonc",
-      "latex",
-      "less",
-      "markdown",
-      "php",
-      "plaintext",
-      "python",
-      "pug",
-      "restructuredtext",
-      "rust",
-      "scala",
-      "scss",
-      "text",
-      "typescript",
-      "typescriptreact",
-      "yaml",
-      "yml",
-      "vim"
+  "coc.preferences.formatOnSaveFiletypes": [
+    "typescript",
+    "typescriptreact",
+    "javascript",
+    "javascriptreact",
+    "json",
+    "css",
+    "markdown"
   ]
 }
