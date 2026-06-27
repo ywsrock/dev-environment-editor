@@ -125,6 +125,14 @@ lua require('Comment').setup()
 
 ""https://github.com/folke/noice.nvim/wiki/Configuration-Recipes
 lua << EOF
+  -- nvim-notify: border無効化（ambiwidth=double対応）
+  require("notify").setup({
+    render = "wrapped-compact",
+    on_open = function(win)
+      vim.api.nvim_win_set_config(win, { border = "none" })
+    end,
+  })
+
   require("noice").setup({
     lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
@@ -181,6 +189,21 @@ lua << EOF
         win_options = {
           winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
         },
+      },
+      popup = {
+        border = { style = "solid" },
+      },
+      hover = {
+        border = { style = "solid" },
+      },
+      confirm = {
+        border = { style = "solid" },
+      },
+      popupmenu = {
+        border = { style = "solid" },
+      },
+      mini = {
+        border = { style = "solid" },
       },
     },
     -- Hidden written message
@@ -420,8 +443,6 @@ let g:coc_global_extensions = [
   \ 'coc-fzf-preview',
   \ 'coc-git',
   \ 'coc-go',
-  \ 'coc-tsserver',
-  \ 'coc-eslint',
   \ 'coc-golines',
   \ 'coc-html',
   \ 'coc-htmlhint',
@@ -443,7 +464,6 @@ let g:coc_global_extensions = [
   \ 'coc-vetur',
   \ 'coc-vimlsp',
   \ 'coc-xml',
-  \ 'coc-rust-analyzer',
   \ 'coc-yaml'
   \ ]
 
