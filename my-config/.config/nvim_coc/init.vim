@@ -1,3 +1,6 @@
+" 起動時のプロジェクトルートを保存（autochdir より前）
+let g:project_root = getcwd()
+
 " 基本設定
 set nocompatible              " 必須
 filetype off                  " 必須
@@ -315,7 +318,7 @@ let g:mkdp_command_for_global = 1
 
 " fzf キーマッピング
 " Find files using Telescope command-line sugar.
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({ cwd = vim.g.project_root, find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!.git/", "--glob", "!node_modules/" } })<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
