@@ -80,6 +80,7 @@ lua require('smear_cursor').enabled = true
 "Comment
 lua require('Comment').setup()
 
+
 "" noice設定-----
 "lua << EOF
 "require("noice").setup({
@@ -306,6 +307,19 @@ nnoremap <ESC><ESC> :nohlsearch<CR>
 
 " カラースキーム
 colorscheme tokyonight
+
+" アクティブウィンドウの背景色
+highlight Normal guibg=#1e1e2e
+
+" 非アクティブウィンドウの背景色
+highlight NormalNC guibg=#282838
+
+" colorscheme再読み込み時にも維持する
+augroup MyHighlights
+  autocmd!
+  autocmd ColorScheme * highlight Normal guibg=#1e1e2e | highlight NormalNC guibg=#282838
+augroup END
+
 " lightline設定
 let g:lightline = {'colorscheme': 'tokyonight'}
 
