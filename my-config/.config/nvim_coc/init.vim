@@ -234,6 +234,7 @@ lua << EOF
 EOF
 
 
+
 " ブックマーク設定
 "highlight BookmarkSign ctermbg=NONE ctermfg=160
 "highlight BookmarkLine ctermbg=194 ctermfg=NONE
@@ -321,8 +322,20 @@ augroup MyHighlights
   autocmd ColorScheme * highlight Normal guibg=#1e1e2e | highlight NormalNC guibg=#282838
 augroup END
 
-" lightline設定
-let g:lightline = {'colorscheme': 'tokyonight'}
+" lightline設定（coc#status()をコンポーネントとして統合）
+let g:lightline = {
+  \ 'colorscheme': 'tokyonight',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+  \ },
+  \ 'component_function': {
+  \   'cocstatus': 'coc#status'
+  \ },
+  \ }
+
+" coc状態変更時にlightlineを更新
+autocmd User CocStatusChange,CocDiagnosticChange call lightline#update()
 
 " その他のハイライト設定
 hi NonText ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
@@ -614,10 +627,7 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " Add `:OR` command for organize imports of the current buffer
 command! -nargs=0 OR   :call     CocActionAsync('runCommand', 'editor.action.organizeImport')
 
-" Add (Neo)Vim's native statusline support
-" NOTE: Please see `:h coc-status` for integrations with external plugins that
-" provide custom statusline: lightline.vim, vim-airline
-set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
 
 " Mappings for CoCList
 " Show all diagnostics
@@ -639,6 +649,11 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "------
 
 
+" Add (Neo)Vim's native statusline support
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline
+" ※ lightline使用時はlightlineのcomponent_functionで設定するため不要
+" set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " An action can be a reference to a function that processes selected lines
 function! s:build_quickfix_list(lines)
