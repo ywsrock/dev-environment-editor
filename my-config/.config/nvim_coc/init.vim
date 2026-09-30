@@ -134,6 +134,10 @@ lua << EOF
     end,
   })
 
+vim.keymap.set("n", "<leader>nh", function()
+ require("telescope").extensions.notify.notify()
+end, { desc = "Notification History" })
+
   require("noice").setup({
     lsp = {
     -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
