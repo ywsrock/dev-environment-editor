@@ -134,9 +134,6 @@ lua << EOF
     end,
   })
 
-vim.keymap.set("n", "<leader>nh", function()
- require("telescope").extensions.notify.notify()
-end, { desc = "Notification History" })
 
   require("noice").setup({
     lsp = {
@@ -419,6 +416,8 @@ nnoremap <leader>gd :DiffviewOpen<CR>
 nnoremap <leader>gD :DiffviewClose<CR>
 nnoremap <leader>gh :DiffviewFileHistory<CR>
 nnoremap <leader>gH :DiffviewFileHistory %<CR>
+" message履歴確認
+nnoremap <leader>nh <cmd>lua require("telescope").extensions.notify.notify()<cr>
 
 " Go ファイルのフォーマット設定を有効にする
 augroup go_format
