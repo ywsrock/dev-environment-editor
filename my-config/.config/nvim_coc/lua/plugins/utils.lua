@@ -17,6 +17,8 @@ return {
     },
     init = function()
       vim.g.translator_target_lang = "ja"
+      -- healthcheck を無効化（古いAPIを使用しているため）
+      vim.g.loaded_health_translator = 1
     end,
   },
 
