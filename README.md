@@ -6,24 +6,34 @@ This is my vimrc/nvim config file backup
 
 ## Vim/Neovim Configuration
 
-### ファイル構成
+### ファイル構成（lazy.nvim）
 
 ```
 my-config/.config/nvim_coc/
-├── init.vim                 # エントリーポイント（mapleader定義、ファイル読み込み）
+├── init.lua                     # エントリーポイント（lazy.nvim ブートストラップ）
+├── lua/
+│   ├── config/
+│   │   ├── options.lua          # 基本設定
+│   │   ├── keymaps.lua          # キーマッピング
+│   │   └── autocmds.lua         # autocmd 設定
+│   └── plugins/
+│       ├── colorscheme.lua      # カラースキーム（tokyonight等）
+│       ├── ui.lua               # UI（lightline, nerdtree, devicons等）
+│       ├── editor.lua           # エディタ機能（Comment.nvim, vim-move等）
+│       ├── coc.lua              # coc.nvim（LSP、補完）
+│       ├── search.lua           # 検索（fzf, telescope）
+│       ├── git.lua              # Git（diffview）
+│       ├── noice.lua            # noice.nvim + nvim-notify
+│       ├── markdown.lua         # Markdown プレビュー
+│       ├── terminal.lua         # floaterm
+│       └── utils.lua            # ユーティリティ（translator, startify等）
 ├── plugin/
-│   ├── plugins.vim          # Vundle プラグイン定義
-│   ├── options.vim          # 基本設定（encoding, tabstop, colorscheme等）
-│   ├── keymaps.vim          # キーマッピング
-│   ├── coc.vim              # coc.nvim 設定
-│   ├── fzf.vim              # fzf 設定
-│   ├── startify.vim         # vim-startify 設定
-│   └── vscode.vim           # VSCode Neovim 用設定
-├── lua/plugins/
-│   └── noice.lua            # noice.nvim + nvim-notify 設定
-└── plugins/
-    ├── go/format.vim        # Go 言語用設定
-    └── python/format.vim    # Python 用設定
+│   └── vscode.vim               # VSCode Neovim 用設定
+├── plugins/
+│   ├── go/format.vim            # Go 言語用設定
+│   └── python/format.vim        # Python 用設定
+└── pack/github/start/
+    └── copilot.vim/             # GitHub Copilot
 ```
 
 ### インストール
@@ -32,63 +42,88 @@ my-config/.config/nvim_coc/
 # 設定ファイルをコピー
 cp -r my-config/.config/nvim_coc ~/.config/nvim
 
-# Vundle をインストール（初回のみ）
-git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# Neovim を起動（lazy.nvim が自動でインストールされる）
+nvim
 
-# Neovim を起動してプラグインをインストール
-nvim +PluginInstall +qall
+# 初回起動時に :Lazy で状態確認
+:Lazy
 ```
+
+### プラグインマネージャ: lazy.nvim
+
+lazy.nvim は遅延読み込みに対応した高速なプラグインマネージャです。
+
+| コマンド | 説明 |
+|----------|------|
+| `:Lazy` | lazy.nvim UI を開く |
+| `:Lazy sync` | プラグインを同期（インストール・更新・削除） |
+| `:Lazy update` | プラグインを更新 |
+| `:Lazy clean` | 未使用プラグインを削除 |
+| `:Lazy profile` | 起動時間のプロファイリング |
 
 ### 主要なキーマッピング
 
 | キー | 機能 |
 |------|------|
 | `<C-t>` | NERDTree トグル |
-| `,ff` | ファイル検索 (fzf) |
-| `,fg` | Grep検索 (fzf) |
-| `,fb` | バッファ一覧 (fzf) |
+| `,ff` | ファイル検索 (Telescope) |
+| `,fg` | Grep検索 (Telescope) |
+| `,fb` | バッファ一覧 (Telescope) |
+| `,fz` | FZF |
 | `gd` | 定義へジャンプ (coc) |
 | `gr` | 参照一覧 (coc) |
 | `K` | ドキュメント表示 (coc) |
 | `<leader>rn` | リネーム (coc) |
+| `,gd` | Git 差分表示 (Diffview) |
+| `,ft` | ターミナル (Floaterm) |
+| `,t` | 翻訳 |
+| `gcc` | コメントトグル |
 
 ### 主要プラグイン
 
-- **coc.nvim** - LSP クライアント、補完
-- **fzf.vim** - ファジーファインダー
+- **coc.nvim** - LSP クライアント、補完（31個の拡張機能）
+- **telescope.nvim** - ファジーファインダー
+- **fzf.vim** - FZF 連携
 - **NERDTree** - ファイルエクスプローラー
 - **vim-startify** - スタートページ
 - **noice.nvim** - UI改善（コマンドライン、通知）
 - **tokyonight.nvim** - カラースキーム
+- **diffview.nvim** - Git 差分表示
+- **floaterm** - フロートターミナル
 
-## Plugin Manager: Vundle
+---
 
-https://github.com/VundleVim/Vundle.vim
+## Plugin Manager: lazy.nvim（推奨）
+
+https://github.com/folke/lazy.nvim
 
 ### 基本コマンド
 
 | コマンド | 説明 |
 |----------|------|
-| `:PluginList` | インストール済みプラグイン一覧 |
-| `:PluginInstall` | プラグインをインストール |
-| `:PluginUpdate` | プラグインを更新 |
-| `:PluginClean` | 未使用プラグインを削除 |
+| `:Lazy` | lazy.nvim UI を開く |
+| `:Lazy sync` | プラグインを同期 |
+| `:Lazy update` | プラグインを更新 |
+| `:Lazy profile` | 起動時間のプロファイリング |
 
 ### プラグインの追加方法
 
-`plugin/plugins.vim` を編集:
+`lua/plugins/` ディレクトリに新しいファイルを作成:
 
-```vim
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-
-" ここに追加
-Plugin 'username/repository'
-
-call vundle#end()
+```lua
+-- lua/plugins/example.lua
+return {
+  {
+    "username/repository",
+    event = "BufReadPost",  -- 遅延読み込みのトリガー
+    config = function()
+      -- 設定
+    end,
+  },
+}
 ```
 
-その後 `:PluginInstall` を実行。
+その後 `:Lazy sync` を実行。
 
 ## 設定ファイルの使い方
 
