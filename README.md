@@ -1,56 +1,101 @@
 # Dev Environment Editor
+
 This is my vimrc/nvim config file backup
+
 ---
 
 ## Vim/Neovim Configuration
-- nvimrc path: ~/.config/nvim/init.vim
 
+### ファイル構成
 
-## Plugin Manager: Vundle
-https://github.com/VundleVim/Vundle.vim
-
-
-## Confilg Plugin manager tool at vimrc
-```shell
-set nocompatible              " be iMproved, required
-filetype off                  " required
-
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
-
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" install plugin from github
-" Plugin 'xxxx/bbbb'
-" Plugin 'ssss/kkkkk'
-
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+```
+my-config/.config/nvim_coc/
+├── init.vim                 # エントリーポイント（mapleader定義、ファイル読み込み）
+├── plugin/
+│   ├── plugins.vim          # Vundle プラグイン定義
+│   ├── options.vim          # 基本設定（encoding, tabstop, colorscheme等）
+│   ├── keymaps.vim          # キーマッピング
+│   ├── coc.vim              # coc.nvim 設定
+│   ├── fzf.vim              # fzf 設定
+│   ├── startify.vim         # vim-startify 設定
+│   └── vscode.vim           # VSCode Neovim 用設定
+├── lua/plugins/
+│   └── noice.lua            # noice.nvim + nvim-notify 設定
+└── plugins/
+    ├── go/format.vim        # Go 言語用設定
+    └── python/format.vim    # Python 用設定
 ```
 
+### インストール
 
-## use the sample config file
 ```shell
-cd <local repo> -- where the config file is located
-cp -r .config.sample/nnn ~/.config/nnn
-cp -r .config.sample/nvim ~/.config/nvim
+# 設定ファイルをコピー
+cp -r my-config/.config/nvim_coc ~/.config/nvim
+
+# Vundle をインストール（初回のみ）
+git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+# Neovim を起動してプラグインをインストール
+nvim +PluginInstall +qall
+```
+
+### 主要なキーマッピング
+
+| キー | 機能 |
+|------|------|
+| `<C-t>` | NERDTree トグル |
+| `,ff` | ファイル検索 (fzf) |
+| `,fg` | Grep検索 (fzf) |
+| `,fb` | バッファ一覧 (fzf) |
+| `gd` | 定義へジャンプ (coc) |
+| `gr` | 参照一覧 (coc) |
+| `K` | ドキュメント表示 (coc) |
+| `<leader>rn` | リネーム (coc) |
+
+### 主要プラグイン
+
+- **coc.nvim** - LSP クライアント、補完
+- **fzf.vim** - ファジーファインダー
+- **NERDTree** - ファイルエクスプローラー
+- **vim-startify** - スタートページ
+- **noice.nvim** - UI改善（コマンドライン、通知）
+- **tokyonight.nvim** - カラースキーム
+
+## Plugin Manager: Vundle
+
+https://github.com/VundleVim/Vundle.vim
+
+### 基本コマンド
+
+| コマンド | 説明 |
+|----------|------|
+| `:PluginList` | インストール済みプラグイン一覧 |
+| `:PluginInstall` | プラグインをインストール |
+| `:PluginUpdate` | プラグインを更新 |
+| `:PluginClean` | 未使用プラグインを削除 |
+
+### プラグインの追加方法
+
+`plugin/plugins.vim` を編集:
+
+```vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+
+" ここに追加
+Plugin 'username/repository'
+
+call vundle#end()
+```
+
+その後 `:PluginInstall` を実行。
+
+## 設定ファイルの使い方
+
+```shell
+cd <local repo>
+cp -r my-config/.config/nvim_coc ~/.config/nvim
+cp -r my-config/.config/nnn ~/.config/nnn
 ```
 
 ---
