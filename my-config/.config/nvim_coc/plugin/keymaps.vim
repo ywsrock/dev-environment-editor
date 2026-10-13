@@ -29,7 +29,23 @@ let g:quickr_preview_position = 'right'
 nmap <leader>gs <Plug>MarkdownPreview
 nmap <leader>gc <Plug>MarkdownPreviewStop
 nmap <leader>gt <Plug>MarkdownPreviewToggle
+
+" 基本設定
 let g:mkdp_command_for_global = 1
+let g:mkdp_auto_scroll = 1
+let g:mkdp_refresh_slow = 0
+let g:mkdp_page_title = '${name} - Preview'
+let g:mkdp_auto_close = 0
+let g:mkdp_auto_start = 1
+
+" Mermaid / 図表設定
+let g:mkdp_preview_options = {
+    \ 'mermaid': { 'theme': 'default' },
+    \ 'disable_sync_scroll': 0,
+    \ 'sync_scroll_type': 'middle',
+    \ 'hide_yaml_meta': 1,
+    \ 'disable_filename': 0
+    \ }
 
 " -----------------------------------------------------------------------------
 " Telescope / fzf
