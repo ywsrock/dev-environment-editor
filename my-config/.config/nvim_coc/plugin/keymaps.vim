@@ -54,6 +54,7 @@ nnoremap <leader>ff <cmd>lua require('plugins.telescope').find_files()<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fz <cmd>Files<cr>
+nnoremap <leader>fZ <cmd>Files ~<cr>
 
 " fzf 追加キーマップ
 nnoremap <leader>fb :Buffers<CR>
