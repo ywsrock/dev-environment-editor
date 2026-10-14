@@ -36,7 +36,7 @@ let g:mkdp_auto_scroll = 1
 let g:mkdp_refresh_slow = 0
 let g:mkdp_page_title = '${name} - Preview'
 let g:mkdp_auto_close = 0
-let g:mkdp_auto_start = 1
+let g:mkdp_auto_start = 0
 
 " Mermaid / 図表設定
 let g:mkdp_preview_options = {
@@ -52,9 +52,13 @@ let g:mkdp_preview_options = {
 " -----------------------------------------------------------------------------
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({ cwd = vim.g.project_root, find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!.git/", "--glob", "!node_modules/" } })<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-nnoremap <leader>fz <cmd>FZF .<cr>
+nnoremap <leader>fz <cmd>Files<cr>
+
+" fzf 追加キーマップ
+nnoremap <leader>fb :Buffers<CR>
+nnoremap <leader>rg :Rg<CR>
+nnoremap <leader>h :History:<CR>
 
 " -----------------------------------------------------------------------------
 " 翻訳
