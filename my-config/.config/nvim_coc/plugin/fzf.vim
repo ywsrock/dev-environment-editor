@@ -11,11 +11,25 @@ function! s:build_quickfix_list(lines)
   cc
 endfunction
 
+function! s:copy_path(lines)
+  let paths = map(copy(a:lines), 'fnamemodify(v:val, ":p")')
+  let @+ = join(paths, "\n")
+  echom 'Copied: ' . join(paths, ', ')
+endfunction
+
 let g:fzf_action = {
   \ 'ctrl-q': function('s:build_quickfix_list'),
+  \ 'ctrl-y': function('s:copy_path'),
   \ 'ctrl-t': 'tab split',
   \ 'ctrl-x': 'split',
   \ 'ctrl-v': 'vsplit' }
+
+" -----------------------------------------------------------------------------
+" コマンドカスタマイズ
+" -----------------------------------------------------------------------------
+" Files をプレビュー付きに上書き
+command! -bang -nargs=? -complete=dir Files
+    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
 " -----------------------------------------------------------------------------
 " レイアウト
