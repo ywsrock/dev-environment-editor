@@ -50,7 +50,7 @@ let g:mkdp_preview_options = {
 " -----------------------------------------------------------------------------
 " Telescope / fzf
 " -----------------------------------------------------------------------------
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files({ cwd = vim.g.project_root, find_command = { "rg", "--files", "--hidden", "--no-ignore", "--glob", "!.git/", "--glob", "!node_modules/" } })<cr>
+nnoremap <leader>ff <cmd>lua require('plugins.telescope').find_files()<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 nnoremap <leader>fz <cmd>Files<cr>
