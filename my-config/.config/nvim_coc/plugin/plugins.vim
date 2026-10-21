@@ -62,7 +62,9 @@ Plugin 'neoclide/coc.nvim', {'branch': 'release'}
 " -----------------------------------------------------------------------------
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
-Plugin 'iamcco/markdown-preview.nvim'
+" Plugin 'iamcco/markdown-preview.nvim'   " 旧版（コメントアウト）
+Plugin 'selimacerbas/kitehost.nvim'       " mdkite依存（Pure Lua HTTPサーバー）
+Plugin 'selimacerbas/mdkite.nvim'         " 新Markdownプレビュー（npm不要）
 
 " -----------------------------------------------------------------------------
 " ターミナル / フロートウィンドウ
