@@ -42,8 +42,9 @@ end
 configs.setup({
   -- ---------------------------------------------------------------------------
   -- 自動インストールする言語パーサー
+  -- （Windows では C コンパイラが必要。未インストールの場合は空リストにする）
   -- ---------------------------------------------------------------------------
-  ensure_installed = {
+  ensure_installed = vim.fn.has('win32') == 1 and {} or {
     -- Neovim 必須
     'lua', 'vim', 'vimdoc', 'query',
     -- Web 開発
@@ -64,7 +65,10 @@ configs.setup({
   },
 
   -- パーサーの自動インストール（ファイルを開いた時）
-  auto_install = true,
+  -- Windows では C コンパイラが必要なため無効化
+  -- C コンパイラを導入した場合は true に変更可能
+  -- （推奨: winget install zig.zig  または  winget install Microsoft.VisualStudio.2022.BuildTools）
+  auto_install = vim.fn.has('win32') == 0,
 
   -- ---------------------------------------------------------------------------
   -- シンタックスハイライト
