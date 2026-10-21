@@ -20,15 +20,15 @@ require("mason-lspconfig").setup({
     "ts_ls",            -- coc-tsserver (TypeScript/JavaScript)
     "pyright",          -- coc-pyright
     "eslint",           -- coc-eslint
-    
+
     -- Web
     "cssls",            -- coc-css
     "html",             -- coc-html
-    
+
     -- 設定ファイル
     "yamlls",           -- coc-yaml
     "taplo",            -- coc-toml
-    
+
     -- 言語
     "gopls",            -- coc-go
     "rust_analyzer",    -- coc-rust-analyzer
@@ -36,12 +36,12 @@ require("mason-lspconfig").setup({
     "vimls",            -- coc-vimlsp
     "dockerls",         -- coc-docker
     "lemminx",          -- coc-xml
-    "jdtls",            -- coc-java
+    -- "jdtls",            -- coc-java
     "perlnavigator",    -- coc-perl
     "powershell_es",    -- coc-powershell
     "vuels",            -- coc-vetur
   },
-  
+
   -- 自動ハンドラー（インストール済み LSP を自動設定）
   automatic_installation = true,
 })

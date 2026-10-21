@@ -69,7 +69,7 @@ local servers = {
   "vimls",
   "dockerls",
   "lemminx",
-  "jdtls",
+  -- "jdtls",
   "perlnavigator",
   "powershell_es",
   "vuels",

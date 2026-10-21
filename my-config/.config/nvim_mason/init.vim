@@ -1,7 +1,7 @@
 " =============================================================================
 " init.vim - Neovim 設定エントリーポイント
 " =============================================================================
-" 
+"
 " 構成:
 "   ~/.config/nvim/
 "   ├── init.vim                 # このファイル（エントリーポイント）
@@ -15,9 +15,6 @@
 "   │   └── vscode.vim           # VSCode 用設定
 "   ├── lua/plugins/
 "   │   └── noice.lua            # noice + notify 設定
-"   └── plugins/                 # 言語別設定（既存）
-"       ├── go/format.vim
-"       └── python/format.vim
 "
 " =============================================================================
 
@@ -38,7 +35,7 @@ let g:project_root = getcwd()
 "source ~/.config/nvim/plugin/plugins.vim
 " windowsの場合は以下のようにする
 " source $HOME/AppData/Local/nvim/plugin/plugins.vim
-" windowsの場合 
+" windowsの場合
 if has('win32') || has('win64')
   source $HOME/AppData/Local/nvim/plugin/plugins.vim
 else
@@ -99,31 +96,3 @@ hi NonText ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
 hi SpecialKey ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
 hi CursorLine gui=underline cterm=underline
 
-" -----------------------------------------------------------------------------
-" 言語別設定
-" -----------------------------------------------------------------------------
-augroup filetype_settings
-  autocmd!
-  " Go
-  autocmd FileType go source ~/.config/nvim/plugins/go/format.vim
-  " Python
-  autocmd FileType python source ~/.config/nvim/plugins/python/format.vim
-augroup END
-
-" -----------------------------------------------------------------------------
-" coc.nvim プロセスのクリーンアップ（終了時）
-" -----------------------------------------------------------------------------
-"augroup coc_cleanup
-"  autocmd!
-"  " Step 1: すべての coc サービスを停止
-"  autocmd VimLeavePre * silent! call coc#rpc#stop_server()
-"  
-"  " Step 2: 少し待ってから RPC を終了
-"  autocmd VimLeavePre * sleep 200m
-"  autocmd VimLeavePre * silent! call coc#rpc#kill()
-"  
-"  " Step 3: Windows でプロセスツリーを強制終了
-"  autocmd VimLeave * if get(g:, 'coc_process_pid', 0)
-"        \ | call system('taskkill /F /T /PID '.g:coc_process_pid)
-"        \ | endif
-"augroup END

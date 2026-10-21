@@ -21,9 +21,6 @@ my-config/.config/nvim_coc/
 │   └── vscode.vim           # VSCode Neovim 用設定
 ├── lua/plugins/
 │   └── noice.lua            # noice.nvim + nvim-notify 設定
-└── plugins/
-    ├── go/format.vim        # Go 言語用設定
-    └── python/format.vim    # Python 用設定
 ```
 
 ### インストール
@@ -153,7 +150,7 @@ export NNN_MISC_QUITCD="$HOME/.config/nnn/misc/quitcd"
 
 case "$SHELL" in
   */zsh)
-    [ -f "$NNN_MISC_QUITCD/quitcd.bash_sh_zsh" ] && source "$NNN_MISC_QUITCD/quitcd.bash_sh_zsh" 
+    [ -f "$NNN_MISC_QUITCD/quitcd.bash_sh_zsh" ] && source "$NNN_MISC_QUITCD/quitcd.bash_sh_zsh"
     ;;
   */bash)
     [ -f "$NNN_MISC_QUITCD/quitcd.bash_sh_zsh" ] && source "$NNN_MISC_QUITCD/quitcd.bash_sh_zsh"
@@ -236,7 +233,7 @@ export FZF_CTRL_R_OPTS="
 # ALT-C - cd into the selected directory
 # Alt-C not working on mac OSX, so use c instead (Option + c)
 # A: Go to Preferences->Profiles tab. Select your profile on the left, and then open the Keyboard tab.
-# At the bottom is a set of buttons that lets you select the behavior of the Option key. 
+# At the bottom is a set of buttons that lets you select the behavior of the Option key.
 # For most users, Esc+ will be the best choice.
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
