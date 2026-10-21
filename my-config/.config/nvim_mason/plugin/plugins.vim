@@ -92,6 +92,14 @@ Plugin 'stevearc/conform.nvim'
 Plugin 'onsails/lspkind.nvim'
 
 " -----------------------------------------------------------------------------
+" Treesitter（シンタックスハイライト強化・コード解析）
+" -----------------------------------------------------------------------------
+Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plugin 'nvim-treesitter/nvim-treesitter-textobjects'  " テキストオブジェクト拡張
+Plugin 'nvim-treesitter/nvim-treesitter-context'      " 現在のコンテキスト表示
+Plugin 'HiPhish/rainbow-delimiters.nvim'              " 虹色括弧
+
+" -----------------------------------------------------------------------------
 " Markdown
 " -----------------------------------------------------------------------------
 Plugin 'godlygeek/tabular'
