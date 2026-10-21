@@ -35,7 +35,15 @@ let g:project_root = getcwd()
 " プラグイン読み込み（Vundle）
 " plugin/ ディレクトリは自動読み込みされるが、Vundle は最初に必要
 " -----------------------------------------------------------------------------
-source ~/.config/nvim/plugin/plugins.vim
+"source ~/.config/nvim/plugin/plugins.vim
+" windowsの場合は以下のようにする
+" source $HOME/AppData/Local/nvim/plugin/plugins.vim
+" windowsの場合
+if has('win32') || has('win64')
+  source $HOME/AppData/Local/nvim/plugin/plugins.vim
+else
+  source ~/.config/nvim/plugin/plugins.vim
+endif
 
 " -----------------------------------------------------------------------------
 " Lua プラグイン初期化
