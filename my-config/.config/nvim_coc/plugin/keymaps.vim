@@ -24,28 +24,11 @@ nmap gc <plug>(quickr_preview_qf_close)
 let g:quickr_preview_position = 'right'
 
 " -----------------------------------------------------------------------------
-" Markdown プレビュー
+" Markdown プレビュー（mdkite.nvim）
 " -----------------------------------------------------------------------------
-nmap <leader>gs <Plug>MarkdownPreview
-nmap <leader>gc <Plug>MarkdownPreviewStop
-nmap <leader>gt <Plug>MarkdownPreviewToggle
-
-" 基本設定
-let g:mkdp_command_for_global = 1
-let g:mkdp_auto_scroll = 1
-let g:mkdp_refresh_slow = 0
-let g:mkdp_page_title = '${name} - Preview'
-let g:mkdp_auto_close = 0
-let g:mkdp_auto_start = 0
-
-" Mermaid / 図表設定
-let g:mkdp_preview_options = {
-    \ 'mermaid': { 'theme': 'default' },
-    \ 'disable_sync_scroll': 0,
-    \ 'sync_scroll_type': 'middle',
-    \ 'hide_yaml_meta': 1,
-    \ 'disable_filename': 0
-    \ }
+nmap <leader>ms <cmd>MdKite start<cr>
+nmap <leader>mc <cmd>MdKite stop<cr>
+nmap <leader>mr <cmd>MdKite refresh<cr>
 
 " -----------------------------------------------------------------------------
 " Telescope / fzf

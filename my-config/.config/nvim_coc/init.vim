@@ -49,6 +49,9 @@ lua require('Comment').setup()
 " noice + notify
 lua require('plugins.noice')
 
+" mdkite（Markdownプレビュー）
+lua require('plugins.mdkite')
+
 " インデントガイド（VSCode以外）
 if !exists('g:vscode')
   let g:indent_guides_enable_on_vim_startup = 1
