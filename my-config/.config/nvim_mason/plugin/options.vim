@@ -68,7 +68,7 @@ set wildmode=list,full        " 補完モード
 "   zM    全て折りたたむ
 "   zj/zk 次/前の折りたたみへ移動
 set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
+set foldexpr=v:lua.vim.treesitter.foldexpr()
 set foldnestmax=10            " 最大折りたたみ深度
 set nofoldenable              " 起動時は折りたたまない（手動でトグル）
 set foldlevel=99              " 起動時は全て展開状態
