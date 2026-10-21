@@ -20,6 +20,7 @@ Plugin 'itchyny/lightline.vim'           " ステータスバー
 Plugin 'preservim/nerdtree'              " ファイルエクスプローラー
 Plugin 'nathanaelkane/vim-indent-guides' " インデントガイド
 Plugin 'nvim-tree/nvim-web-devicons'     " ファイルアイコン
+Plugin 'ryanoasis/vim-devicons'          " ファイルアイコン（Vimscript版、startify連携用）
 Plugin 'enbunsui/vim-zenspace'           " 全角スペース表示
 Plugin 'sphamba/smear-cursor.nvim'       " アニメーションカーソル
 
@@ -46,6 +47,7 @@ Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
+" Plugin 'nvim-telescope/telescope-file-browser.nvim'
 
 " -----------------------------------------------------------------------------
 " Git

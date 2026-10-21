@@ -14,8 +14,7 @@
 "   │   ├── startify.vim         # startify 設定
 "   │   └── vscode.vim           # VSCode 用設定
 "   ├── lua/plugins/
-"   │   ├── noice.lua            # noice + notify 設定
-"   │   └── mdkite.lua           # mdkite.nvim 設定
+"   │   └── noice.lua            # noice + notify 設定
 "   └── plugins/                 # 言語別設定（既存）
 "       ├── go/format.vim
 "       └── python/format.vim
