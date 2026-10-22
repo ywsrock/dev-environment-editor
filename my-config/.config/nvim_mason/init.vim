@@ -48,7 +48,17 @@ endif
 " アニメーションカーソル
 lua require('smear_cursor').enabled = true
 
-" コメント
+" コメント（Comment.nvim）
+" ショートカット:
+"   gcc         現在行をコメント/アンコメント
+"   gbc         現在行をブロックコメント
+"   gc{motion}  モーションで指定した範囲をコメント
+"   gb{motion}  モーションで指定した範囲をブロックコメント
+"   gcO         上の行にコメント行を追加
+"   gco         下の行にコメント行を追加
+"   gcA         行末にコメントを追加
+"   gc (Visual) 選択範囲をコメント/アンコメント
+"   gb (Visual) 選択範囲をブロックコメント
 lua require('Comment').setup()
 
 " noice + notify
