@@ -93,10 +93,11 @@ Plugin 'onsails/lspkind.nvim'
 
 " -----------------------------------------------------------------------------
 " Treesitter（シンタックスハイライト強化・コード解析）
+" Neovim 0.12+ は main ブランチが必要（master は互換性なし）
 " -----------------------------------------------------------------------------
-Plugin 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plugin 'nvim-treesitter/nvim-treesitter-textobjects'  " テキストオブジェクト拡張
-Plugin 'nvim-treesitter/nvim-treesitter-context'      " 現在のコンテキスト表示
+Plugin 'nvim-treesitter/nvim-treesitter', {'branch': 'main', 'do': ':TSUpdate'}
+Plugin 'nvim-treesitter/nvim-treesitter-textobjects', {'branch': 'main'}  " テキストオブジェクト拡張
+Plugin 'nvim-treesitter/nvim-treesitter-context', {'branch': 'main'}      " 現在のコンテキスト表示
 Plugin 'HiPhish/rainbow-delimiters.nvim'              " 虹色括弧
 
 " -----------------------------------------------------------------------------
@@ -106,8 +107,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
 " Plugin 'iamcco/markdown-preview.nvim'   " 旧版（コメントアウト）
 Plugin 'selimacerbas/kitehost.nvim'       " mdkite依存（Pure Lua HTTPサーバー）
-Plugin 'selimacerbas/mdkite.nvim'         " 新Markdownプレビュー（npm不要）
-
+"Plugin 'selimacerbas/mdkite.nvim'         " 新Markdownプレビュー（privteブラウザのタブ名はファイル名でなたいため、自分のforkを使用）
+Plugin 'ywsrock/mdkite.nvim'
 " -----------------------------------------------------------------------------
 " ターミナル / フロートウィンドウ
 " -----------------------------------------------------------------------------

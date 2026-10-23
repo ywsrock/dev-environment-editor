@@ -3,11 +3,15 @@
 -- =============================================================================
 
 -- プラグイン未インストール時はスキップ
-local ok, configs = pcall(require, 'nvim-treesitter.configs')
+-- 新しい nvim-treesitter (main ブランチ) は require('nvim-treesitter').setup() を使用
+local ok, ts = pcall(require, 'nvim-treesitter')
 if not ok then
   vim.notify('nvim-treesitter not installed. Run :PluginInstall', vim.log.levels.WARN)
   return
 end
+
+-- 新API用の設定関数
+local configs = ts
 
 --
 -- ショートカットキー:
