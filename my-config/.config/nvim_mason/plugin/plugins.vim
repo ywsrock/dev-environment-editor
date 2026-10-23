@@ -107,8 +107,8 @@ Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
 " Plugin 'iamcco/markdown-preview.nvim'   " 旧版（コメントアウト）
 Plugin 'selimacerbas/kitehost.nvim'       " mdkite依存（Pure Lua HTTPサーバー）
-Plugin 'selimacerbas/mdkite.nvim'         " 新Markdownプレビュー（npm不要）
-
+"Plugin 'selimacerbas/mdkite.nvim'         " 新Markdownプレビュー（privteブラウザのタブ名はファイル名でなたいため、自分のforkを使用）
+Plugin 'ywsrock/mdkite.nvim'
 " -----------------------------------------------------------------------------
 " ターミナル / フロートウィンドウ
 " -----------------------------------------------------------------------------
