@@ -64,9 +64,6 @@ lua require('Comment').setup()
 " noice + notify
 lua require('plugins.noice')
 
-" mdkite（Markdownプレビュー）
-lua require('plugins.mdkite')
-
 " -----------------------------------------------------------------------------
 " LSP / 補完設定（Neovim 標準 LSP + nvim-cmp）
 " mason → lspconfig → cmp → conform の順で読み込む
