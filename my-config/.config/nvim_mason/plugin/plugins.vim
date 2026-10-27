@@ -105,9 +105,6 @@ Plugin 'HiPhish/rainbow-delimiters.nvim'              " 虹色括弧
 " -----------------------------------------------------------------------------
 Plugin 'godlygeek/tabular'
 Plugin 'preservim/vim-markdown'
-" Plugin 'iamcco/markdown-preview.nvim'   " 旧版（コメントアウト）
-Plugin 'selimacerbas/kitehost.nvim'       " mdkite依存（Pure Lua HTTPサーバー）
-"Plugin 'selimacerbas/mdkite.nvim'         " 新Markdownプレビュー（privteブラウザのタブ名はファイル名でなたいため、自分のforkを使用）
 Plugin 'ywsrock/mdkite.nvim'
 " -----------------------------------------------------------------------------
 " ターミナル / フロートウィンドウ
@@ -129,6 +126,7 @@ Plugin 'ronakg/quickr-preview.vim'       " quickfixプレビュー
 Plugin 'pedrohdz/vim-yaml-folds'         " YAMLフォールド
 Plugin 'mhinz/vim-startify'              " セッション管理
 Plugin 'kamykn/spelunker.vim'            " スペルチェック（coc-spell-checker代替）
+Plugin 'ywsrock/nvim-md-preview'  " Markdownプレビュー
 
 call vundle#end()
 filetype plugin indent on
