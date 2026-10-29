@@ -1,0 +1,38 @@
+[core]
+  editor = nvim
+  pager = delta
+  preloadindex = true
+	fscache = true
+[push]
+  autoSetupRemote = true
+
+[delta]
+  navigate = true    # use n and N to move between diff sections
+  line-numbers = true
+  side-by-side = true
+  hyperlinks = true
+  dark = true
+  keep-plus-minus-markers = true
+    # delta detects terminal colors automatically; set one of these to disable auto-detection
+    # dark = true
+    # light = true
+
+[diff]
+    colorMoved = default
+    tool = kdiff3
+
+[difftool]
+    prompt = false
+
+[difftool "kdiff3"]
+    cmd = kdiff3 "$LOCAL" "$REMOTE"
+
+[merge]
+    tool = kdiff3
+
+[mergetool "kdiff3"]
+    cmd = kdiff3 "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
+    trustExitCode = true
+
+[gc]
+	auto = 256
