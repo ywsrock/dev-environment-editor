@@ -1,10 +1,62 @@
 # Dev Environment Editor
 
-This is my vimrc/nvim config file backup
+Neovim・zsh・nnn などの設定ファイルのバックアップです。
+
+## 目次
+
+- [リポジトリ構成](#リポジトリ構成)
+- [クイックスタート](#クイックスタート)
+- [Neovim](#neovim)
+  - [ファイル構成](#ファイル構成)
+  - [インストール](#インストール)
+  - [主要なキーマッピング](#主要なキーマッピング)
+  - [主要プラグイン](#主要プラグイン)
+  - [プラグイン管理（Vundle）](#プラグイン管理vundle)
+- [ターミナル（zsh）](#ターミナルzsh)
+- [ファイルマネージャー（nnn）](#ファイルマネージャーnnn)
+- [fzf](#fzf)
 
 ---
 
-## Vim/Neovim Configuration
+## リポジトリ構成
+
+```
+.
+├── my-config/
+│   ├── .config/
+│   │   ├── nvim_mason/      # Neovim 設定（現在のメイン：mason + 標準 LSP）
+│   │   ├── nvim_coc/        # Neovim 設定（旧：coc.nvim 版）
+│   │   ├── nvim/            # Neovim 設定（旧：単一 init.vim 版）
+│   │   ├── nnn/             # nnn の quitcd スクリプト
+│   │   ├── yazi/            # yazi のテーマ（flavors）
+│   │   └── pip/             # pip.conf
+│   ├── .gitconfig           # Git 設定
+│   ├── .gitconfig_delta     # delta（diff 表示）用の Git 設定
+│   └── .golangci.yml        # golangci-lint 設定
+├── zsh/
+│   ├── zshrc_local          # .zshrc（macOS / Homebrew 用）
+│   └── zshrc_newzsh         # .zshrc（Linux 用、Oh My Zsh のプラグイン構成）
+├── nnn/                     # nnn 設定（旧配置）
+└── nvim/                    # Neovim 設定（旧配置）
+```
+
+## クイックスタート
+
+```shell
+cd <local repo>
+
+# Neovim
+cp -r my-config/.config/nvim_mason ~/.config/nvim
+
+# nnn
+cp -r my-config/.config/nnn ~/.config/nnn
+```
+
+Neovim は続けて [インストール](#インストール) の手順を実行してください。
+
+---
+
+## Neovim
 
 ### ファイル構成
 
@@ -50,38 +102,63 @@ LSP サーバーは初回起動時に mason.nvim が自動インストールし�
 
 ### 主要なキーマッピング
 
+`<leader>` は `,` です。
+
+**ファイル操作**
+
 | キー | 機能 |
 |------|------|
 | `<C-t>` | NERDTree トグル |
 | `,ff` | ファイル検索 (fzf) |
-| `,fg` | Grep検索 (fzf) |
+| `,fg` | Grep 検索 (fzf) |
 | `,fb` | バッファ一覧 (fzf) |
-| `gd` | 定義へジャンプ (LSP) |
-| `gr` | 参照一覧 (LSP) |
-| `K` | ドキュメント表示 (LSP) |
-| `<leader>rn` | リネーム (LSP) |
-| `<leader>f` | フォーマット (conform) |
-| `<leader>gd` | Diffview を開く |
+
+**LSP**
+
+| キー | 機能 |
+|------|------|
+| `gd` | 定義へジャンプ |
+| `gr` | 参照一覧 |
+| `K` | ドキュメント表示 |
+| `,rn` | リネーム |
+| `,f` | フォーマット (conform) |
+
+**Git**
+
+| キー | 機能 |
+|------|------|
+| `,gd` | Diffview を開く |
+| `,gD` | Diffview を閉じる |
+| `,gh` | ファイル履歴 |
+
+**Markdown**
+
+| キー | 機能 |
+|------|------|
+| `,ms` | プレビュー開始 |
+| `,mc` | プレビュー停止 |
+| `,mr` | プレビュー開始/停止の切り替え |
+| `,md` | Git 差分表示の切り替え |
 
 ### 主要プラグイン
 
-- **mason.nvim / nvim-lspconfig** - LSP サーバー管理・設定（Neovim 標準 LSP）
-- **nvim-cmp / LuaSnip** - 補完、スニペット
-- **conform.nvim** - フォーマッター（保存時自動フォーマット）
-- **nvim-treesitter** - シンタックスハイライト、テキストオブジェクト
-- **fzf.vim / telescope.nvim** - ファジーファインダー
-- **NERDTree** - ファイルエクスプローラー
-- **vim-startify** - スタートページ
-- **noice.nvim** - UI改善（コマンドライン、通知）
-- **nvim-md-preview** - Markdown プレビュー
-- **copilot.vim** - GitHub Copilot
-- **tokyonight.nvim** - カラースキーム
+| プラグイン | 用途 |
+|------------|------|
+| mason.nvim / nvim-lspconfig | LSP サーバー管理・設定（Neovim 標準 LSP） |
+| nvim-cmp / LuaSnip | 補完、スニペット |
+| conform.nvim | フォーマッター（保存時自動フォーマット） |
+| nvim-treesitter | シンタックスハイライト、テキストオブジェクト |
+| fzf.vim / telescope.nvim | ファジーファインダー |
+| NERDTree | ファイルエクスプローラー |
+| vim-startify | スタートページ |
+| noice.nvim | UI 改善（コマンドライン、通知） |
+| nvim-md-preview | Markdown プレビュー |
+| copilot.vim | GitHub Copilot |
+| tokyonight.nvim | カラースキーム |
 
-## Plugin Manager: Vundle
+### プラグイン管理（Vundle）
 
 https://github.com/VundleVim/Vundle.vim
-
-### 基本コマンド
 
 | コマンド | 説明 |
 |----------|------|
@@ -90,9 +167,7 @@ https://github.com/VundleVim/Vundle.vim
 | `:PluginUpdate` | プラグインを更新 |
 | `:PluginClean` | 未使用プラグインを削除 |
 
-### プラグインの追加方法
-
-`plugin/plugins.vim` を編集:
+プラグインを追加するときは `plugin/plugins.vim` を編集し、`:PluginInstall` を実行します。
 
 ```vim
 call vundle#begin()
@@ -104,62 +179,57 @@ Plugin 'username/repository'
 call vundle#end()
 ```
 
-その後 `:PluginInstall` を実行。
+---
 
-## 設定ファイルの使い方
+## ターミナル（zsh）
 
-```shell
-cd <local repo>
-cp -r my-config/.config/nvim_mason ~/.config/nvim
-cp -r my-config/.config/nnn ~/.config/nnn
-```
+`zsh/` の `.zshrc` を `~/.zshrc` にコピーして使います。
+
+| ファイル | 用途 |
+|----------|------|
+| `zsh/zshrc_local` | macOS 用（Homebrew でインストールしたプラグインを読み込む） |
+| `zsh/zshrc_newzsh` | Linux 用（Oh My Zsh の `plugins=(...)` でプラグインを読み込む） |
+
+### 使用ツール
+
+| ツール | 用途 |
+|--------|------|
+| [Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) | zsh フレームワーク |
+| [powerlevel10k](https://github.com/romkatv/powerlevel10k) | プロンプトテーマ |
+| [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting) | コマンドのシンタックスハイライト |
+| [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions) | 履歴からの入力候補 |
+| [colorls](https://github.com/athityakumar/colorls#installation) | カラー表示の ls |
+| [bat](https://github.com/sharkdp/bat) | シンタックスハイライト付きの cat |
+| [fzf](https://github.com/junegunn/fzf) | ファジーファインダー |
+| [Nerd Fonts](https://github.com/ryanoasis/nerd-fonts) | アイコン入りフォント |
 
 ---
 
-# Terminal Setup
----
+## ファイルマネージャー（nnn）
 
-## plugins
-1. [ohmyzsh](https://github.com/ohmyzsh/ohmyzsh)
-2. [powerlevel10k](https://github.com/romkatv/powerlevel10k)
-3. [zsh-syntax-highlighting](https://github.com/zsh-users/zsh-syntax-highlighting)
-4. [zsh-autosuggestions](https://github.com/zsh-users/zsh-autosuggestions/tree/master)
-5. [colorls](https://github.com/athityakumar/colorls?tab=readme-ov-file#installation)
-6. [bat](https://github.com/sharkdp/bat/tree/master)
-7. [fzf](https://github.com/junegunn/fzf)
+[nnn](https://github.com/jarun/nnn)（n³）は、軽量・ほぼ設定不要・高速なターミナルファイルマネージャーです。
 
-## Fonts
-[nerd-fonts](https://github.com/ryanoasis/nerd-fonts/tree/master)
+### インストール
 
-
-## File Manager: nnn
-
-### terminal file mamager
-nnn (n³) is a full-featured terminal file manager. It's tiny, nearly 0-config and incredibly fast.
-[nnn](https://github.com/jarun/nnn)
-
-
-### install nnn
-
-[install](https://github.com/jarun/nnn/wiki/Usage#installation)
+参考：[Installation](https://github.com/jarun/nnn/wiki/Usage#installation)
 
 ```shell
 sudo apt-get install pkg-config libncursesw5-dev libreadline-dev
 sudo make strip install
 ```
 
-### install plugin
+### プラグインのインストール
 
 ```shell
 sh -c "$(curl -Ls https://raw.githubusercontent.com/jarun/nnn/master/plugins/getplugs)"
 ```
 
+### quitcd の設定
 
-### quitcd setup
-- copy the nnn/misc/quite folder to ~/.config/nnn/misc
+nnn を終了したときに、そのディレクトリへ `cd` するための設定です。
 
-## config .zshrc or .bashrc
-add the following to the shell rc file:
+1. `my-config/.config/nnn/misc/quitcd` を `~/.config/nnn/misc/` にコピーします。
+2. `.zshrc` または `.bashrc` に以下を追加します。
 
 ```shell
 export NNN_PLUG='f:finder;o:fzopen;p:mocq;d:diffs;t:nmount;v:imgview;p:preview-tui'
@@ -180,60 +250,54 @@ case "$SHELL" in
 esac
 ```
 
+設定項目の詳細：[Configuration](https://github.com/jarun/nnn/wiki/Usage#configuration)
 
-### fzf setup
+---
 
-ash
-====
+## fzf
 
-Append this line to ~/.bashrc to enable fzf keybindings for Bash:
+### シェル別の有効化
+
+apt でインストールした場合、以下を各シェルの設定ファイルに追加します。
+
+**Bash**（`~/.bashrc`）
 
 ```shell
-   source /usr/share/doc/fzf/examples/key-bindings.bash
+source /usr/share/doc/fzf/examples/key-bindings.bash   # キーバインド
+source /usr/share/doc/fzf/examples/completion.bash     # 補完
 ```
 
-Append this line to ~/.bashrc to enable fuzzy auto-completion for Bash:
+**Zsh**（`~/.zshrc`）
 
-   source /usr/share/doc/fzf/examples/completion.bash
-
-Zsh
-===
-
-Append this line to ~/.zshrc to enable fzf keybindings for Zsh:
 ```shell
-   source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/key-bindings.zsh    # キーバインド
+source /usr/share/doc/fzf/examples/completion.zsh      # 補完
 ```
 
-Append this line to ~/.zshrc to enable fuzzy auto-completion for Zsh:
+**Fish**
 
-   source /usr/share/doc/fzf/examples/completion.zsh
-
-Fish
-====
-
-Issue the following commands to enable fzf keybindings for Fish:
 ```shell
-   mkdir -p ~/.config/fish/functions/
-   echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
+mkdir -p ~/.config/fish/functions/
+echo fzf_key_bindings > ~/.config/fish/functions/fish_user_key_bindings.fish
 ```
 
-Vim
-===
+**Vim**（vimrc）
 
-The straightforward way to use fzf.vim is appending this line to your vimrc:
-```shell
-   source /usr/share/doc/fzf/examples/fzf.vim
+```vim
+source /usr/share/doc/fzf/examples/fzf.vim
 ```
 
-Customize
-===
+### カスタマイズ
+
+<details>
+<summary>.zshrc に追加する fzf / bat / colorls の設定</summary>
 
 ```shell
 # fzf setting
-[ -f ‾/.fzf.zsh ] && source ‾/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_OPTS='--height 50% --layout=reverse --border'
 
-# CTRL-T - Paste the selected files and directories onto the command-lin
+# CTRL-T - Paste the selected files and directories onto the command-line
 # Preview file content using bat (https://github.com/sharkdp/bat)
 export FZF_CTRL_T_OPTS="
   --preview 'bat -n --color=always {}'
@@ -250,25 +314,20 @@ export FZF_CTRL_R_OPTS="
   --header 'Press CTRL-Y to copy command into clipboard'"
 
 # ALT-C - cd into the selected directory
-# Alt-C not working on mac OSX, so use c instead (Option + c)
-# A: Go to Preferences->Profiles tab. Select your profile on the left, and then open the Keyboard tab.
-# At the bottom is a set of buttons that lets you select the behavior of the Option key.
-# For most users, Esc+ will be the best choice.
 # Print tree structure in the preview window
 export FZF_ALT_C_OPTS="--preview 'tree -C {}'"
 
 # If you install bat using apt, the name of the executable will be batcat instead of bat.
-# (due to name conflicts with other packages) by setting up a symbolic link or alias of bat -> batcat,
-# prevent problems caused by different executable names and be consistent with other distributions.
 # mkdir -p ~/.local/bin
 # ln -s /usr/bin/batcat ~/.local/bin/bat
 export PATH="$HOME/.local/bin:$PATH"
 
-#color ls
+# colorls
 source $(dirname $(gem which colorls))/tab_complete.sh
 alias lc='colorls -lA --sd'
 ```
 
+</details>
 
-#### config reference link
-[reference](https://github.com/jarun/nnn/wiki/Usage#configuration)
+> **macOS で Alt-C が効かない場合**
+> iTerm2 の Preferences → Profiles → Keys で、Option キーの動作を `Esc+` に変更してください。
