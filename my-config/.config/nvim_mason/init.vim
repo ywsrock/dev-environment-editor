@@ -9,13 +9,19 @@
 "   │   ├── plugins.vim          # Vundle プラグイン定義
 "   │   ├── options.vim          # 基本設定
 "   │   ├── keymaps.vim          # キーマッピング
-"   │   ├── coc.vim              # coc.nvim 設定
 "   │   ├── fzf.vim              # fzf 設定
 "   │   ├── startify.vim         # startify 設定
 "   │   └── vscode.vim           # VSCode 用設定
-"   ├── lua/plugins/
-"   │   ├── noice.lua            # noice + notify 設定
-"   │   └── md_preview.lua       # nvim-md-preview 設定
+"   ├── lua/config/
+"   │   ├── mason.lua            # LSP サーバー管理
+"   │   ├── lspconfig.lua        # LSP 設定 + キーマップ
+"   │   ├── cmp.lua              # 補完
+"   │   ├── conform.lua          # フォーマッター
+"   │   └── treesitter.lua       # treesitter 設定
+"   └── lua/plugins/
+"       ├── noice.lua            # noice + notify 設定
+"       ├── telescope.lua        # telescope 設定
+"       └── md_preview.lua       # nvim-md-preview 設定
 "
 " =============================================================================
 

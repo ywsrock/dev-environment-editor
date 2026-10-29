@@ -9,25 +9,35 @@ This is my vimrc/nvim config file backup
 ### ファイル構成
 
 ```
-my-config/.config/nvim_coc/
+my-config/.config/nvim_mason/
 ├── init.vim                 # エントリーポイント（mapleader定義、ファイル読み込み）
 ├── plugin/
 │   ├── plugins.vim          # Vundle プラグイン定義
-│   ├── options.vim          # 基本設定（encoding, tabstop, colorscheme等）
+│   ├── options.vim          # 基本設定（encoding, tabstop, folding等）
 │   ├── keymaps.vim          # キーマッピング
-│   ├── coc.vim              # coc.nvim 設定
 │   ├── fzf.vim              # fzf 設定
 │   ├── startify.vim         # vim-startify 設定
 │   └── vscode.vim           # VSCode Neovim 用設定
-├── lua/plugins/
-│   └── noice.lua            # noice.nvim + nvim-notify 設定
+├── lua/
+│   ├── config/
+│   │   ├── mason.lua        # mason.nvim（LSP サーバー管理）
+│   │   ├── lspconfig.lua    # LSP 設定 + キーマップ
+│   │   ├── cmp.lua          # nvim-cmp（補完）
+│   │   ├── conform.lua      # conform.nvim（フォーマッター）
+│   │   └── treesitter.lua   # nvim-treesitter 設定
+│   └── plugins/
+│       ├── noice.lua        # noice.nvim + nvim-notify 設定
+│       ├── telescope.lua    # Telescope 設定
+│       └── md_preview.lua   # nvim-md-preview（Markdown プレビュー）設定
+└── pack/github/start/
+    └── copilot.vim          # GitHub Copilot
 ```
 
 ### インストール
 
 ```shell
 # 設定ファイルをコピー
-cp -r my-config/.config/nvim_coc ~/.config/nvim
+cp -r my-config/.config/nvim_mason ~/.config/nvim
 
 # Vundle をインストール（初回のみ）
 git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
@@ -35,6 +45,8 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 # Neovim を起動してプラグインをインストール
 nvim +PluginInstall +qall
 ```
+
+LSP サーバーは初回起動時に mason.nvim が自動インストールします（`:Mason` で確認）。
 
 ### 主要なキーマッピング
 
@@ -44,18 +56,25 @@ nvim +PluginInstall +qall
 | `,ff` | ファイル検索 (fzf) |
 | `,fg` | Grep検索 (fzf) |
 | `,fb` | バッファ一覧 (fzf) |
-| `gd` | 定義へジャンプ (coc) |
-| `gr` | 参照一覧 (coc) |
-| `K` | ドキュメント表示 (coc) |
-| `<leader>rn` | リネーム (coc) |
+| `gd` | 定義へジャンプ (LSP) |
+| `gr` | 参照一覧 (LSP) |
+| `K` | ドキュメント表示 (LSP) |
+| `<leader>rn` | リネーム (LSP) |
+| `<leader>f` | フォーマット (conform) |
+| `<leader>gd` | Diffview を開く |
 
 ### 主要プラグイン
 
-- **coc.nvim** - LSP クライアント、補完
-- **fzf.vim** - ファジーファインダー
+- **mason.nvim / nvim-lspconfig** - LSP サーバー管理・設定（Neovim 標準 LSP）
+- **nvim-cmp / LuaSnip** - 補完、スニペット
+- **conform.nvim** - フォーマッター（保存時自動フォーマット）
+- **nvim-treesitter** - シンタックスハイライト、テキストオブジェクト
+- **fzf.vim / telescope.nvim** - ファジーファインダー
 - **NERDTree** - ファイルエクスプローラー
 - **vim-startify** - スタートページ
 - **noice.nvim** - UI改善（コマンドライン、通知）
+- **nvim-md-preview** - Markdown プレビュー
+- **copilot.vim** - GitHub Copilot
 - **tokyonight.nvim** - カラースキーム
 
 ## Plugin Manager: Vundle
@@ -91,7 +110,7 @@ call vundle#end()
 
 ```shell
 cd <local repo>
-cp -r my-config/.config/nvim_coc ~/.config/nvim
+cp -r my-config/.config/nvim_mason ~/.config/nvim
 cp -r my-config/.config/nnn ~/.config/nnn
 ```
 
