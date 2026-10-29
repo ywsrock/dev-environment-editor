@@ -1,5 +1,7 @@
 # Dev Environment Editor
 
+日本語 | [English](README.en.md)
+
 Neovim・zsh・nnn などの設定ファイルのバックアップです。
 
 ## 目次
