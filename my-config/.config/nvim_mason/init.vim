@@ -14,7 +14,8 @@
 "   │   ├── startify.vim         # startify 設定
 "   │   └── vscode.vim           # VSCode 用設定
 "   ├── lua/plugins/
-"   │   └── noice.lua            # noice + notify 設定
+"   │   ├── noice.lua            # noice + notify 設定
+"   │   └── md_preview.lua       # nvim-md-preview 設定
 "
 " =============================================================================
 
@@ -63,6 +64,9 @@ lua require('Comment').setup()
 
 " noice + notify
 lua require('plugins.noice')
+
+" Markdown プレビュー（nvim-md-preview）
+lua require('plugins.md_preview')
 
 " -----------------------------------------------------------------------------
 " LSP / 補完設定（Neovim 標準 LSP + nvim-cmp）
