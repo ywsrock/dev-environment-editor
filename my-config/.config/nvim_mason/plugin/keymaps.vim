@@ -24,11 +24,12 @@ nmap gc <plug>(quickr_preview_qf_close)
 let g:quickr_preview_position = 'right'
 
 " -----------------------------------------------------------------------------
-" Markdown プレビュー（mdkite.nvim）
+" Markdown プレビュー（nvim-md-preview）
 " -----------------------------------------------------------------------------
-nmap <leader>ms <cmd>MdKite start<cr>
-nmap <leader>mc <cmd>MdKite stop<cr>
-nmap <leader>mr <cmd>MdKite refresh<cr>
+nmap <leader>ms <cmd>MdPreview<cr>
+nmap <leader>mc <cmd>MdPreviewStop<cr>
+nmap <leader>mr <cmd>MarkdownPreviewToggle<cr>
+nmap <leader>md <cmd>MdPreviewDiff<cr>
 
 " -----------------------------------------------------------------------------
 " Telescope / fzf
