@@ -3,45 +3,61 @@
 -- =============================================================================
 
 require("mason").setup({
-  ui = {
-    icons = {
-      package_installed = "✓",
-      package_pending = "➜",
-      package_uninstalled = "✗"
-    }
-  }
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
 })
 
 require("mason-lspconfig").setup({
-  -- 自動インストールする LSP サーバー（旧 coc-extensions に対応）
-  ensure_installed = {
-    -- 基本
-    "jsonls",           -- coc-json
-    "ts_ls",            -- coc-tsserver (TypeScript/JavaScript)
-    "pyright",          -- coc-pyright
-    "eslint",           -- coc-eslint
+	-- 自動インストールする LSP サーバー
+	ensure_installed = {
+		-- 基本
+		"jsonls",
+		"ts_ls",
+		"pyright",
+		"eslint",
 
-    -- Web
-    "cssls",            -- coc-css
-    "html",             -- coc-html
+		-- Web
+		"cssls",
+		"html",
 
-    -- 設定ファイル
-    "yamlls",           -- coc-yaml
-    "taplo",            -- coc-toml
+		-- 設定ファイル
+		"yamlls",
+		"taplo",
 
-    -- 言語
-    "gopls",            -- coc-go
-    "rust_analyzer",    -- coc-rust-analyzer
-    "bashls",           -- coc-sh
-    "vimls",            -- coc-vimlsp
-    "dockerls",         -- coc-docker
-    "lemminx",          -- coc-xml
-    -- "jdtls",            -- coc-java
-    "perlnavigator",    -- coc-perl
-    "powershell_es",    -- coc-powershell
-    "vuels",            -- coc-vetur
-  },
+		-- 言語
+		"gopls",
+		"rust_analyzer",
+		"bashls",
+		"vimls",
+		"dockerls",
+		"lemminx",
+		-- "jdtls",
+		"perlnavigator",
+		"powershell_es",
+		"vuels",
+	},
 
-  -- 自動ハンドラー（インストール済み LSP を自動設定）
-  automatic_installation = true,
+	-- 自動ハンドラー（インストール済み LSP を自動設定）
+	automatic_installation = true,
+})
+
+-- formatters / lintersを自動インストール
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"black",
+		"gofumpt",
+		"isort",
+		"markdownlint",
+		"prettier",
+		"shfmt",
+		"sql-formatter",
+		"stylua",
+	},
+	auto_update = false, -- 自動更新しない（デフォルト: false）
+	run_on_start = true, -- 起動時にインストール確認（デフォルト: true）
 })

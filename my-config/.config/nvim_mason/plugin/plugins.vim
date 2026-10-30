@@ -69,6 +69,7 @@ Plugin 'sindrets/diffview.nvim'          " git差分表示
 " LSP サーバー管理
 Plugin 'williamboman/mason.nvim'
 Plugin 'williamboman/mason-lspconfig.nvim'
+Plugin 'WhoIsSethDaniel/mason-tool-installer.nvim'
 
 " LSP 設定
 Plugin 'neovim/nvim-lspconfig'
