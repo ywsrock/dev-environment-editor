@@ -191,11 +191,10 @@ local all_servers = vim.tbl_extend("force", servers, { "rust_analyzer" })
 vim.lsp.enable(all_servers)
 
 -- -----------------------------------------------------------------------------
--- 診断表示設定
+-- 診断表示設定（Neovim 0.11+ 新方式）
 -- -----------------------------------------------------------------------------
 vim.diagnostic.config({
   virtual_text = true,
-  signs = true,
   underline = true,
   update_in_insert = false,
   severity_sort = true,
@@ -203,14 +202,22 @@ vim.diagnostic.config({
     border = "rounded",
     source = "always",
   },
+  -- 診断アイコン（sign_define 非推奨のため新方式）
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = " ",
+      [vim.diagnostic.severity.WARN] = " ",
+      [vim.diagnostic.severity.HINT] = " ",
+      [vim.diagnostic.severity.INFO] = " ",
+    },
+    numhl = {
+      [vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+      [vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+      [vim.diagnostic.severity.HINT] = "DiagnosticSignHint",
+      [vim.diagnostic.severity.INFO] = "DiagnosticSignInfo",
+    },
+  },
 })
-
--- 診断アイコン
-local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
-for type, icon in pairs(signs) do
-  local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
-end
 
 -- -----------------------------------------------------------------------------
 -- CocList 相当のキーマップ（Telescope 連携）
