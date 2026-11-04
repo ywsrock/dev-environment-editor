@@ -38,6 +38,11 @@ local on_attach = function(client, bufnr)
     vim.lsp.buf.format({ async = true })
   end, opts)
 
+  -- Inlay Hints トグル（Neovim 0.10+）
+  keymap("n", "<leader>ih", function()
+    vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = bufnr }), { bufnr = bufnr })
+  end, { buffer = bufnr, desc = "Toggle Inlay Hints" })
+
   -- シンボルハイライト（カーソル位置）
   if client.server_capabilities.documentHighlightProvider then
     vim.api.nvim_create_autocmd("CursorHold", {
@@ -54,6 +59,8 @@ end
 -- -----------------------------------------------------------------------------
 -- LSP サーバー設定（Neovim 0.11+ vim.lsp.config API）
 -- -----------------------------------------------------------------------------
+
+-- 共通設定のサーバー
 local servers = {
   "jsonls",
   "ts_ls",
@@ -64,7 +71,6 @@ local servers = {
   "yamlls",
   "taplo",
   "gopls",
-  "rust_analyzer",
   "bashls",
   "vimls",
   "dockerls",
@@ -75,7 +81,7 @@ local servers = {
   "vuels",
 }
 
--- Neovim 0.11+ の vim.lsp.config を使用
+-- Neovim 0.11+ の vim.lsp.config を使用（共通設定）
 for _, server in ipairs(servers) do
   vim.lsp.config[server] = {
     capabilities = capabilities,
@@ -83,8 +89,106 @@ for _, server in ipairs(servers) do
   }
 end
 
--- LSP を有効化
-vim.lsp.enable(servers)
+-- -----------------------------------------------------------------------------
+-- rust-analyzer 専用設定（自動import + inlay hints）
+-- -----------------------------------------------------------------------------
+vim.lsp.config.rust_analyzer = {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    -- 共通の on_attach を実行
+    on_attach(client, bufnr)
+
+    -- Inlay Hints を有効化（Neovim 0.10+）
+    if client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+  end,
+  settings = {
+    ["rust-analyzer"] = {
+      -- 自動import設定
+      imports = {
+        granularity = {
+          group = "module",  -- モジュール単位でグループ化
+        },
+        prefix = "self",     -- import時のprefix（self, crate, plain）
+      },
+      -- 補完時に自動でimportを追加
+      completion = {
+        autoimport = {
+          enable = true,
+        },
+        postfix = {
+          enable = true,
+        },
+      },
+      -- Inlay Hints（関数のパラメータ名・型ヒント）
+      inlayHints = {
+        bindingModeHints = {
+          enable = true,
+        },
+        chainingHints = {
+          enable = true,
+        },
+        closingBraceHints = {
+          enable = true,
+          minLines = 25,
+        },
+        closureReturnTypeHints = {
+          enable = "with_block",
+        },
+        lifetimeElisionHints = {
+          enable = "skip_trivial",
+          useParameterNames = true,
+        },
+        maxLength = 25,
+        parameterHints = {
+          enable = true,
+        },
+        reborrowHints = {
+          enable = "never",
+        },
+        renderColons = true,
+        typeHints = {
+          enable = true,
+          hideClosureInitialization = false,
+          hideNamedConstructor = false,
+        },
+      },
+      -- 診断設定
+      diagnostics = {
+        enable = true,
+        experimental = {
+          enable = true,
+        },
+      },
+      -- Cargo設定
+      cargo = {
+        allFeatures = true,
+        loadOutDirsFromCheck = true,
+        runBuildScripts = true,
+      },
+      -- procMacro サポート
+      procMacro = {
+        enable = true,
+        ignored = {
+          ["async-trait"] = { "async_trait" },
+          ["napi-derive"] = { "napi" },
+          ["async-recursion"] = { "async_recursion" },
+        },
+      },
+      -- チェック設定（clippy を使用）
+      checkOnSave = {
+        allFeatures = true,
+        command = "clippy",
+        extraArgs = { "--no-deps" },
+      },
+    },
+  },
+}
+
+-- 全サーバーを有効化（rust_analyzer を追加）
+local all_servers = vim.tbl_extend("force", servers, { "rust_analyzer" })
+vim.lsp.enable(all_servers)
 
 -- -----------------------------------------------------------------------------
 -- 診断表示設定
