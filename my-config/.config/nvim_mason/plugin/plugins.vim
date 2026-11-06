@@ -129,11 +129,6 @@ Plugin 'pedrohdz/vim-yaml-folds'         " YAMLフォールド
 Plugin 'mhinz/vim-startify'              " セッション管理
 Plugin 'kamykn/spelunker.vim'            " スペルチェック（coc-spell-checker代替）
 
-"--------------------------------------------
-" Copilot LSP
-" -------------------------------------------
-Plugin 'ywsrock/copilot-anymodel.nvim'
-
 
 
 

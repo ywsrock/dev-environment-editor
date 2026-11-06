@@ -26,7 +26,8 @@ require("conform").setup({
     toml = { "taplo" },
     
     -- Go
-    go = { "gofmt", "goimports" },
+    -- goimports: import の追加・削除 → gofumpt: gofmt より厳格な整形
+    go = { "goimports", "gofumpt" },
     
     -- Rust
     rust = { "rustfmt" },
@@ -50,7 +51,9 @@ require("conform").setup({
 
   -- 保存時に自動フォーマット
   format_on_save = {
-    timeout_ms = 500,
+    -- 複数フォーマッター（goimports → gofumpt 等）の合計時間。goimports は
+    -- 不足 import の検索で初回 0.5 秒を超えることがあり、後続が打ち切られたため 2 秒に
+    timeout_ms = 2000,
     lsp_fallback = true,
   },
 })

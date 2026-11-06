@@ -24,6 +24,8 @@ require("mason-lspconfig").setup({
 		-- Web
 		"cssls",
 		"html",
+		"tailwindcss", -- Tailwind CSS（Tailwind 使用プロジェクトでのみ起動）
+		"emmet_language_server", -- Emmet（HTML / JSX / TSX / CSS）
 
 		-- 設定ファイル
 		"yamlls",
@@ -34,12 +36,12 @@ require("mason-lspconfig").setup({
 		"rust_analyzer",
 		"bashls",
 		"vimls",
+		"lua_ls",
 		"dockerls",
 		"lemminx",
 		-- "jdtls",
 		"perlnavigator",
 		"powershell_es",
-		"vue_ls", -- Vue 3（vue-language-server。旧 vuels は廃止）
 		"omnisharp", -- C#（要 .NET SDK）
 	},
 
@@ -59,6 +61,7 @@ require("mason-tool-installer").setup({
 	ensure_installed = {
 		"black",
 		"gofumpt",
+		"goimports",
 		"isort",
 		"markdownlint",
 		"prettier",

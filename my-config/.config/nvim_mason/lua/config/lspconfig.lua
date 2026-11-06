@@ -71,17 +71,19 @@ local servers = {
 	"eslint",
 	"cssls",
 	"html",
+	"tailwindcss", -- Tailwind CSS（tailwind.config.* か package.json に tailwindcss がある時のみ）
+	"emmet_language_server", -- Emmet（div.box>ul>li*3 等を展開）
 	"yamlls",
 	"taplo",
 	"gopls",
 	"bashls",
 	"vimls",
+	"lua_ls", -- Lua（Neovim API 対応は下部の lua_ls 追加設定）
 	"dockerls",
 	"lemminx",
 	-- "jdtls",
 	"perlnavigator",
 	"powershell_es",
-	"vue_ls", -- Vue 3（ts_ls と連携。下部の ts_ls 追加設定を参照）
 	"omnisharp", -- C#（要 .NET SDK、個別 settings は下部）
 }
 
@@ -96,44 +98,8 @@ end
 -- -----------------------------------------------------------------------------
 -- rust-analyzer 専用設定（自動import + inlay hints）
 -- -----------------------------------------------------------------------------
--- 【方式A を採用中】rust-analyzer 独自診断を無効化（settings の diagnostics.enable = false）。
--- 診断は cargo check/clippy（rustc）のみ → 重複なし。表示は開いた時・保存時。
--- 入力中の即時診断が必要になったら: diagnostics.enable = true に戻し、
--- 下の重複除去（prune_duplicate_rust_diagnostics と handlers）のコメントを外す。
--- 【重複診断の対策】
--- rust-analyzer は同じエラーを2つの経路で送ってくる:
---   - 独自診断（source="rust-analyzer"）: pull（textDocument/diagnostic）→ 編集中も即時
---   - cargo check/clippy（source="rustc"）: push（publishDiagnostics）→ 開いた時・保存時
--- 別 namespace のため、どちらかが届くたびに突き合わせ、
--- 同じ行・同じコードの rustc 診断がある rust-analyzer 診断だけを除外する。
--- （rustc 診断がまだ無い保存前の新しいエラーは、独自診断がそのまま表示される）
--- local function prune_duplicate_rust_diagnostics(bufnr)
--- 	if not (bufnr and vim.api.nvim_buf_is_loaded(bufnr)) then
--- 		return
--- 	end
-	-- local all = vim.diagnostic.get(bufnr)
-	-- local rustc = {}
-	-- for _, d in ipairs(all) do
-	-- 	if d.source == "rustc" and d.code then
-	-- 		rustc[d.lnum .. ":" .. tostring(d.code)] = true
-	-- 	end
-	-- end
-	-- if next(rustc) == nil then
-	-- 	return
-	-- end
-	-- local by_ns, changed = {}, {}
-	-- for _, d in ipairs(all) do
-	-- 	by_ns[d.namespace] = by_ns[d.namespace] or {}
-	-- 	if d.source == "rust-analyzer" and d.code and rustc[d.lnum .. ":" .. tostring(d.code)] then
-	-- 		changed[d.namespace] = true
-	-- 	else
-	-- 		table.insert(by_ns[d.namespace], d)
-	-- 	end
-	-- end
-	-- for ns in pairs(changed) do
-	-- 	vim.diagnostic.set(ns, bufnr, by_ns[ns])
-	-- end
--- end
+-- 重複診断対策: rust-analyzer 独自診断は無効（settings の diagnostics.enable = false）。
+-- 診断は cargo check/clippy（rustc）のみ → 重複なし。表示はファイルを開いた時・保存時。
 
 -- nvim-lspconfig 既定の rust_analyzer 設定（on_attach を引き継ぐため）
 local ra_default_file = vim.api.nvim_get_runtime_file("lsp/rust_analyzer.lua", false)[1]
@@ -141,20 +107,6 @@ local ra_default = ra_default_file and dofile(ra_default_file) or {}
 
 vim.lsp.config.rust_analyzer = {
 	capabilities = capabilities,
-	-- handlers = {
-	-- 	-- push（rustc）
-	-- 	["textDocument/publishDiagnostics"] = function(err, result, ctx)
-	-- 		vim.lsp.diagnostic.on_publish_diagnostics(err, result, ctx)
-	-- 		if result and result.uri then
-	-- 			prune_duplicate_rust_diagnostics(vim.uri_to_bufnr(result.uri))
-	-- 		end
-	-- 	end,
-	-- 	-- pull（rust-analyzer 独自）
-	-- 	["textDocument/diagnostic"] = function(err, result, ctx)
-	-- 		vim.lsp.diagnostic.on_diagnostic(err, result, ctx)
-	-- 		prune_duplicate_rust_diagnostics(ctx.bufnr)
-	-- 	end,
-	-- },
 	on_attach = function(client, bufnr)
 		-- nvim-lspconfig 既定の on_attach（:LspCargoReload コマンド作成）
 		if ra_default.on_attach then
@@ -257,26 +209,40 @@ vim.lsp.config.rust_analyzer = {
 }
 
 -- -----------------------------------------------------------------------------
--- ts_ls 追加設定（Vue 連携）
--- vue_ls は hybrid mode で HTML/CSS 部分のみ担当し、<script> の TypeScript は
--- ts_ls + @vue/typescript-plugin が処理する。vue_ls 側の設定は不要（lspconfig 既定）。
--- 参照: https://github.com/vuejs/language-tools/wiki/Neovim
+-- lua_ls 追加設定（Neovim の設定・プラグイン開発用）
+-- nvim-lspconfig 公式推奨（lsp/lua_ls.lua の説明）:
+--   .luarc.json がある通常の Lua プロジェクトはそちらを優先し、
+--   それ以外（Neovim 設定ディレクトリ等）では Neovim ランタイムを認識させる
 -- -----------------------------------------------------------------------------
-local vue_language_server_path = vim.fn.stdpath("data")
-	.. "/mason/packages/vue-language-server/node_modules/@vue/language-server"
+vim.lsp.config("lua_ls", {
+	on_init = function(client)
+		if client.workspace_folders then
+			local path = client.workspace_folders[1].name
+			if
+				path ~= vim.fn.stdpath("config")
+				and (vim.uv.fs_stat(path .. "/.luarc.json") or vim.uv.fs_stat(path .. "/.luarc.jsonc"))
+			then
+				return
+			end
+		end
 
-vim.lsp.config("ts_ls", {
-	init_options = {
-		plugins = {
-			{
-				name = "@vue/typescript-plugin",
-				location = vue_language_server_path,
-				languages = { "vue" },
-				configNamespace = "typescript",
+		client.config.settings.Lua = vim.tbl_deep_extend("force", client.config.settings.Lua, {
+			runtime = {
+				version = "LuaJIT", -- Neovim は LuaJIT
+				path = { "lua/?.lua", "lua/?/init.lua" },
 			},
-		},
+			workspace = {
+				checkThirdParty = false,
+				library = {
+					vim.env.VIMRUNTIME, -- vim.* API
+					vim.api.nvim_get_runtime_file("lua/lspconfig", false)[1], -- LSP 設定の型
+				},
+			},
+		})
+	end,
+	settings = {
+		Lua = {},
 	},
-	filetypes = { "typescript", "javascript", "javascriptreact", "typescriptreact", "vue" },
 })
 
 -- -----------------------------------------------------------------------------
