@@ -51,7 +51,6 @@ Plugin 'numToStr/Comment.nvim'           " コメント
 " -----------------------------------------------------------------------------
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
-Plugin 'ibhagwan/fzf-lua'                 " LSP 結果を fzf で表示
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
 " Plugin 'nvim-telescope/telescope-file-browser.nvim'

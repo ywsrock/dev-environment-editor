@@ -4,8 +4,22 @@
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
--- fzf-lua（未インストール時は標準の vim.lsp.buf.* にフォールバック）
-local fzf_ok, fzf = pcall(require, "fzf-lua")
+-- Telescope（未インストール時は gr / gi を標準の vim.lsp.buf.* にフォールバック）
+local telescope_ok, telescope = pcall(require, "telescope.builtin")
+
+-- Telescope の上下レイアウト（gr / gi / <space>a で共通）
+-- 一覧を上・プレビューを下に表示し、長い行は折り返す
+local function tele_vertical(opts)
+	return vim.tbl_extend("force", {
+		layout_strategy = "vertical",
+		wrap_results = true, -- 長い行は切らずに折り返して全文表示
+		layout_config = {
+			preview_height = 0.45, -- プレビューの高さ（45%）
+			mirror = true, -- 一覧を上・プレビューを下に（既定はプレビューが上）
+			preview_cutoff = 1, -- 画面が低くてもプレビューを隠さない（既定は 40 行未満で非表示）
+		},
+	}, opts or {})
+end
 
 -- -----------------------------------------------------------------------------
 -- キーマップ設定（coc.vim と同じ）
@@ -17,15 +31,26 @@ local on_attach = function(client, bufnr)
 	-- ナビゲーション（coc.vim と同じ）
 	keymap("n", "gd", vim.lsp.buf.definition, opts) -- 定義へジャンプ
 	keymap("n", "gy", vim.lsp.buf.type_definition, opts) -- 型定義
-	keymap("n", "gi", fzf_ok and fzf.lsp_implementations or vim.lsp.buf.implementation, opts) -- 実装へ（fzf）
-	keymap("n", "gr", fzf_ok and fzf.lsp_references or vim.lsp.buf.references, opts) -- 参照一覧（fzf）
+	-- 実装へ（1件なら直接ジャンプ、複数なら Telescope で一覧）
+	keymap("n", "gi", telescope_ok and function()
+		telescope.lsp_implementations(tele_vertical())
+	end or vim.lsp.buf.implementation, opts)
+	-- 参照一覧（Telescope。<C-q> で quickfix に送る）
+	keymap("n", "gr", telescope_ok and function()
+		telescope.lsp_references(tele_vertical())
+	end or vim.lsp.buf.references, opts)
 
 	-- ドキュメント（coc.vim と同じ）
 	keymap("n", "K", vim.lsp.buf.hover, opts) -- ドキュメント表示
 
 	-- 診断メッセージ間を移動（coc.vim: [g ]g）
-	keymap("n", "[g", vim.diagnostic.goto_prev, opts)
-	keymap("n", "]g", vim.diagnostic.goto_next, opts)
+	-- ]d / [d（Neovim 標準）と同じ動作。移動時にポップアップ表示（jump.on_jump）
+	keymap("n", "[g", function()
+		vim.diagnostic.jump({ count = -1 })
+	end, opts)
+	keymap("n", "]g", function()
+		vim.diagnostic.jump({ count = 1 })
+	end, opts)
 
 	-- リファクタリング（coc.vim と同じ）
 	keymap("n", "<leader>rn", vim.lsp.buf.rename, opts) -- リネーム
@@ -98,9 +123,6 @@ end
 -- -----------------------------------------------------------------------------
 -- rust-analyzer 専用設定（自動import + inlay hints）
 -- -----------------------------------------------------------------------------
--- 重複診断対策: rust-analyzer 独自診断は無効（settings の diagnostics.enable = false）。
--- 診断は cargo check/clippy（rustc）のみ → 重複なし。表示はファイルを開いた時・保存時。
-
 -- nvim-lspconfig 既定の rust_analyzer 設定（on_attach を引き継ぐため）
 local ra_default_file = vim.api.nvim_get_runtime_file("lsp/rust_analyzer.lua", false)[1]
 local ra_default = ra_default_file and dofile(ra_default_file) or {}
@@ -172,20 +194,16 @@ vim.lsp.config.rust_analyzer = {
 					hideNamedConstructor = false,
 				},
 			},
-			-- 診断設定
+			-- 診断設定（rust-analyzer 独自診断は cargo check/clippy と重複するため無効。
+			-- 診断はファイルを開いた時・保存時の cargo check/clippy の結果のみ）
 			diagnostics = {
-				-- 方式A: 独自診断を無効化（rustc=cargo check/clippy と重複するため）
-				-- 診断は開いた時・保存時の cargo check/clippy の結果のみ
 				enable = false,
-				experimental = {
-					enable = true,
-				},
 			},
 			-- Cargo設定
 			cargo = {
-				features = "all", -- --all-features（旧 cargo.allFeatures）
+				features = "all", -- --all-features
 				buildScripts = {
-					enable = true, -- build.rs を実行（旧 runBuildScripts / loadOutDirsFromCheck）
+					enable = true, -- build.rs を実行
 				},
 			},
 			-- procMacro サポート
@@ -197,7 +215,7 @@ vim.lsp.config.rust_analyzer = {
 					["async-recursion"] = { "async_recursion" },
 				},
 			},
-			-- 保存時チェック（checkOnSave は boolean のみ。詳細は check.* に移動）
+			-- 保存時チェック（clippy）
 			checkOnSave = true,
 			check = {
 				command = "clippy",
@@ -277,22 +295,57 @@ vim.lsp.enable(all_servers)
 -- -----------------------------------------------------------------------------
 -- 診断表示設定（Neovim 0.11+ 新方式）
 -- -----------------------------------------------------------------------------
+-- 重要度別アイコン（Nerd Font）: サインとポップアップの先頭で共通利用
+local diag_icons = {
+	[vim.diagnostic.severity.ERROR] = "",
+	[vim.diagnostic.severity.WARN] = "",
+	[vim.diagnostic.severity.INFO] = "",
+	[vim.diagnostic.severity.HINT] = "󰌵",
+}
+
 vim.diagnostic.config({
-	virtual_text = true,
+	-- メッセージはコード上に表示しない（波線＋サインのみ）。
+	-- 見る時: ]d / [d（または ]g / [g）で移動 → ポップアップで全文表示
+	--         <C-w>d → カーソル位置の診断をポップアップ表示
+	--
+	-- 【他の表示方法に変える場合】
+	--   ・元の「行末に表示」: virtual_text = true にして、下の jump ブロックを削除
+	--       行末にもアイコンを付ける場合:
+	--         virtual_text = { prefix = function(d) return diag_icons[d.severity] end },
+	--       行末表示をカーソル行だけにする場合: virtual_text = { current_line = true },
+	--   ・「カーソル行だけ行の下に全文表示」: 次を追加し、jump ブロックを削除
+	--       virtual_lines = {
+	--         current_line = true,
+	--         format = function(d) return diag_icons[d.severity] .. " " .. d.message end,
+	--       },
+	virtual_text = false,
+	-- ]d / [d で診断へ移動した時、その診断をポップアップ表示（カーソルを動かすと閉じる）
+	jump = {
+		on_jump = function(diagnostic, bufnr)
+			if diagnostic then
+				vim.diagnostic.open_float({ bufnr = bufnr, scope = "cursor", focus = false })
+			end
+		end,
+	},
 	underline = true,
 	update_in_insert = false,
 	severity_sort = true,
 	float = {
 		border = "rounded",
-		source = "always",
+		source = true, -- 出力元（rustc / clippy 等）を表示
+		-- 先頭に重要度アイコン（2つ目の戻り値はハイライトグループ）
+		prefix = function(d)
+			local hl = ({ "DiagnosticError", "DiagnosticWarn", "DiagnosticInfo", "DiagnosticHint" })[d.severity]
+			return diag_icons[d.severity] .. " ", hl
+		end,
 	},
 	-- 診断アイコン（sign_define 非推奨のため新方式）
 	signs = {
 		text = {
-			[vim.diagnostic.severity.ERROR] = " ",
-			[vim.diagnostic.severity.WARN] = " ",
-			[vim.diagnostic.severity.HINT] = " ",
-			[vim.diagnostic.severity.INFO] = " ",
+			[vim.diagnostic.severity.ERROR] = diag_icons[vim.diagnostic.severity.ERROR],
+			[vim.diagnostic.severity.WARN] = diag_icons[vim.diagnostic.severity.WARN],
+			[vim.diagnostic.severity.HINT] = diag_icons[vim.diagnostic.severity.HINT],
+			[vim.diagnostic.severity.INFO] = diag_icons[vim.diagnostic.severity.INFO],
 		},
 		numhl = {
 			[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
@@ -305,24 +358,15 @@ vim.diagnostic.config({
 
 -- -----------------------------------------------------------------------------
 -- CocList 相当のキーマップ
---   <space>o / s / a    : Telescope（優先）
---   <space>fo / fs / fa : fzf-lua（f = fzf）
---   <space>ta           : location list
+--   <space>o / s / a : Telescope
+--   <space>ta        : location list
 -- -----------------------------------------------------------------------------
-local telescope_ok, telescope = pcall(require, "telescope.builtin")
 if telescope_ok then
 	vim.keymap.set("n", "<space>o", telescope.lsp_document_symbols, { desc = "Outline (Telescope)" })
 	vim.keymap.set("n", "<space>s", telescope.lsp_workspace_symbols, { desc = "Symbols (Telescope)" })
 	vim.keymap.set("n", "<space>a", function()
-		telescope.diagnostics({ bufnr = 0 }) -- 現在のバッファの診断
+		telescope.diagnostics(tele_vertical({ bufnr = 0 })) -- 現在のバッファの診断
 	end, { desc = "Diagnostics (Telescope)" })
-end
-
-if fzf_ok then
-	vim.keymap.set("n", "<space>fo", fzf.lsp_document_symbols, { desc = "Outline (fzf)" })
-	-- 入力のたびに LSP へ再問い合わせ（空クエリで結果を返さないサーバーでも検索可能）
-	vim.keymap.set("n", "<space>fs", fzf.lsp_live_workspace_symbols, { desc = "Symbols (fzf)" })
-	vim.keymap.set("n", "<space>fa", fzf.diagnostics_document, { desc = "Diagnostics (fzf)" })
 end
 
 vim.keymap.set("n", "<space>ta", function()
