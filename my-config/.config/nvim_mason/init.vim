@@ -90,6 +90,12 @@ lua require('config.treesitter')
 " インデントガイド（VSCode以外）
 if !exists('g:vscode')
   let g:indent_guides_enable_on_vim_startup = 1
+  " 通常ファイル以外（terminal / nofile / prompt / quickfix 等）には表示しない
+  " → fzf（terminal）や Telescope（prompt / nofile）の縦縞を防ぐ
+  let g:indent_guides_exclude_buftype = 1
+  let g:indent_guides_exclude_filetypes = [
+        \ 'help', 'fzf', 'TelescopePrompt', 'TelescopeResults',
+        \ 'nerdtree', 'startify', 'floaterm', 'noice', 'notify' ]
 endif
 
 " -----------------------------------------------------------------------------
