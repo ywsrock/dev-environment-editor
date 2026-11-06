@@ -51,6 +51,7 @@ Plugin 'numToStr/Comment.nvim'           " コメント
 " -----------------------------------------------------------------------------
 Plugin 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plugin 'junegunn/fzf.vim'
+Plugin 'ibhagwan/fzf-lua'                 " LSP 結果を fzf で表示
 Plugin 'nvim-lua/plenary.nvim'
 Plugin 'nvim-telescope/telescope.nvim'
 " Plugin 'nvim-telescope/telescope-file-browser.nvim'
@@ -127,6 +128,14 @@ Plugin 'ronakg/quickr-preview.vim'       " quickfixプレビュー
 Plugin 'pedrohdz/vim-yaml-folds'         " YAMLフォールド
 Plugin 'mhinz/vim-startify'              " セッション管理
 Plugin 'kamykn/spelunker.vim'            " スペルチェック（coc-spell-checker代替）
+
+"--------------------------------------------
+" Copilot LSP
+" -------------------------------------------
+Plugin 'ywsrock/copilot-anymodel.nvim'
+
+
+
 
 call vundle#end()
 filetype plugin indent on

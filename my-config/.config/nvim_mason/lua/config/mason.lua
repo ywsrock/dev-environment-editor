@@ -39,11 +39,19 @@ require("mason-lspconfig").setup({
 		-- "jdtls",
 		"perlnavigator",
 		"powershell_es",
-		"vuels",
+		"vue_ls", -- Vue 3（vue-language-server。旧 vuels は廃止）
+		"omnisharp", -- C#（要 .NET SDK）
 	},
 
 	-- 自動ハンドラー（インストール済み LSP を自動設定）
 	automatic_installation = true,
+
+	-- mason-lspconfig v2: インストール済みパッケージを LSP として自動起動する。
+	-- stylua はフォーマッター（conform 用）として導入しているため除外
+	-- （stylua 2.0.2 は --lsp 非対応で、LSP として起動すると exit code 2 で終了する）
+	automatic_enable = {
+		exclude = { "stylua" },
+	},
 })
 
 -- formatters / lintersを自動インストール
