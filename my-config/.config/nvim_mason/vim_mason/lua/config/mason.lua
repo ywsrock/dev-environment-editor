@@ -1,0 +1,71 @@
+-- =============================================================================
+-- mason.lua - LSP サーバー管理
+-- =============================================================================
+
+require("mason").setup({
+	ui = {
+		icons = {
+			package_installed = "✓",
+			package_pending = "➜",
+			package_uninstalled = "✗",
+		},
+	},
+})
+
+require("mason-lspconfig").setup({
+	-- 自動インストールする LSP サーバー
+	ensure_installed = {
+		-- 基本
+		"jsonls",
+		"ts_ls",
+		"pyright",
+		"eslint",
+
+		-- Web
+		"cssls",
+		"html",
+
+		-- 設定ファイル
+		"yamlls",
+		"taplo",
+
+		-- 言語
+		"gopls",
+		"rust_analyzer",
+		"bashls",
+		"vimls",
+		"dockerls",
+		"lemminx",
+		-- "jdtls",
+		"perlnavigator",
+		"powershell_es",
+		"vue_ls", -- Vue 3（vue-language-server。旧 vuels は廃止）
+		"omnisharp", -- C#（要 .NET SDK）
+	},
+
+	-- 自動ハンドラー（インストール済み LSP を自動設定）
+	automatic_installation = true,
+
+	-- mason-lspconfig v2: インストール済みパッケージを LSP として自動起動する。
+	-- stylua はフォーマッター（conform 用）として導入しているため除外
+	-- （stylua 2.0.2 は --lsp 非対応で、LSP として起動すると exit code 2 で終了する）
+	automatic_enable = {
+		exclude = { "stylua" },
+	},
+})
+
+-- formatters / lintersを自動インストール
+require("mason-tool-installer").setup({
+	ensure_installed = {
+		"black",
+		"gofumpt",
+		"isort",
+		"markdownlint",
+		"prettier",
+		"shfmt",
+		"sql-formatter",
+		"stylua",
+	},
+	auto_update = false, -- 自動更新しない（デフォルト: false）
+	run_on_start = true, -- 起動時にインストール確認（デフォルト: true）
+})
