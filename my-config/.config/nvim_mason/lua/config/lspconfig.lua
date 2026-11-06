@@ -22,13 +22,13 @@ local function tele_vertical(opts)
 end
 
 -- -----------------------------------------------------------------------------
--- キーマップ設定（coc.vim と同じ）
+-- キーマップ設定
 -- -----------------------------------------------------------------------------
 local on_attach = function(client, bufnr)
 	local opts = { noremap = true, silent = true, buffer = bufnr }
 	local keymap = vim.keymap.set
 
-	-- ナビゲーション（coc.vim と同じ）
+	-- ナビゲーション
 	keymap("n", "gd", vim.lsp.buf.definition, opts) -- 定義へジャンプ
 	keymap("n", "gy", vim.lsp.buf.type_definition, opts) -- 型定義
 	-- 実装へ（1件なら直接ジャンプ、複数なら Telescope で一覧）
@@ -265,9 +265,6 @@ vim.lsp.config("lua_ls", {
 
 -- -----------------------------------------------------------------------------
 -- omnisharp 追加設定（C#）
--- capabilities / on_attach は上の共通ループで設定済み。
--- 関数呼び出し形式 vim.lsp.config(name, cfg) は既存設定にマージされる
--- （vim.lsp.config.name = cfg の代入形式だと上書きになるので注意）
 -- 前提: .NET SDK（brew install --cask dotnet-sdk）
 -- -----------------------------------------------------------------------------
 vim.lsp.config("omnisharp", {
@@ -293,7 +290,7 @@ local all_servers = vim.list_extend(vim.deepcopy(servers), { "rust_analyzer" })
 vim.lsp.enable(all_servers)
 
 -- -----------------------------------------------------------------------------
--- 診断表示設定（Neovim 0.11+ 新方式）
+-- 診断表示設定
 -- -----------------------------------------------------------------------------
 -- 重要度別アイコン（Nerd Font）: サインとポップアップの先頭で共通利用
 local diag_icons = {
@@ -339,7 +336,7 @@ vim.diagnostic.config({
 			return diag_icons[d.severity] .. " ", hl
 		end,
 	},
-	-- 診断アイコン（sign_define 非推奨のため新方式）
+	-- 診断アイコン
 	signs = {
 		text = {
 			[vim.diagnostic.severity.ERROR] = diag_icons[vim.diagnostic.severity.ERROR],
