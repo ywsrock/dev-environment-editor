@@ -13,15 +13,20 @@
 "   │   ├── startify.vim         # startify 設定
 "   │   └── vscode.vim           # VSCode 用設定
 "   ├── lua/config/
-"   │   ├── mason.lua            # LSP サーバー管理
-"   │   ├── lspconfig.lua        # LSP 設定 + キーマップ
+"   │   ├── mason.lua            # LSP サーバー管理（LSP 追加時はここに追加）
+"   │   ├── lspconfig.lua        # LSP 共通設定 + キーマップ
+"   │   ├── diagnostic.lua       # 診断の表示設定 + gl / <space>ta
 "   │   ├── cmp.lua              # 補完
 "   │   ├── conform.lua          # フォーマッター
 "   │   └── treesitter.lua       # treesitter 設定
-"   └── lua/plugins/
-"       ├── noice.lua            # noice + notify 設定
-"       ├── telescope.lua        # telescope 設定
-"       └── md_preview.lua       # nvim-md-preview 設定
+"   ├── lua/plugins/
+"   │   ├── noice.lua            # noice + notify 設定
+"   │   ├── telescope.lua        # telescope 設定
+"   │   └── md_preview.lua       # nvim-md-preview 設定
+"   └── after/lsp/               # LSP サーバー個別設定（自動で読み込み・マージ）
+"       ├── rust_analyzer.lua    # Rust
+"       ├── lua_ls.lua           # Lua
+"       └── omnisharp.lua        # C#
 "
 " =============================================================================
 
