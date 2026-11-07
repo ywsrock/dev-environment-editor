@@ -29,7 +29,7 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " -----------------------------------------------------------------------------
 " quickfix / location list のウィンドウの中だけで有効（ふつうのファイルでは
 " gc が Neovim 標準のコメント gc{motion}（例: gcj）と重なるため、バッファ専用にする）
-"   gs : カーソル行のプレビュー / gc : プレビューを閉じる
+"   gs : カーソル行のプレビュー / gc : quickfix・location list のウィンドウを閉じる
 let g:quickr_preview_keymaps = 0
 let g:quickr_preview_position = 'right'
 augroup QuickrPreviewKeymaps
@@ -37,6 +37,10 @@ augroup QuickrPreviewKeymaps
   autocmd FileType qf nmap <buffer> gs <plug>(quickr_preview)
   autocmd FileType qf nmap <buffer> gc <plug>(quickr_preview_qf_close)
 augroup END
+
+" quickfix / location list の表示切り替え（開いていれば閉じる、閉じていれば開く）
+nnoremap <leader>q <cmd>execute getqflist({'winid': 0}).winid ? 'cclose' : 'copen'<CR>
+nnoremap <leader>l <cmd>execute getloclist(0, {'winid': 0}).winid ? 'lclose' : 'lopen'<CR>
 
 " -----------------------------------------------------------------------------
 " Markdown プレビュー（nvim-md-preview）
@@ -73,6 +77,12 @@ nnoremap <leader>km <cmd>Telescope keymaps<CR>
 nnoremap <leader>fd <cmd>Files<CR>
 nnoremap <leader>fD <cmd>Rg<CR>
 nnoremap <leader>fl <cmd>BLines<CR>
+
+" マーク（m で付けたもの）の一覧（プレビュー付き、Enter でジャンプ）
+nnoremap <leader>fm <cmd>Telescope marks<CR>
+
+" レジスター（コピーした文字・記録したマクロ）の一覧（Enter で貼り付け）
+nnoremap <leader>fr <cmd>Telescope registers<CR>
 
 " -----------------------------------------------------------------------------
 " 翻訳

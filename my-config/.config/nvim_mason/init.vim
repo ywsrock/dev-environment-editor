@@ -115,8 +115,24 @@ augroup MyHighlights
   autocmd ColorScheme * highlight Normal guibg=#1e1e2e | highlight NormalNC guibg=#282838
 augroup END
 
-" lightline カラースキーム
-let g:lightline = {'colorscheme': 'tokyonight'}
+" lightline カラースキーム + マクロ記録中の表示（recording @a）
+" （noice.nvim が標準で recording の表示を隠すため、ステータスラインに出す）
+let g:lightline = {
+      \ 'colorscheme': 'tokyonight',
+      \ 'active': {
+      \   'left': [['mode', 'paste', 'recording'], ['readonly', 'filename', 'modified']],
+      \ },
+      \ 'component_function': {'recording': 'LightlineRecording'},
+      \ }
+function! LightlineRecording() abort
+  return reg_recording() ==# '' ? '' : 'recording @' . reg_recording()
+endfunction
+" 記録の開始 / 終了ですぐに表示を更新（終了時は reg_recording() が空になってから更新）
+augroup LightlineRecording
+  autocmd!
+  autocmd RecordingEnter * call lightline#update()
+  autocmd RecordingLeave * call timer_start(0, {-> lightline#update()})
+augroup END
 
 " その他のハイライト
 hi NonText ctermbg=NONE ctermfg=59 guibg=NONE guifg=NONE
