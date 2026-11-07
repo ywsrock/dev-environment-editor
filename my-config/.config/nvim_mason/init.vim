@@ -80,6 +80,7 @@ lua require('plugins.md_preview')
 " -----------------------------------------------------------------------------
 lua require('config.mason')
 lua require('config.lspconfig')
+lua require('config.diagnostic')
 lua require('config.cmp')
 lua require('config.conform')
 
