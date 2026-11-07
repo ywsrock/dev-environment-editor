@@ -157,7 +157,7 @@ git clone https://github.com/github/copilot.vim $HOME\AppData\Local\nvim\pack\gi
 │   ├── cmp.lua              # 補完
 │   ├── conform.lua          # ★ フォーマッターの割り当て
 │   └── treesitter.lua       # Treesitter
-├── lua/plugins/             # 個別プラグインの設定（noice / telescope / md_preview）
+├── lua/plugins/             # 個別プラグインの設定（noice / md_preview）
 ├── after/lsp/               # ★ LSP サーバーごとの個別設定（必要なものだけ）
 │   ├── rust_analyzer.lua
 │   ├── lua_ls.lua
@@ -172,7 +172,7 @@ git clone https://github.com/github/copilot.vim $HOME\AppData\Local\nvim\pack\gi
 ## 4. よく使うキー操作
 
 リーダーキーは `,` です（例: `,ff` は「カンマ、f、f」の順に押します）。
-ここに載っていないキーも含めて、今のキーは `:map ,`（リーダーキー）や `:nmap`（ノーマルモード全部）で確認できます。
+ここに載っていないキーも含めて、今のキーは **`,km`** で一覧表示できます（入力して絞り込み、Enter でそのキーを実行。`:map ,` や `:nmap` でも確認できます）。
 
 ### 保存・基本
 
@@ -231,6 +231,7 @@ git clone https://github.com/github/copilot.vim $HOME\AppData\Local\nvim\pack\gi
 | `,fl` | 今のファイルの**中**の行を検索（一致した行を一覧で表示して、選んだ行へジャンプ） |
 | `,fb` | 開いているバッファの一覧 |
 | `,h` | コマンドの履歴 |
+| `,km` | キー割り当ての一覧（入力して絞り込み、Enter でそのキーを実行） |
 | `,N` | 通知（メッセージ）の履歴 |
 
 > 検索は、Neovim を起動したフォルダーが対象です。プロジェクトのフォルダーで `nvim` を起動してください。
@@ -521,6 +522,7 @@ require("mason-tool-installer").setup({
 | `,ff` が動かない | `fzf --version` で fzf が入っているか確認します |
 | 保存してもフォーマットされない | `:ConformInfo` で、そのファイルの種類にフォーマッターが割り当てられ、インストールされているか確認します |
 | Rust の診断が出るまで時間がかかる | 診断は `cargo clippy` の結果を表示しているため、プロジェクト全体のビルドが終わるまで表示されません（2回目からはキャッシュで速くなります） |
+| `:checkhealth vim.lsp` に `Unknown filetype 'gotmpl'` などの WARNING が出る | 問題ありません。nvim-lspconfig の標準設定に、Neovim が知らないファイルの種類（テンプレート言語など）が書かれているための警告で、動作には影響しません |
 | ほかの人と設定が違う動きをする | `:checkhealth` の結果と、`nvim --version` を比べます |
 
 ### 設計上の注意（設定を変更する人向け）
@@ -533,6 +535,6 @@ require("mason-tool-installer").setup({
 - **コメントは Neovim の標準機能**を使っています。以前使っていた Comment.nvim は Neovim 0.12 に対応しておらず、Rust / TypeScript などで動かなかったため削除しました。
 - **quickfix のプレビュー（`gs` / `gc`）は quickfix のウィンドウの中だけ**で有効にしています（`keymaps.vim`）。ふつうのファイルで有効にすると、コメントの `gc` とぶつかるためです。
 - **`,F` は conform.nvim で設定**しています（`conform.lua`）。`lspconfig.lua` の LSP 接続時の処理にフォーマットのキーを追加すると、保存時と違うフォーマッターで整形されてしまうので追加しないでください。
-- **リーダーキーで始まるキーは、ほかのキーの先頭と重ならないようにしています**（例: `,f` ではなく `,F`）。`,f` と `,ff` のように重なると、`,f` を押してから1秒（`timeoutlen`）待たされるためです。キーを追加するときは `:map ,` で今のキーを確認してください。
+- **リーダーキーで始まるキーは、ほかのキーの先頭と重ならないようにしています**（例: `,f` ではなく `,F`）。`,f` と `,ff` のように重なると、`,f` を押してから1秒（`timeoutlen`）待たされるためです。キーを追加するときは `,km`（または `:map ,`）で今のキーを確認してください。
 - プラグインを追加するときは、**Neovim 0.12 に対応しているか**（最近更新されているか）を確認してください。
 - `options.vim` で `ambiwidth=double` を設定しています。罫線の文字をつなげて表示するプラグインの設定（fzf-lua の `border-fused` など）とは相性が悪いので注意してください。

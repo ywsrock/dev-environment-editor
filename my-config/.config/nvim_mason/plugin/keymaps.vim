@@ -28,7 +28,7 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " quickfix プレビュー
 " -----------------------------------------------------------------------------
 " quickfix / location list のウィンドウの中だけで有効（ふつうのファイルでは
-" gc が Comment.nvim の gc{motion}（例: gcj）と重なるため、バッファ専用にする）
+" gc が Neovim 標準のコメント gc{motion}（例: gcj）と重なるため、バッファ専用にする）
 "   gs : カーソル行のプレビュー / gc : プレビューを閉じる
 let g:quickr_preview_keymaps = 0
 let g:quickr_preview_position = 'right'
@@ -49,7 +49,6 @@ nmap <leader>md <cmd>MdPreviewDiff<cr>
 " -----------------------------------------------------------------------------
 " Telescope / fzf
 " -----------------------------------------------------------------------------
-"nnoremap <leader>ff <cmd>lua require('plugins.telescope').find_files()<cr>
 "nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 "nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " ,ff / ,fg は起動したフォルダー（g:project_root）から検索する
@@ -63,6 +62,9 @@ nnoremap <leader>fg <cmd>RgRoot<CR>
 nnoremap <leader>fG :RgRoot<Space>
 nnoremap <leader>fb :Buffers<CR>
 nnoremap <leader>h :History:<CR>
+
+" キー割り当ての一覧（入力で絞り込み、Enter でそのキーを実行）
+nnoremap <leader>km <cmd>Telescope keymaps<CR>
 
 " 今開いているファイルの場所で検索
 "   ,fd / ,fD : 今のファイルのフォルダーから ファイル / 文字列 を検索

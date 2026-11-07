@@ -62,7 +62,6 @@ require("mason-tool-installer").setup({
 		"gofumpt",
 		"goimports",
 		"isort",
-		"markdownlint",
 		"prettier",
 		"shfmt",
 		"sql-formatter",
