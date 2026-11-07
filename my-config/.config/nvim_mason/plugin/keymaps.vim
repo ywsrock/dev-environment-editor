@@ -81,6 +81,9 @@ nnoremap <leader>fl <cmd>BLines<CR>
 " マーク（m で付けたもの）の一覧（プレビュー付き、Enter でジャンプ）
 nnoremap <leader>fm <cmd>Telescope marks<CR>
 
+" レジスター（コピーした文字・記録したマクロ）の一覧（Enter で貼り付け）
+nnoremap <leader>fr <cmd>Telescope registers<CR>
+
 " -----------------------------------------------------------------------------
 " 翻訳
 " -----------------------------------------------------------------------------
