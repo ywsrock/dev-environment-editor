@@ -5,6 +5,7 @@
 " 構成:
 "   ~/.config/nvim/
 "   ├── init.vim                 # このファイル（エントリーポイント）
+"   ├── README.md                # セットアップ手順・キー操作・LSP 追加手順
 "   ├── plugin/
 "   │   ├── plugins.vim          # Vundle プラグイン定義
 "   │   ├── options.vim          # 基本設定
@@ -60,18 +61,12 @@ endif
 " アニメーションカーソル
 lua require('smear_cursor').enabled = true
 
-" コメント（Comment.nvim）
+" コメント（Neovim 標準機能。プラグイン不要）
+" ※ Comment.nvim は Neovim 0.12 の Treesitter に未対応で Rust / TS 等で動かないため削除
 " ショートカット:
 "   gcc         現在行をコメント/アンコメント
-"   gbc         現在行をブロックコメント
-"   gc{motion}  モーションで指定した範囲をコメント
-"   gb{motion}  モーションで指定した範囲をブロックコメント
-"   gcO         上の行にコメント行を追加
-"   gco         下の行にコメント行を追加
-"   gcA         行末にコメントを追加
+"   gc{motion}  モーションで指定した範囲をコメント（例: gcj, gcip）
 "   gc (Visual) 選択範囲をコメント/アンコメント
-"   gb (Visual) 選択範囲をブロックコメント
-lua require('Comment').setup()
 
 " noice + notify
 lua require('plugins.noice')

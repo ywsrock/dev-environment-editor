@@ -27,10 +27,16 @@ nnoremap <C-f> :NERDTreeFind<CR>
 " -----------------------------------------------------------------------------
 " quickfix プレビュー
 " -----------------------------------------------------------------------------
+" quickfix / location list のウィンドウの中だけで有効（ふつうのファイルでは
+" gc が Comment.nvim の gc{motion}（例: gcj）と重なるため、バッファ専用にする）
+"   gs : カーソル行のプレビュー / gc : プレビューを閉じる
 let g:quickr_preview_keymaps = 0
-nmap gs <plug>(quickr_preview)
-nmap gc <plug>(quickr_preview_qf_close)
 let g:quickr_preview_position = 'right'
+augroup QuickrPreviewKeymaps
+  autocmd!
+  autocmd FileType qf nmap <buffer> gs <plug>(quickr_preview)
+  autocmd FileType qf nmap <buffer> gc <plug>(quickr_preview_qf_close)
+augroup END
 
 " -----------------------------------------------------------------------------
 " Markdown プレビュー（nvim-md-preview）

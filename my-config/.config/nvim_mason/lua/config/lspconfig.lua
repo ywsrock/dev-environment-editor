@@ -80,13 +80,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		keymap("n", "<leader>a", vim.lsp.buf.code_action, opts) -- コードアクション（選択）
 		keymap("v", "<leader>a", vim.lsp.buf.code_action, opts)
 
-		-- フォーマット（conform.nvim で処理するが、LSP フォールバックも設定）
-		keymap("n", "<leader>f", function()
-			vim.lsp.buf.format({ async = true })
-		end, opts)
-		keymap("v", "<leader>f", function()
-			vim.lsp.buf.format({ async = true })
-		end, opts)
+		-- フォーマット（,f）は conform.lua で設定（保存時と同じフォーマッター。無ければ LSP）
 
 		-- Inlay Hints トグル（Neovim 0.10+）
 		keymap("n", "<leader>ih", function()
