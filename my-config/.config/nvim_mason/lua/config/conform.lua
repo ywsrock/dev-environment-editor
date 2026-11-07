@@ -65,7 +65,8 @@ vim.api.nvim_create_user_command("Format", function()
   require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format buffer" })
 
--- <leader>f でフォーマット（lspconfig.lua と重複するが、conform を優先）
-vim.keymap.set({ "n", "v" }, "<leader>f", function()
+-- <leader>F でフォーマット（保存時と同じフォーマッター。無い言語は LSP で整形）
+-- ※ ,f だと ,ff / ,fg 等と重なり、押してから1秒待たされるため ,F
+vim.keymap.set({ "n", "v" }, "<leader>F", function()
   require("conform").format({ async = true, lsp_fallback = true })
 end, { desc = "Format" })

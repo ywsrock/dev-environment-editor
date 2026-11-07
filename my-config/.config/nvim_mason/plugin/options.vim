@@ -93,10 +93,12 @@ set belloff=all               " ベルを無効化
 " -----------------------------------------------------------------------------
 " スペルチェック（VSCode以外）
 " -----------------------------------------------------------------------------
+" spelunker.vim が担当するため Vim 標準の spell はオフにする
+" （両方オンだと同じ単語に2種類の下線が付く。spelunker 公式の推奨設定）
+" spelllang は spelunker が単語の判定に使う（cjk = 日本語などはチェックしない）
+set nospell
 if !exists('g:vscode')
-  set spell
   set spelllang=en_us,cjk
-  set complete+=kspell
 endif
 
 " -----------------------------------------------------------------------------
@@ -106,10 +108,3 @@ if has("termguicolors")
   set termguicolors
 endif
 
-" -----------------------------------------------------------------------------
-" フォント設定（Neovide以外）
-" -----------------------------------------------------------------------------
-if !exists("g:neovide")
-  set guifontwide=MS_Gothic:h9
-  set guifont=Menlo\ Regular:h14
-endif

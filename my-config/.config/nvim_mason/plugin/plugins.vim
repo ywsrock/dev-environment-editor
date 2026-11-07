@@ -44,7 +44,6 @@ Plugin 'arcticicestudio/nord-vim'
 Plugin 'kshenoy/vim-signature'           " ブックマーク
 Plugin 'ywsrock/vim-move'                " 行移動
 Plugin 'simeji/winresizer'               " ウィンドウリサイズ
-Plugin 'numToStr/Comment.nvim'           " コメント
 
 " -----------------------------------------------------------------------------
 " 検索 / ファジーファインダー

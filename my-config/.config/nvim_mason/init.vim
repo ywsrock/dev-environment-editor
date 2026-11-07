@@ -5,6 +5,7 @@
 " 構成:
 "   ~/.config/nvim/
 "   ├── init.vim                 # このファイル（エントリーポイント）
+"   ├── README.md                # セットアップ手順・キー操作・LSP 追加手順
 "   ├── plugin/
 "   │   ├── plugins.vim          # Vundle プラグイン定義
 "   │   ├── options.vim          # 基本設定
@@ -13,15 +14,19 @@
 "   │   ├── startify.vim         # startify 設定
 "   │   └── vscode.vim           # VSCode 用設定
 "   ├── lua/config/
-"   │   ├── mason.lua            # LSP サーバー管理
-"   │   ├── lspconfig.lua        # LSP 設定 + キーマップ
+"   │   ├── mason.lua            # LSP サーバー管理（LSP 追加時はここに追加）
+"   │   ├── lspconfig.lua        # LSP 共通設定 + キーマップ
+"   │   ├── diagnostic.lua       # 診断の表示設定 + gl / <space>ta
 "   │   ├── cmp.lua              # 補完
 "   │   ├── conform.lua          # フォーマッター
 "   │   └── treesitter.lua       # treesitter 設定
-"   └── lua/plugins/
-"       ├── noice.lua            # noice + notify 設定
-"       ├── telescope.lua        # telescope 設定
-"       └── md_preview.lua       # nvim-md-preview 設定
+"   ├── lua/plugins/
+"   │   ├── noice.lua            # noice + notify 設定
+"   │   └── md_preview.lua       # nvim-md-preview 設定
+"   └── after/lsp/               # LSP サーバー個別設定（自動で読み込み・マージ）
+"       ├── rust_analyzer.lua    # Rust
+"       ├── lua_ls.lua           # Lua
+"       └── omnisharp.lua        # C#
 "
 " =============================================================================
 
@@ -55,18 +60,12 @@ endif
 " アニメーションカーソル
 lua require('smear_cursor').enabled = true
 
-" コメント（Comment.nvim）
+" コメント（Neovim 標準機能。プラグイン不要）
+" ※ Comment.nvim は Neovim 0.12 の Treesitter に未対応で Rust / TS 等で動かないため削除
 " ショートカット:
 "   gcc         現在行をコメント/アンコメント
-"   gbc         現在行をブロックコメント
-"   gc{motion}  モーションで指定した範囲をコメント
-"   gb{motion}  モーションで指定した範囲をブロックコメント
-"   gcO         上の行にコメント行を追加
-"   gco         下の行にコメント行を追加
-"   gcA         行末にコメントを追加
+"   gc{motion}  モーションで指定した範囲をコメント（例: gcj, gcip）
 "   gc (Visual) 選択範囲をコメント/アンコメント
-"   gb (Visual) 選択範囲をブロックコメント
-lua require('Comment').setup()
 
 " noice + notify
 lua require('plugins.noice')
@@ -80,11 +79,12 @@ lua require('plugins.md_preview')
 " -----------------------------------------------------------------------------
 lua require('config.mason')
 lua require('config.lspconfig')
+lua require('config.diagnostic')
 lua require('config.cmp')
 lua require('config.conform')
 
 " Treesitter（シンタックスハイライト強化・コード解析）
-" ショートカット: <CR> 選択開始/拡大, af/if 関数選択, ]m/[m 関数移動
+" ショートカット: af/if 関数選択, ]m/[m 関数移動, an/in 選択拡大/縮小（詳細は treesitter.lua 先頭）
 lua require('config.treesitter')
 
 " インデントガイド（VSCode以外）
