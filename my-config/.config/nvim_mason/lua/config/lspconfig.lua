@@ -76,11 +76,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		-- リファクタリング（coc.vim と同じ）
 		keymap("n", "<leader>rn", vim.lsp.buf.rename, opts) -- リネーム
-		keymap("n", "<leader>ac", vim.lsp.buf.code_action, opts) -- コードアクション
-		keymap("n", "<leader>a", vim.lsp.buf.code_action, opts) -- コードアクション（選択）
+		-- コードアクション（,ac は ,a と重なり ,a を押してから1秒待たされるため削除）
+		keymap("n", "<leader>a", vim.lsp.buf.code_action, opts)
 		keymap("v", "<leader>a", vim.lsp.buf.code_action, opts)
 
-		-- フォーマット（,f）は conform.lua で設定（保存時と同じフォーマッター。無ければ LSP）
+		-- フォーマット（,F）は conform.lua で設定（保存時と同じフォーマッター。無ければ LSP）
 
 		-- Inlay Hints トグル（Neovim 0.10+）
 		keymap("n", "<leader>ih", function()

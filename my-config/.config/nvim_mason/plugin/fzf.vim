@@ -31,6 +31,13 @@ let g:fzf_action = {
 command! -bang -nargs=? -complete=dir Files
     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
+" 起動したフォルダー（g:project_root。init.vim で保存）から文字列検索
+" ※ options.vim の autochdir で作業フォルダーは開いているファイルの場所に変わるため、
+"   :Rg だと「今のファイルのフォルダー」しか検索されない
+command! -bang -nargs=* RgRoot
+    \ call fzf#vim#grep("rg --column --line-number --no-heading --color=always --smart-case -- " . fzf#shellescape(<q-args>),
+    \   fzf#vim#with_preview({'dir': get(g:, 'project_root', getcwd())}), <bang>0)
+
 " -----------------------------------------------------------------------------
 " レイアウト
 " -----------------------------------------------------------------------------
@@ -81,10 +88,3 @@ let g:fzf_colors =
 " 履歴
 " -----------------------------------------------------------------------------
 let g:fzf_history_dir = '~/.local/share/fzf-history'
-
-" -----------------------------------------------------------------------------
-" コマンドカスタマイズ
-" -----------------------------------------------------------------------------
-" Files をプレビュー付きに上書き
-command! -bang -nargs=? -complete=dir Files
-    \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)

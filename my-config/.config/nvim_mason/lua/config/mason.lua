@@ -46,9 +46,6 @@ require("mason-lspconfig").setup({
 		"omnisharp", -- C#（要 .NET SDK）
 	},
 
-	-- 自動ハンドラー（インストール済み LSP を自動設定）
-	automatic_installation = true,
-
 	-- mason-lspconfig v2: インストール済みパッケージを LSP として自動起動する
 	-- （vim.lsp.enable を自動で実行。lspconfig.lua 側でのサーバー一覧は不要）。
 	-- stylua はフォーマッター（conform 用）として導入しているため除外
@@ -70,6 +67,7 @@ require("mason-tool-installer").setup({
 		"shfmt",
 		"sql-formatter",
 		"stylua",
+		"tree-sitter-cli", -- Treesitter パーサーのビルドに必要（nvim-treesitter main ブランチ）
 	},
 	auto_update = false, -- 自動更新しない（デフォルト: false）
 	run_on_start = true, -- 起動時にインストール確認（デフォルト: true）

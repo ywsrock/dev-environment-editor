@@ -85,7 +85,7 @@ lua require('config.cmp')
 lua require('config.conform')
 
 " Treesitter（シンタックスハイライト強化・コード解析）
-" ショートカット: <CR> 選択開始/拡大, af/if 関数選択, ]m/[m 関数移動
+" ショートカット: af/if 関数選択, ]m/[m 関数移動, an/in 選択拡大/縮小（詳細は treesitter.lua 先頭）
 lua require('config.treesitter')
 
 " インデントガイド（VSCode以外）

@@ -1,7 +1,7 @@
 # Neovim 設定
 
 Neovim 標準の LSP、補完（nvim-cmp）、フォーマッター（conform.nvim）、Treesitter を使った開発用の設定です。
-LSP サーバーとフォーマッターは Mason で自動インストールされます。
+LSP サーバー・フォーマッター・tree-sitter CLI は Mason で、Treesitter のパーサーは nvim-treesitter で自動インストールされます。
 
 - 対象: **Neovim 0.12 以上**（macOS / Linux / Windows）
 - プラグイン管理: Vundle
@@ -34,8 +34,7 @@ LSP サーバーとフォーマッターは Mason で自動インストールさ
 | Node.js / npm | 多くの LSP（TypeScript、JSON、CSS、HTML など）と prettier | `brew install node` |
 | fzf | ファイル検索（`,ff`） | `brew install fzf` |
 | ripgrep | 文字列検索（`,fg`） | `brew install ripgrep` |
-| tree-sitter CLI（0.26.1 以上） | Treesitter のパーサーのビルド | `brew install tree-sitter-cli`（**npm 版は不可**） |
-| C コンパイラ / curl / tar | Treesitter のパーサーのビルド | macOS は `xcode-select --install` |
+| C コンパイラ / curl / tar | Treesitter のパーサーのビルド（tree-sitter CLI は Mason が自動で入れます） | macOS は `xcode-select --install` |
 | **Nerd Font** | アイコンの表示 | `brew install --cask font-hack-nerd-font` など |
 
 > **Nerd Font について**: インストールしたあと、**ターミナルのフォントを Nerd Font に変更**してください。
@@ -80,10 +79,7 @@ git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 #    普通に nvim を起動すると、プラグインがまだ無いため「module 'cmp' not found」などのエラーが出る
 nvim -u ~/.config/nvim/plugin/plugins.vim +PluginInstall +qall
 
-# 5. Treesitter のパーサーをインストール（Vundle は自動では実行しないため）
-nvim +TSUpdate
-
-# 6. （Markdown プレビューを使う人のみ）プレビュー用のプログラムをダウンロード
+# 5. （Markdown プレビューを使う人のみ）プレビュー用のプログラムをダウンロード
 nvim +MdPreviewInstall
 ```
 
@@ -97,13 +93,17 @@ git clone https://github.com/VundleVim/Vundle.vim.git $HOME\vimfiles\bundle\Vund
 nvim -u $HOME\AppData\Local\nvim\plugin\plugins.vim +PluginInstall +qall
 ```
 
-Windows では、Treesitter のパーサーは自動ではインストールされません（`treesitter.lua` の設定）。必要な言語だけ `:TSInstall <言語名>` でインストールしてください。
+Windows では、Treesitter のパーサーは自動ではインストールされません（パーサーのビルドに C コンパイラが必要なため。`treesitter.lua` の設定）。
+C コンパイラ（例: `winget install Microsoft.VisualStudio.2022.BuildTools` で「C++ によるデスクトップ開発」を選択）を入れてから、必要な言語だけ `:TSInstall <言語名>` でインストールしてください。
 
 ### 初回起動
 
 1. `nvim` を起動します。
-2. **Mason が LSP サーバーとフォーマッターを自動でインストールします**（数分かかります）。進み具合は `:Mason` で確認できます。
+2. **Mason が LSP サーバー・フォーマッター・tree-sitter CLI を自動でインストールします**（数分かかります）。進み具合は `:Mason` で確認できます。
 3. インストールが終わったら、Neovim を開き直します。
+4. **Treesitter のパーサー（言語ごとの構文解析）が自動でインストールされます**（数分かかります）。
+   - 1回目の起動では tree-sitter CLI がまだ無いため、パーサーのインストールに失敗したというメッセージが出ることがあります。手順 3 で開き直せば、自動でインストールされます。
+   - 手動でインストール・更新する場合は `:TSUpdate` を実行します。
 
 ### 動作確認
 
@@ -113,10 +113,11 @@ Windows では、Treesitter のパーサーは自動ではインストールさ�
 | LSP がつながっているか | 対象の言語のファイルを開いて `:checkhealth vim.lsp`（「Active Clients」に名前が出れば OK） |
 | LSP とフォーマッターのインストール状況 | `:Mason` |
 | フォーマッターの状態 | `:ConformInfo` |
+| Treesitter の状態 | `:checkhealth nvim-treesitter`（言語ごとのパーサーの有無を表示） |
 
 ### （任意）GitHub Copilot
 
-Copilot 用のキーマップ（`plugin/keymaps.vim`）は設定済みです。プラグインは Vundle では管理していないので、使う人だけ次のコマンドでインストールしてください。
+Copilot 用のキーマップ（`plugin/keymaps.vim`）は設定済みで、copilot.vim がインストールされているときだけ有効になります。プラグインは Vundle では管理していないので、使う人だけ次のコマンドでインストールしてください。
 
 ```sh
 # macOS / Linux
@@ -126,6 +127,13 @@ git clone https://github.com/github/copilot.vim $HOME\AppData\Local\nvim\pack\gi
 ```
 
 インストールしたら、Neovim で `:Copilot setup` を実行してログインします。
+
+| キー | 動作 |
+|---|---|
+| `Tab` | 提案を受け入れる（補完の候補が出ているときは、補完の候補の選択が優先されます） |
+| `Ctrl-j` / `Ctrl-k`（挿入モード） | 次 / 前の提案に切り替え |
+| `Ctrl-l`（挿入モード） | 提案を1単語だけ受け入れ |
+| `,cp` | 提案の一覧（パネル）を開く |
 
 ---
 
@@ -150,10 +158,11 @@ git clone https://github.com/github/copilot.vim $HOME\AppData\Local\nvim\pack\gi
 │   ├── conform.lua          # ★ フォーマッターの割り当て
 │   └── treesitter.lua       # Treesitter
 ├── lua/plugins/             # 個別プラグインの設定（noice / telescope / md_preview）
-└── after/lsp/               # ★ LSP サーバーごとの個別設定（必要なものだけ）
-    ├── rust_analyzer.lua
-    ├── lua_ls.lua
-    └── omnisharp.lua
+├── after/lsp/               # ★ LSP サーバーごとの個別設定（必要なものだけ）
+│   ├── rust_analyzer.lua
+│   ├── lua_ls.lua
+│   └── omnisharp.lua
+└── pack/                    # （任意）Copilot など Vundle 以外で入れたプラグイン
 ```
 
 ★ の付いたファイルが、LSP を追加・設定するときに編集するファイルです。
@@ -163,6 +172,7 @@ git clone https://github.com/github/copilot.vim $HOME\AppData\Local\nvim\pack\gi
 ## 4. よく使うキー操作
 
 リーダーキーは `,` です（例: `,ff` は「カンマ、f、f」の順に押します）。
+ここに載っていないキーも含めて、今のキーは `:map ,`（リーダーキー）や `:nmap`（ノーマルモード全部）で確認できます。
 
 ### 保存・基本
 
@@ -181,8 +191,8 @@ git clone https://github.com/github/copilot.vim $HOME\AppData\Local\nvim\pack\gi
 | `gr` | 参照の一覧（Telescope。`Ctrl-q` で quickfix に送る） |
 | `K` | ドキュメントの表示 |
 | `,rn` | 名前の変更（リネーム） |
-| `,ac` / `,a` | コードアクション（`,a` はビジュアルモードでも使えます） |
-| `,f` | フォーマット |
+| `,a` | コードアクション（ビジュアルモードでも使えます） |
+| `,F` | フォーマット（保存するときと同じフォーマッター。ない言語は LSP で整形。`:Format` でも同じ） |
 | `,ih` | inlay hints（型・引数名のヒント）の表示切り替え |
 | `<Space>o` | 今のファイルのシンボル一覧（関数など） |
 | `<Space>s` | ワークスペース全体のシンボル検索 |
@@ -208,22 +218,40 @@ git clone https://github.com/github/copilot.vim $HOME\AppData\Local\nvim\pack\gi
 | `Ctrl-e` | 補完を閉じる |
 | `Ctrl-b` / `Ctrl-f` | ドキュメントをスクロール |
 
-### 検索・ファイル
+### 検索
 
 | キー | 動作 |
 |---|---|
-| `,ff` | ファイル検索（fzf） |
-| `,fg` | 文字列検索（ripgrep） |
+| `,ff` | ファイル検索（fzf。**Neovim を起動したフォルダー**から検索） |
+| `,fF` | フォルダーを指定してファイル検索（`,fF` のあとにフォルダーを入力して Enter） |
+| `,fg` | 文字列検索（ripgrep。**Neovim を起動したフォルダー**から検索） |
+| `,fG` | 検索する文字を先に入力して文字列検索（`,fG` のあとに文字を入力して Enter） |
+| `,fd` | 今のファイルの**フォルダー**からファイル検索 |
+| `,fD` | 今のファイルの**フォルダー**から文字列検索 |
+| `,fl` | 今のファイルの**中**の行を検索（一致した行を一覧で表示して、選んだ行へジャンプ） |
 | `,fb` | 開いているバッファの一覧 |
 | `,h` | コマンドの履歴 |
-| `Ctrl-t` | ファイルツリー（NERDTree）の表示切り替え |
-| `Ctrl-f` | 今のファイルをファイルツリーで表示 |
+| `,N` | 通知（メッセージ）の履歴 |
+
+> 検索は、Neovim を起動したフォルダーが対象です。プロジェクトのフォルダーで `nvim` を起動してください。
+> （作業フォルダーは、開いているファイルの場所に自動で切り替わる設定です。`options.vim` の `autochdir`）
 
 fzf の画面の中では、`Ctrl-v` で縦分割、`Ctrl-x` で横分割、`Ctrl-t` で新しいタブで開きます。`Ctrl-y` でパスをコピー、`Ctrl-q` で quickfix に送れます。
 
 Telescope の画面の中でも、`Ctrl-v` / `Ctrl-x` / `Ctrl-t` で同じように開けます。
 
 quickfix / location list のウィンドウの中では、`gs` でカーソル行をプレビュー、`gc` でプレビューを閉じます。
+
+### ファイルツリー（NERDTree）
+
+| キー | 動作 |
+|---|---|
+| `Ctrl-t` | ファイルツリーの表示 / 非表示 |
+| `Ctrl-n` | ファイルツリーを開く |
+| `,n` | ファイルツリーに移動（開いていなければ開く） |
+| `Ctrl-f` | 今のファイルを、ファイルツリーの中で表示 |
+
+ファイルツリーの中のキーは、ツリーの中で `?` を押すと一覧が出ます。
 
 ### Git（Diffview）
 
@@ -232,6 +260,46 @@ quickfix / location list のウィンドウの中では、`gs` でカーソル�
 | `,gd` / `,gD` | 差分を開く / 閉じる |
 | `,gh` | リポジトリの履歴 |
 | `,gH` | 今のファイルの履歴 |
+
+### ターミナル（Floaterm）
+
+画面の右下に、浮いたウィンドウでターミナルを開きます。
+
+| キー | 動作 |
+|---|---|
+| `,ft` | ターミナルの表示 / 非表示 |
+| `,fc` | 新しいターミナルを作る |
+| `,fn` / `,fp` | 次 / 前のターミナルに切り替え |
+| `,f^` / `,f$` | 最初 / 最後のターミナルに切り替え |
+| `,fh` / `,fs` | ターミナルを隠す / 表示する |
+| `,fk` | ターミナルを終了する |
+
+ターミナルの中からノーマルモードに戻るときは、`Ctrl-\` `Ctrl-n` を押します。
+
+### Markdown プレビュー
+
+| キー | 動作 |
+|---|---|
+| `,ms` / `,mc` | プレビューを開始 / 停止 |
+| `,mr` | プレビューの開始 / 停止を切り替え |
+| `,md` | Git の差分（変更前との違い）をプレビュー |
+
+最初に一度、`:MdPreviewInstall` が必要です（[2. インストール手順](#2-インストール手順)）。
+
+### 翻訳（英語 → 日本語）
+
+| キー | 動作 |
+|---|---|
+| `,t` | カーソルの単語（ビジュアルモードでは選んだ範囲）を翻訳して、下に表示 |
+| `,w` | 翻訳を、浮いたウィンドウに表示（`Alt-f` / `Alt-b` でスクロール） |
+| `,R` | カーソルの単語（または選んだ範囲）を、翻訳した文章に置き換え |
+| `,x` | クリップボードの文章を翻訳 |
+
+### 表示
+
+| キー | 動作 |
+|---|---|
+| `,ig` | インデントガイド（縦の縞模様）の表示 / 非表示 |
 
 ### コメント
 
@@ -252,14 +320,45 @@ Neovim の標準機能です（プラグインは使っていません）。
 - `.` で直前の操作をくり返せます（例: `gcc` のあと `j.` で、次の行も切り替え）。
 - 詳しい説明は `:help commenting` で読めます。
 
+### スペルチェック
+
+英単語のスペルミスは、spelunker.vim が下線で表示します（日本語はチェックしません）。
+Vim 標準のスペルチェック（`set spell`）は、下線が2重になるのでオフにしています。
+
 ### コード編集（Treesitter）
+
+コードの構造（関数・クラス・引数など）を使って、選択・移動・入れ替えができます。
+これらのキーは、**パーサーがある言語のファイルだけ**で使えます（Rust / TypeScript / Go / Python など、`treesitter.lua` の一覧の言語）。
+パーサーがないファイル（テキストファイルなど）では、Vim 標準の `]]` / `[[` などがそのまま使えます。
+
+**選択（`v` で選択するか、`d` / `y` / `c` などの後に続けて使います）**
 
 | キー | 動作 |
 |---|---|
-| `Enter` / `Backspace` | 選択範囲を構文の単位で広げる / 狭める |
-| `vaf` / `vif` | 関数の全体 / 中身を選択（`ac` / `ic` はクラス、`aa` / `ia` は引数） |
-| `]m` / `[m` | 次 / 前の関数へ移動 |
-| `,tc` | 画面上部のコンテキスト表示（今いる関数名など）の切り替え |
+| `af` / `if` | 関数の全体 / 中身（例: `vaf` で関数全体を選択、`dif` で関数の中身を削除） |
+| `ac` / `ic` | クラスの全体 / 中身 |
+| `aa` / `ia` | 引数（区切りの `,` を含む / 含まない）（例: `daa` で引数を1つ削除） |
+| `ai` / `ii` | 条件文（if）の全体 / 中身 |
+| `al` / `il` | ループの全体 / 中身 |
+| `a/` | コメント |
+| `an` / `in`（ビジュアルモード） | 選択範囲を構文の単位で広げる / 狭める（例: `v` → `an` `an` ...） |
+
+**移動**
+
+| キー | 動作 |
+|---|---|
+| `]m` / `[m` | 次 / 前の関数の先頭へ（`]M` / `[M` は末尾へ） |
+| `]]` / `[[` | 次 / 前のクラスの先頭へ（`][` / `[]` は末尾へ） |
+| `]a` / `[a` | 次 / 前の引数へ |
+
+移動する前の位置には `Ctrl-o` で戻れます。
+
+**そのほか**
+
+| キー | 動作 |
+|---|---|
+| `,sn` / `,sp` | カーソルの引数を、次 / 前の引数と入れ替え |
+| `,ct` | 画面上部のコンテキスト表示（今いる関数名など）の切り替え |
 
 そのほかのキーは、`plugin/keymaps.vim` と `lua/config/treesitter.lua` の先頭のコメントにまとめてあります。
 
@@ -356,7 +455,7 @@ automatic_enable = {
 
 ## 6. フォーマッターの追加
 
-保存するときに自動でフォーマットされます（`,f` で手動でも実行できます）。
+保存するときに自動でフォーマットされます（`,F` で手動でも実行できます）。
 
 **手順 1. `lua/config/conform.lua` の `formatters_by_ft` に追加**
 
@@ -418,7 +517,7 @@ require("mason-tool-installer").setup({
 | LSP のインストールに失敗する | 言語ごとのツール（Node.js / Go / Python など）が入っているか確認します（[1. 必要なもの](#1-必要なもの)） |
 | アイコンが `□` で表示される | ターミナルのフォントを Nerd Font に変更します |
 | `Plugin` のエラーが出る | Vundle がインストールされているか確認し、`:PluginInstall` を実行します |
-| Treesitter のエラーが出る | `tree-sitter --version` で 0.26.1 以上か確認してから、`:TSUpdate` を実行します |
+| Treesitter のキー（`vaf` / `]m` など）が動かない・色分けされない | `:checkhealth nvim-treesitter` でその言語のパーサーがあるか確認します。なければ `:TSInstall <言語名>` を実行します（tree-sitter CLI は `:Mason` でインストールされているか確認） |
 | `,ff` が動かない | `fzf --version` で fzf が入っているか確認します |
 | 保存してもフォーマットされない | `:ConformInfo` で、そのファイルの種類にフォーマッターが割り当てられ、インストールされているか確認します |
 | Rust の診断が出るまで時間がかかる | 診断は `cargo clippy` の結果を表示しているため、プロジェクト全体のビルドが終わるまで表示されません（2回目からはキャッシュで速くなります） |
@@ -429,4 +528,11 @@ require("mason-tool-installer").setup({
 - **rust-analyzer の独自診断はオフにしています**（`after/lsp/rust_analyzer.lua` の `diagnostics.enable = false`）。オンにすると、cargo clippy の診断と同じエラーが2回表示されます。
 - **stylua は LSP として起動しないようにしています**（`mason.lua` の `automatic_enable.exclude`）。stylua はフォーマッターとして使っていて、LSP として起動するとエラーで終了するためです。
 - LSP のキーマップは `on_attach` ではなく **`LspAttach` の自動処理** で設定しています（`lspconfig.lua`）。こうすると、nvim-lspconfig の標準のコマンド（`:LspCargoReload`、`:LspEslintFixAll` など）が上書きされません。
+- **Treesitter は nvim-treesitter の main ブランチの書き方**で設定しています（`treesitter.lua`）。古い master ブランチの書き方（`setup({ highlight = ..., textobjects = ... })`）は main ブランチでは無視されるので、ネット上の古い設定例をそのまま貼らないでください。
+- **Treesitter のキー（`af` / `]m` / `,sn` など）はバッファ専用**で、パーサーと textobjects の定義がある言語のファイルだけに設定しています。すべてのファイルに設定すると、パーサーがないファイルでエラーになるためです。
+- **コメントは Neovim の標準機能**を使っています。以前使っていた Comment.nvim は Neovim 0.12 に対応しておらず、Rust / TypeScript などで動かなかったため削除しました。
+- **quickfix のプレビュー（`gs` / `gc`）は quickfix のウィンドウの中だけ**で有効にしています（`keymaps.vim`）。ふつうのファイルで有効にすると、コメントの `gc` とぶつかるためです。
+- **`,F` は conform.nvim で設定**しています（`conform.lua`）。`lspconfig.lua` の LSP 接続時の処理にフォーマットのキーを追加すると、保存時と違うフォーマッターで整形されてしまうので追加しないでください。
+- **リーダーキーで始まるキーは、ほかのキーの先頭と重ならないようにしています**（例: `,f` ではなく `,F`）。`,f` と `,ff` のように重なると、`,f` を押してから1秒（`timeoutlen`）待たされるためです。キーを追加するときは `:map ,` で今のキーを確認してください。
+- プラグインを追加するときは、**Neovim 0.12 に対応しているか**（最近更新されているか）を確認してください。
 - `options.vim` で `ambiwidth=double` を設定しています。罫線の文字をつなげて表示するプラグインの設定（fzf-lua の `border-fused` など）とは相性が悪いので注意してください。
