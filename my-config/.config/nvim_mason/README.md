@@ -511,6 +511,9 @@ automatic_enable = {
 
 保存するときに自動でフォーマットされます（`,F` で手動でも実行できます）。
 
+> **SQL は保存しても自動ではフォーマットされません**（`,F` を押したときだけ、T-SQL（SQL Server）の書き方で整形します）。
+> sql-formatter は `GO` のあとの改行を消して `GO declare ...` のように1行にしてしまい、SSMS で実行できなくなるためです。`GO` を含むファイルでは `,F` を使わないでください。
+
 **手順 1. `lua/config/conform.lua` の `formatters_by_ft` に追加**
 
 ```lua
