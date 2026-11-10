@@ -47,7 +47,7 @@ LSP サーバー・フォーマッター・tree-sitter CLI は Mason で、Trees
 | Go | Go 本体（gopls / goimports / gofumpt のインストールに使用） | `brew install go` |
 | Rust | rustup（cargo と clippy。診断は clippy の結果を表示します） | `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs \| sh`（公式のインストーラー） |
 | Python | Python 3（black / isort のインストールに使用） | `brew install python` |
-| C# | .NET SDK | `brew install --cask dotnet-sdk` |
+| C# | .NET SDK（ない PC では C# の LSP（omnisharp）は起動しません） | `brew install --cask dotnet-sdk`（Ubuntu / WSL は `sudo apt install dotnet-sdk-8.0`） |
 | PowerShell | PowerShell（`pwsh`） | `brew install --cask powershell` |
 
 使わない言語のツールは、インストールしなくてかまいません。その言語の LSP がインストールに失敗するだけで、ほかの言語には影響しません。

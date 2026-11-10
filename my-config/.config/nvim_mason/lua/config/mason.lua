@@ -50,8 +50,10 @@ require("mason-lspconfig").setup({
 	-- （vim.lsp.enable を自動で実行。lspconfig.lua 側でのサーバー一覧は不要）。
 	-- stylua はフォーマッター（conform 用）として導入しているため除外
 	-- （stylua 2.0.2 は --lsp 非対応で、LSP として起動すると exit code 2 で終了する）
+	-- omnisharp は .NET（dotnet コマンド）がない PC では起動しない
+	-- （起動すると「exec: dotnet: not found」のエラーになるため）
 	automatic_enable = {
-		exclude = { "stylua" },
+		exclude = vim.fn.executable("dotnet") == 1 and { "stylua" } or { "stylua", "omnisharp" },
 	},
 })
 
