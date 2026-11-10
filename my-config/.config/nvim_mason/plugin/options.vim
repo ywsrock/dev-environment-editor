@@ -6,7 +6,11 @@
 " エンコーディング
 " -----------------------------------------------------------------------------
 set encoding=utf-8
-set fileencodings=utf-8,sjis,euc-jp,cp932,default,latin1,iso-2022-jp,ucs-bom
+" 文字コードの判定順（左から順に試し、最初に読めたものを使う）
+"   ucs-bom を先頭: BOM 付きの UTF-16 / UTF-8（SSMS が出力する SQL など）を正しく判定
+"   latin1 を最後: どんなファイルでも読めてしまうため、最後の手段にする
+"   BOM なしの UTF-16 は判定できないので :e ++enc=utf-16le で開き直す
+set fileencodings=ucs-bom,utf-8,cp932,euc-jp,iso-2022-jp,default,latin1
 set fileformats=unix,dos,mac
 
 " -----------------------------------------------------------------------------
