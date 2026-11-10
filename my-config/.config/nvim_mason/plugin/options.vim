@@ -101,6 +101,10 @@ set belloff=all               " ベルを無効化
 " （両方オンだと同じ単語に2種類の下線が付く。spelunker 公式の推奨設定）
 " spelllang は spelunker が単語の判定に使う（cjk = 日本語などはチェックしない）
 set nospell
+" spelunker は画面に表示されている部分だけをチェック（カーソルを止めた時）
+" （既定はファイルを開いた時・保存した時にファイル全体をチェックし、6MB のファイルで
+"   開くのに 30〜50 秒かかったため。変更後は 0.5〜2 秒）
+let g:spelunker_check_type = 2
 if !exists('g:vscode')
   set spelllang=en_us,cjk
 endif
