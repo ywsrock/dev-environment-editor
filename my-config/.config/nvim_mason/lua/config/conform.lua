@@ -49,13 +49,30 @@ require("conform").setup({
     ["*"] = { "trim_whitespace" },
   },
 
-  -- 保存時に自動フォーマット
-  format_on_save = {
-    -- 複数フォーマッター（goimports → gofumpt 等）の合計時間。goimports は
-    -- 不足 import の検索で初回 0.5 秒を超えることがあり、後続が打ち切られたため 2 秒に
-    timeout_ms = 2000,
-    lsp_fallback = true,
+  -- フォーマッターの個別設定
+  formatters = {
+    -- SQL は T-SQL（SQL Server / SSMS）の書き方で整形（[テーブル名] / GO / TOP など）
+    -- 他の DB に変える時は "tsql" を変更（postgresql / mysql / sql など。sql-formatter --help で一覧）
+    sql_formatter = {
+      prepend_args = { "-l", "tsql" },
+    },
   },
+
+  -- 保存時に自動フォーマット
+  -- SQL は保存時に整形しない（,F で手動のみ）
+  -- sql-formatter は GO の後の改行を消し「GO declare ...」と1行にするため、
+  -- SSMS で実行できなくなる（GO は単独の行が必要）
+  format_on_save = function(bufnr)
+    if vim.bo[bufnr].filetype == "sql" then
+      return
+    end
+    return {
+      -- 複数フォーマッター（goimports → gofumpt 等）の合計時間。goimports は
+      -- 不足 import の検索で初回 0.5 秒を超えることがあり、後続が打ち切られたため 2 秒に
+      timeout_ms = 2000,
+      lsp_fallback = true,
+    }
+  end,
 })
 
 -- -----------------------------------------------------------------------------
